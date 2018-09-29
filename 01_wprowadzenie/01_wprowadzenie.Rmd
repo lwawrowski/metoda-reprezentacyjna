@@ -1,0 +1,51 @@
+---
+title: "Wprowadzenie do metody reprezentacyjnej"
+author: "Łukasz Wawrowski"
+date: "1-10-2018"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+# Pytania wprowadzające
+
+- Co to jest _metoda reprezentacyjna_?
+
+--
+
+- Kto może być objęty badaniem statystycznym?
+
+--
+
+- Jakie badania prowadzone są w Polsce?
+
+--- 
+
+# Metoda reprezentacyjna - definicja
+
+__Metoda reprezentacyjna__ ma na celu określenie zasad dotyczących projektowania, zbierania, przetwarzania oraz analizy danych, które wpływają na koszt i jakość badania.
+
+---
+
+# Program Badań Statystyki Publicznej
+
+- Budżety gospodarstw domowych
+- Czas pracy
+
+---
+
+# Pojęcia
+
+- badana populacja (target population) - na temat kogo chcemy wnioskować
+- operat losowania (frame population
+- próba losowa (sample)
+- 
+
+# Zadanie 
+
+Określ ... dla badania

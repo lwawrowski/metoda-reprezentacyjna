@@ -1,1 +1,4 @@
-# metoda-reprezentacyjna
+# Metoda reprezentacyjna
+
+Materiały dydaktyczne
+
