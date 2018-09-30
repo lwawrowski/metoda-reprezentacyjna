@@ -24,7 +24,11 @@ output:
 
 - Jakie badania prowadzone są w Polsce?
 
---- 
+--
+
+- Jaki jest cel prowadzenia badań ankietowych?
+
+---
 
 # Metoda reprezentacyjna - definicja
 
@@ -39,6 +43,12 @@ __Metoda reprezentacyjna__ ma na celu określenie zasad dotyczących projektowan
 
 ---
 
+# Próba losowa - definicja
+
+Wyniki badania przeprowadzonego na próbie losowej można uogólniać na populację generalną.
+
+---
+
 # Pojęcia
 
 - badana populacja (target population) - na temat kogo chcemy wnioskować
@@ -46,6 +56,14 @@ __Metoda reprezentacyjna__ ma na celu określenie zasad dotyczących projektowan
 - próba losowa (sample)
 - 
 
+---
+
 # Zadanie 
 
 Określ ... dla badania
+
+---
+
+# Podsumowanie
+
+![](phdcomics.gif)
