@@ -56,6 +56,22 @@ Dwa projekty prezentowane podczas zajęć:
 
 ---
 
+# Projekty zaliczeniowe
+
+Pierwszy projekt zaliczeniowy:
+  - Dwuosobowe grupy projektowe.
+  - Przeprowadzenie losowania na podstawie danego operatu i oszacowanie danej cechy.
+  - Losowanie zakresu projektu.
+  - Prezentacja projektu - max. 5 slajdów.
+  
+Drugi projekt zaliczeniowy:
+  - Dwuosobowe grupy projektowe.
+  - Analiza wybranych zmiennych z badania statystycznego.
+  - Losowanie zakresu projektu.
+  - Prezentacja projektu - max. 5 slajdów.
+
+---
+
 # Narzędzia
 
 R (https://www.r-project.org/) oraz RStudio (https://www.rstudio.com/)
