@@ -1,7 +1,7 @@
 ---
 title: "Projektowanie badania statystycznego"
 author: "Łukasz Wawrowski"
-date: "8-10-2018"
+date: ""
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -219,7 +219,7 @@ $$E(y_i) \neq Y_i$$
 
 ---
 
-# Zauważalna różnica pomiędzy pomiarem a odpowiedzią
+# Zauważalna różnica pomiędzy odpowiedzią a skorygowaną odpowiedzią
 
 _Ile razy dziennie doświadczasz agresji ze strony innych ludzi?_
 

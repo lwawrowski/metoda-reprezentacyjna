@@ -1,7 +1,7 @@
 ---
 title: "Wprowadzenie do metody reprezentacyjnej"
 author: "Łukasz Wawrowski"
-date: "1-10-2018"
+date: ""
 output:
   xaringan::moon_reader:
     lib_dir: libs

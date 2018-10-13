@@ -1,0 +1,75 @@
+---
+title: "Organizacja zajęć"
+author: "Łukasz Wawrowski"
+date: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+# Prowadzący
+
+__dr Łukasz Wawrowski__  
+lukasz.wawrowski@ue.poznan.pl
+
+Konsultacje - poniedziałki:  
+
+- 10:30-12:00
+
+Pokój 405C
+
+http://statystyka.ue.poznan.pl
+
+---
+
+# Plan zajęć
+
+13.10 Wprowadzenie do metody reprezentacyjnej i projektowanie badania
+17.11 Wprowadzenie do R i próba losowa  
+02.12 Losowanie proste i złożone  
+27.01 Kalibracja i imputacja  
+03.02 _
+
+---
+
+# Zaliczenie przedmiotu
+
+Projekt prezentowany podczas zajęć:
+
+3.02.2019 r.
+
+---
+
+# Projekt zaliczeniowy
+
+Projekt zaliczeniowy:
+  - Dwuosobowe grupy projektowe.
+  - Przeprowadzenie losowania na podstawie danego operatu i oszacowanie danej cechy.
+  - Losowanie zakresu projektu.
+  - Prezentacja projektu - max. 5 slajdów.
+  
+---
+
+# Narzędzia
+
+R (https://www.r-project.org/) oraz RStudio (https://www.rstudio.com/)
+
+- lokalna wersja programu
+- https://rstudio.cloud/
+
+---
+
+# Moodle
+
+Metoda reprezentacyjna - niest. II st. - (lab.) - dr Łukasz Wawrowski
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
