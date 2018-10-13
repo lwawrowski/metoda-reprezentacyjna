@@ -113,6 +113,12 @@ Analiza odpowiedzi odstających.
 
 ---
 
+# Perspektywa projektowa
+
+![](cykl_zycia_2.2.png)
+
+---
+
 # Badana populacja
 
 Zbiór badanych jednostek.
@@ -232,6 +238,12 @@ _Czy w ciągu ostatnich miesięcy słyszałeś o jakichkolwiek zmianach w nastro
 Błąd przetwarzania
 
 $$(y_{ip}-y_i)$$
+---
+
+# Perspektywa jakościowa
+
+![](cykl_zycia_2.5.png)
+
 
 ---
 
@@ -287,9 +299,16 @@ Wykorzystanie danych na temat populacji, wskaźnika kompletności w poprawie jak
 
 ---
 
+# Perspektywa jakościowa
+
+![](cykl_zycia_2.5.png)
+
+
+---
+
 # Zadania
 
-1. Jaki był rozmiar próby w Badaniu Aktywności Ekonomicznej Ludności w I kwartale 2018 r.?  
+1. Jaki był rozmiar zbadanej próby w Badaniu Aktywności Ekonomicznej Ludności w I kwartale 2018 r.?  
 
 --
 
