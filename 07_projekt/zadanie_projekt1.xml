@@ -1,0 +1,2711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/zadanie_projekt1/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R001 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni dochód oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R002 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz stopa bezrobocia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R003 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R004 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R005 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz wskaźnik zatrudnienia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R006 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób niepełnosprawnych w przekroju województw ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R007 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz odsetek osób z wykształceniem wyższym w przekroju województw ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R008 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem wyższym w przekroju województw ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R009 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz wskaźnik zatrudnienia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R010 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem podstawowym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R011 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem wyższym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R012 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz odsetek osób z wykształceniem wyższym w przekroju województw ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R013 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób z wykształceniem średnim w przekroju województw ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R014 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz wskaźnik zatrudnienia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R015 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem średnim w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R016 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz wskaźnik zatrudnienia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R017 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób z wykształceniem wyższym w przekroju województw ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R018 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz odsetek osób z wykształceniem wyższym w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R019 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R020 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób bezrobotnych oraz odsetek osób z wykształceniem średnim w przekroju województw ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R021 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz wskaźnik zatrudnienia w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R022 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób niepełnosprawnych w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R023 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni dochód oraz odsetek osób z wykształceniem średnim w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R024 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz stopa bezrobocia w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R025 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem podstawowym w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R026 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni dochód oraz odsetek osób niepełnosprawnych w przekroju województw ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R027 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R028 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz odsetek osób niepełnosprawnych w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R029 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem wyższym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R030 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz odsetek osób z wykształceniem podstawowym w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R031 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R032 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R033 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem podstawowym w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R034 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R035 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz wskaźnik zatrudnienia w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R036 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób bezrobotnych oraz odsetek osób z wykształceniem średnim w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R037 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz wskaźnik zatrudnienia w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R038 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem podstawowym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R039 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób niepełnosprawnych w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R040 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz wskaźnik zatrudnienia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R041 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem podstawowym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R042 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz stopa bezrobocia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R043 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem średnim w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R044 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R045 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób bezrobotnych oraz odsetek osób z wykształceniem wyższym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R046 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz wskaźnik zatrudnienia w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R047 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R048 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R049 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R050 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem średnim w przekroju województw ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R051 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem wyższym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R052 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób bezrobotnych oraz stopa bezrobocia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R053 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz stopa bezrobocia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R054 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R055 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz stopa bezrobocia w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R056 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R057 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem podstawowym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R058 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz stopa bezrobocia w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R059 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem średnim w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R060 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób niepełnosprawnych w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R061 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób pracujących oraz odsetek osób z wykształceniem wyższym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R062 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz wskaźnik zatrudnienia w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R063 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób bezrobotnych oraz wskaźnik zatrudnienia w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R064 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz odsetek osób niepełnosprawnych w przekroju województw ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R065 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem średnim w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R066 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób niepełnosprawnych w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R067 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób niepełnosprawnych w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R068 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób niepełnosprawnych w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R069 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R070 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem średnim w przekroju województw ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R071 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób z wykształceniem podstawowym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R072 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R073 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz stopa bezrobocia w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R074 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz odsetek osób niepełnosprawnych w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R075 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz odsetek osób z wykształceniem wyższym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R076 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R077 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R078 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób niepełnosprawnych w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R079 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R080 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni dochód oraz odsetek osób z wykształceniem wyższym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R081 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R082 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R083 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni dochód oraz stopa bezrobocia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R084 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób bezrobotnych oraz odsetek osób z wykształceniem podstawowym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R085 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz odsetek osób niepełnosprawnych w przekroju województw ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R086 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz stopa bezrobocia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R087 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób niepełnosprawnych oraz wskaźnik zatrudnienia w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 2%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R088 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób biernych oraz odsetek osób z wykształceniem podstawowym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R089 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średni wiek oraz stopa bezrobocia w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 10%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R090 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób pracujących oraz odsetek osób z wykształceniem wyższym w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 9%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R091 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem średnim w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R092 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych średnia wielkość gospodarstwa oraz odsetek osób z wykształceniem wyższym w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 7%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R093 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem średnim w przekroju stopnia urbanizacji ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R094 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób pracujących oraz odsetek osób niepełnosprawnych w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R095 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz wskaźnik zatrudnienia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 3%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R096 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem wyższym w przekroju klasy miejscowości ze względnym błędem oszacowania nie przekraczającym 5%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R097 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem podstawowym oraz odsetek osób z wykształceniem średnim w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R098 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem średnim oraz odsetek osób z wykształceniem podstawowym w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 8%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R099 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób z wykształceniem wyższym oraz stopa bezrobocia w przekroju województw ze względnym błędem oszacowania nie przekraczającym 6%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> R100 Q1 : 07_projekt_zadanie </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych liczba osób pracujących oraz odsetek osób z wykształceniem średnim w przekroju regionów ze względnym błędem oszacowania nie przekraczającym 4%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź &quot;Tak&quot;.</p>
+</p>]]></text>
+</questiontext>
+<penalty>0</penalty>
+<defaultgrade>0</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Tak
+</p>]]></text>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Nie
+</p>]]></text>
+</answer>
+</question>
+
+</quiz>

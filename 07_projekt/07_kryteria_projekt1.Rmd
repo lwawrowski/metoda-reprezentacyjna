@@ -1,0 +1,36 @@
+---
+title: "Kryteria oceny projektu"
+author: "Łukasz Wawrowski"
+date: ""
+output: html_document
+---
+
+# Zadanie
+
+Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa sposoby losowania, które pozwolą uzyskać oszacowania zmiennych .... w przekroju .... ze względnym błędem oszacowania nie przekraczającym .... %.
+
+Dane na temat populacji gospodarstw znajdują się pliku `populacja.zip`.
+
+Zmienne do oszacowania zostaną dołączone do próby z wykorzystaniem dedykowanego pakietu i funkcji.
+
+# Prezentacja
+
+Podczas zajęć w dniu 12.11.2018 r. zadania projektowe mają być przedstawione w krótkiej prezentacji (max. 5 slajdów) zawierającej:
+
+1. Treść zadania projektowego
+2. zastosowane schematy losowania
+3. Rozmiar próby i uzyskane wyniki
+
+Prezentacja oraz projekt R muszą być wgrane na moodle do dnia 11.11.2018 r.
+
+# Kryteria oceny
+
+- zrealizowanie celu zadania - 5 punktów
+- przeprowadzenie kalibracji - 2 punkty
+- sposób prezentacji wyników - 1 punkt
+
+- utworzenie warstwy wykorzystując dane spoza zbioru danych - 1 punkt
+- dodatkowy schemat losowania - 1 punkt
+- 3 najlepsze wyniki na roku - 1 punkt
+
+Najlepszy wynik jest mierzony jako relacja wielkości próby i maksymalnego błędu oszacowania uzyskanego dla wskaźnika.

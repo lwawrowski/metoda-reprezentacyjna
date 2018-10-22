@@ -1,0 +1,44 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+cecha1 <- c("liczba osób bezrobotnych", "liczba osób biernych", "liczba osób pracujących", 
+            "liczba osób z wykształceniem podstawowym", "liczba osób z wykształceniem średnim", "liczba osób z wykształceniem wyższym",
+            "liczba osób niepełnosprawnych",
+            "średni dochód", "średni wiek", "średnia wielkość gospodarstwa")
+
+cecha2 <- c("stopa bezrobocia", "wskaźnik zatrudnienia", "odsetek osób z wykształceniem podstawowym",
+            "odsetek osób z wykształceniem średnim", "odsetek osób z wykształceniem wyższym", "odsetek osób niepełnosprawnych")
+
+przekroj <- c("województw", "regionów", "klasy miejscowości", "stopnia urbanizacji")
+
+blad <- 2:10
+
+pula <- expand.grid(cecha1, cecha2, przekroj, blad)
+
+pula_s <- pula[sample(nrow(pula), 1),]
+
+c1 <- as.character(pula_s$Var1)
+c2 <- as.character(pula_s$Var2)
+c3 <- as.character(pula_s$Var3)
+c4 <- as.character(pula_s$Var4)
+
+```
+
+Question
+========
+  
+Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa różne schematy losowania, które pozwolą uzyskać oszacowania zmiennych `r c1` oraz `r c2` w przekroju `r c3` ze względnym błędem oszacowania nie przekraczającym `r c4`%. Po zapoznaniu się z treścią zadania proszę zaznaczyć odpowiedź "Tak".
+
+Answerlist
+----------
+* Tak
+* Nie
+
+Solution
+========
+  
+
+Meta-information
+================
+extype: schoice
+exsolution: 10
+exname: projekt1
