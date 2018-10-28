@@ -181,7 +181,20 @@ proba <- populacja %>%
 
 proba_badanie <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
 
-table(proba_badanie$niepelnosprawnosc, useNA = "always")
+proba_badanie <- proba_badanie %>%
+  mutate(pop=nrow(populacja))
+
+schemat <- svydesign(ids = ~id_gospodarstwa, data = proba_badanie)
+
+wagi <- weights(schemat)
+
+schemat <- svydesign(ids = ~id_gospodarstwa, data = proba_badanie, fpc = ~pop)
+
+wagi <- weights(schemat)
+head(wagi)
+
+
+
 
 # zmienne
 

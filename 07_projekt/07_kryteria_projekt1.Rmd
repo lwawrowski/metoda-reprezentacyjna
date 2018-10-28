@@ -9,37 +9,72 @@ output: html_document
 
 Na podstawie danych o gospodarstwach w populacji generalnej, zaproponuj dwa sposoby losowania, które pozwolą uzyskać oszacowania zmiennych .... w przekroju .... ze względnym błędem oszacowania nie przekraczającym .... %.
 
-Dane na temat populacji gospodarstw znajdują się pliku `populacja.zip`.
+Dane na temat populacji gospodarstw znajdują się pod adresem: [dane](https://github.com/lwawrowski/metoda-reprezentacyjna/raw/master/07_projekt/dane.RData)
 
-Zmienne do oszacowania zostaną dołączone do próby z wykorzystaniem dedykowanego pakietu i funkcji.
+```{r eval=FALSE, include=TRUE}
+load("dane.RData")
+```
+
+`populacja`:
 
 - teryt - kod teryt
 - region - kod regionu NUTS 1
 - woj - kod województwa NUTS 2
 - degurba - kod DEGURBA określający stopień urbanizacji
 - klm - klasa miejscowości zamieszkania
+
   - 1 - wieś
-  - 2 - miasto do 20 tys. mieszkańcóW
+  - 2 - miasto do 20 tys. mieszkańców
   - 3 - miasto od 20 do 99 tys. mieszkańców
   - 4 - miasto od 100 do 199 tys. mieszkańców
   - 5 - miasto od 200 do 499 tys. mieszkańców
   - 6 - miasto powyżej 500 tys. mieszkańców
+  
 - id_gospodarstwa - unikalny identyfikator gospodarstwa
 
+`badanie`:
+
+- id_gospodarstwa - unikalny identyfikator gospodarstwa
 - niepelnosprawnosc - czy w gospodarstwie znajduje się osoba niepełnosprawna
+
   - 0 - tak
   - 1 - nie
+
 - wyksztalcenie - poziom wykształcenia głowy gospodarstwa domowego
+
   - 1 - podstawowe
   - 2 - średnie
   - 3 - wyższe
+  
 - aktywnosc_ekon - status na rynku pracy głowy gospodarstwa domowego
+
   - 1 - pracujący
   - 2 - bezrobotny
   - 3 - bierny zawodowo
+  
 - wiek - wiek głowy gospodarstwa domowego
 - liczba_osob - liczba osób w gospodarstwie domowym
 - dochód - ekwiwalentny dochód gospodarstwa domowego
+
+```{r eval=FALSE, include=TRUE}
+
+library(tidyverse)
+library(survey)
+
+# losowanie próby
+proba <- populacja %>%
+  sample_frac(0.001)
+
+# dołączanie informacji o odpowiedziach
+proba_badanie <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
+
+# obliczenie wag
+# kalibracja
+
+save(proba_badanie, file="proba.Rdata")
+
+```
+
 
 # Prezentacja
 
@@ -49,7 +84,7 @@ Podczas zajęć w dniu 12.11.2018 r. zadania projektowe mają być przedstawione
 2. zastosowane schematy losowania
 3. Rozmiar próby i uzyskane wyniki
 
-Prezentacja oraz projekt R muszą być wgrane na moodle do dnia 11.11.2018 r.
+Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.Rdata) muszą być wgrane na moodle do dnia 11.11.2018 r.
 
 # Kryteria oceny
 
