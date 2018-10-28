@@ -13,6 +13,34 @@ Dane na temat populacji gospodarstw znajdują się pliku `populacja.zip`.
 
 Zmienne do oszacowania zostaną dołączone do próby z wykorzystaniem dedykowanego pakietu i funkcji.
 
+- teryt - kod teryt
+- region - kod regionu NUTS 1
+- woj - kod województwa NUTS 2
+- degurba - kod DEGURBA określający stopień urbanizacji
+- klm - klasa miejscowości zamieszkania
+  - 1 - wieś
+  - 2 - miasto do 20 tys. mieszkańcóW
+  - 3 - miasto od 20 do 99 tys. mieszkańców
+  - 4 - miasto od 100 do 199 tys. mieszkańców
+  - 5 - miasto od 200 do 499 tys. mieszkańców
+  - 6 - miasto powyżej 500 tys. mieszkańców
+- id_gospodarstwa - unikalny identyfikator gospodarstwa
+
+- niepelnosprawnosc - czy w gospodarstwie znajduje się osoba niepełnosprawna
+  - 0 - tak
+  - 1 - nie
+- wyksztalcenie - poziom wykształcenia głowy gospodarstwa domowego
+  - 1 - podstawowe
+  - 2 - średnie
+  - 3 - wyższe
+- aktywnosc_ekon - status na rynku pracy głowy gospodarstwa domowego
+  - 1 - pracujący
+  - 2 - bezrobotny
+  - 3 - bierny zawodowo
+- wiek - wiek głowy gospodarstwa domowego
+- liczba_osob - liczba osób w gospodarstwie domowym
+- dochód - ekwiwalentny dochód gospodarstwa domowego
+
 # Prezentacja
 
 Podczas zajęć w dniu 12.11.2018 r. zadania projektowe mają być przedstawione w krótkiej prezentacji (max. 5 slajdów) zawierającej:

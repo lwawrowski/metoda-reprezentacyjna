@@ -70,10 +70,10 @@ library(tidyverse)
 library(survey)
 library(readxl)
 
-degurba <- read_xlsx("projekt1/degurba.xlsx") %>%
+degurba <- read_xlsx("07_projekt/degurba.xlsx") %>%
   select(teryt, DEGURBA_CODE, region)
 
-ludnosc <- read_xlsx("projekt1/ludnosc.xlsx") %>%
+ludnosc <- read_xlsx("07_projekt/ludnosc.xlsx") %>%
   select(teryt, klm, ludnosc) %>%
   group_by(teryt) %>%
   summarise(ludnosc=sum(ludnosc),
@@ -95,9 +95,93 @@ gospodarstwa <- populacja[rep(seq_len(nrow(populacja)), populacja$gosp),1:5]
 
 gospodarstwa$id_gospodarstwa <- 1:nrow(gospodarstwa)
 
-save(gospodarstwa, file="projekt1/populacja.RData")
+save(gospodarstwa, file="07_projekt/populacja.RData")
 
-saveRDS(gospodarstwa, file="projekt1/populacja.rds")
+load("07_projekt/populacja.RData")
+
+gospodarstwa <- gospodarstwa %>%
+  mutate(pow=substr(teryt,1,4))
+
+pow_n  <- gospodarstwa %>%
+  group_by(pow) %>%
+  count()
+
+prob <- read_xlsx("07_projekt/cechy_prob.xlsx")
+
+niep <- NULL
+wyk <- NULL
+ae <- NULL
+wiek <- NULL
+gosp <- NULL
+
+for(i in 1:nrow(prob)){
+  niep_i <- sample(x = c(0,1), size = pow_n$n[i], replace = T, prob = as.numeric(prob[i,2:3]))
+  niep <- c(niep, niep_i)
+  
+  wyk_i <- sample(x = 1:3, size = pow_n$n[i], replace = T, prob = as.numeric(prob[i,4:6]))
+  wyk <- c(wyk, wyk_i)
+  
+  ae_i <- sample(x = 1:3, size = pow_n$n[i], replace = T, prob = as.numeric(prob[i,7:9]))
+  ae <- c(ae, ae_i)
+  
+  wiek_i <- sample(x = 16:65, size = pow_n$n[i], replace = T, prob = as.numeric(prob[i,10:59]))
+  wiek <- c(wiek, wiek_i)
+  
+  gosp_i <- sample(x = 1:5, size = pow_n$n[i], replace = T, prob = as.numeric(prob[i,60:64]))
+  gosp <- c(gosp, gosp_i)
+}
+
+gospodarstwa <- gospodarstwa %>%
+  mutate(niepelnosprawnosc=niep,
+         wyksztalcenie=wyk,
+         aktywnosc_ekon=ae,
+         wiek=wiek,
+         liczba_osob=gosp)
+
+gospodarstwa <- gospodarstwa %>%
+  select(-pow) %>%
+  mutate(wiek=ifelse(wyksztalcenie == 3 & wiek <= 24, runif(1, min=25, max=65), wiek))
+
+gospodarstwa <- gospodarstwa %>%
+  mutate(wiek=ifelse(wyksztalcenie == 2 & wiek <= 18, runif(1, min=19, max=65), wiek))
+
+dochod <- gospodarstwa %>%
+  select(niepelnosprawnosc, wyksztalcenie, aktywnosc_ekon, wiek, liczba_osob) %>%
+  mutate(wyz=ifelse(wyksztalcenie==3, 1, 0),
+         bezr=ifelse(aktywnosc_ekon==2, 1,0)) %>%
+  mutate(dochod=1905*niepelnosprawnosc-800*bezr+2200*wyz-103*wiek-55*liczba_osob+6095+rnorm(nrow(gospodarstwa), 1000,500))
+
+dochod_minus <- dochod %>%
+  filter(dochod <= 0)
+
+summary(dochod$dochod)
+hist(dochod$dochod)
+
+gospodarstwa <- gospodarstwa %>%
+  mutate(dochod=dochod$dochod)
+
+gospodarstwa <- gospodarstwa %>%
+  mutate(dochod=round(dochod,2))
+
+gospodarstwa_badanie <- gospodarstwa %>%
+  sample_frac(0.454) %>%
+  select(id_gospodarstwa:dochod)
+
+save(gospodarstwa_badanie, file="07_projekt/badanie.RData")
+
+badanie <- gospodarstwa_badanie
+populacja <- gospodarstwa
+
+save(populacja, badanie, file="07_projekt/dane.RData")
+
+load("07_projekt/dane.RData")
+
+proba <- populacja %>%
+  sample_frac(0.001)
+
+proba_badanie <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
+
+table(proba_badanie$niepelnosprawnosc, useNA = "always")
 
 # zmienne
 
