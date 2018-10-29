@@ -184,16 +184,31 @@ proba_badanie <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
 proba_badanie <- proba_badanie %>%
   mutate(pop=nrow(populacja))
 
-schemat <- svydesign(ids = ~id_gospodarstwa, data = proba_badanie)
-
-wagi <- weights(schemat)
-
 schemat <- svydesign(ids = ~id_gospodarstwa, data = proba_badanie, fpc = ~pop)
 
-wagi <- weights(schemat)
-head(wagi)
+proba_badanie <- proba_badanie %>%
+  mutate(waga=weights(schemat))
 
+proba_badanie_cc <- proba_badanie %>%
+  filter(!is.na(dochod))
 
+schemat2 <- svydesign(ids = ~id_gospodarstwa, data = proba_badanie_cc, fpc = ~pop, weights = ~waga)
+
+svytotal(x = ~niepelnosprawnosc, design = schemat, na.rm=T)
+svytotal(x = ~niepelnosprawnosc, design = schemat2)
+
+pop_total <- colSums(model.matrix(~woj*klm,model.frame(~woj*klm,populacja)))
+pop_total
+
+kalibracja <- calibrate(design = schemat2, formula = ~woj*klm, population = pop_total)
+
+w <- weights(kalibracja)
+summary(w)
+sum(w)
+
+plot(weights(schemat2), weights(kalibracja))
+
+svytotal(x = ~niepelnosprawnosc, design = kalibracja)
 
 
 # zmienne
