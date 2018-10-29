@@ -63,15 +63,18 @@ library(survey)
 
 # losowanie próby
 proba <- populacja %>%
+  # warstwy
   sample_frac(0.001)
 
 # dołączanie informacji o odpowiedziach
-proba_badanie <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
+proba_badanie1 <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
+
+proba_badanie2 <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
 
 # obliczenie wag
 # kalibracja
 
-save(proba_badanie, file="proba.Rdata")
+save(proba_badanie1, proba_badanie2, file="proba.RData")
 
 ```
 
@@ -84,7 +87,7 @@ Podczas zajęć w dniu 12.11.2018 r. zadania projektowe mają być przedstawione
 2. zastosowane schematy losowania
 3. Rozmiar próby i uzyskane wyniki
 
-Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.Rdata) muszą być wgrane na moodle do dnia 11.11.2018 r.
+Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą być wgrane na moodle do dnia 11.11.2018 r.
 
 # Kryteria oceny
 

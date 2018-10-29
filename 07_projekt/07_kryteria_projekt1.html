@@ -168,10 +168,20 @@ $(document).ready(function () {
 <pre class="r"><code>library(tidyverse)
 library(survey)
 
+# losowanie próby
 proba &lt;- populacja %&gt;%
+  # warstwy
   sample_frac(0.001)
 
-proba_badanie &lt;- merge(proba, badanie, by = &quot;id_gospodarstwa&quot;, all.x = T)</code></pre>
+# dołączanie informacji o odpowiedziach
+proba_badanie1 &lt;- merge(proba, badanie, by = &quot;id_gospodarstwa&quot;, all.x = T)
+
+proba_badanie2 &lt;- merge(proba, badanie, by = &quot;id_gospodarstwa&quot;, all.x = T)
+
+# obliczenie wag
+# kalibracja
+
+save(proba_badanie1, proba_badanie2, file=&quot;proba.RData&quot;)</code></pre>
 </div>
 <div id="prezentacja" class="section level1">
 <h1>Prezentacja</h1>
@@ -181,7 +191,7 @@ proba_badanie &lt;- merge(proba, badanie, by = &quot;id_gospodarstwa&quot;, all.
 <li>zastosowane schematy losowania</li>
 <li>Rozmiar próby i uzyskane wyniki</li>
 </ol>
-<p>Prezentacja oraz projekt R muszą być wgrane na moodle do dnia 11.11.2018 r.</p>
+<p>Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą być wgrane na moodle do dnia 11.11.2018 r.</p>
 </div>
 <div id="kryteria-oceny" class="section level1">
 <h1>Kryteria oceny</h1>
