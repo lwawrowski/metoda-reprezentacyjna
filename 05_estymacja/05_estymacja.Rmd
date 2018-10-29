@@ -1,0 +1,88 @@
+---
+title: "Estymacja wskaźnika i przedziały ufności"
+author: "Łukasz Wawrowski"
+date: ""
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+# Rozgrzewka
+
+```{r message=FALSE, warning=FALSE}
+library(survey)
+
+data(api)
+```
+
+Na podstawie zbioru `apistrat` oszacuj średnią wartość Academic Performance Index (`api00`). Jednostki losowania pierwszego stopnia to `cds`, warstwa - `stype`, waga  - `pw`.
+
+--
+
+```{r}
+dstrat <- svydesign(id=~cds,strata=~stype, weights=~pw, 
+                    data=apistrat)
+
+svymean(~api00, dstrat)
+
+```
+
+---
+
+# Estymacja wskaźnika
+
+Ogółem:
+
+```{r eval=FALSE}
+svyratio(numerator = ~licznik, denominator = ~mianownik, 
+         design = schemat)
+```
+
+
+- licznik i mianownik musi być zdefiniowany jako zmienna binarna.
+
+--
+
+W przekrojach:
+
+```{r eval=FALSE}
+svyby(formula = ~licznik, denominator = ~mianownik, 
+      by = ~przekroj, design = schemat, FUN = svyratio)
+
+```
+
+
+---
+
+# Przedział ufności
+
+W jakim przedziale i z jakim prawdopodobieństwem znajduje się wartość prawdziwa:
+
+$$\left(\hat{y}^{HT}- z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})} \leq \hat{y}^{HT} \leq \hat{y}^{HT}+ z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})}\right)$$
+
+- 90% przedział ufności - $z_\alpha = 1,64$, dla $\alpha=0,10$
+- 95% przedział ufności - $z_\alpha = 1,96$, dla $\alpha=0,05$
+- 99% przedział ufności - $z_\alpha = 2,58$, dla $\alpha=0,01$
+
+Obliczanie kwantyla rozkładu w R:
+
+```{r}
+qnorm(1-0.05/2)
+```
+
+---
+
+# Zadanie
+
+Skonstruować 90% przedziały ufności dla oszacowanego odsetka niepełnosprawnych ogółem i w grupach wieku, a następnie porównać je z wartością prawdziwą.
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
