@@ -56,23 +56,55 @@ load("dane.RData")
 - liczba_osob - liczba osób w gospodarstwie domowym
 - dochód - ekwiwalentny dochód gospodarstwa domowego
 
+Przykład estymacji liczby osób pełnosprawnych w przekroju województw na podstawie próby prostej.
+
 ```{r eval=FALSE, include=TRUE}
 
 library(tidyverse)
 library(survey)
 
-# losowanie próby
-proba <- populacja %>%
+# losowanie próby 1
+proba1 <- populacja %>%
   # warstwy
   sample_frac(0.001)
 
 # dołączanie informacji o odpowiedziach
-proba_badanie1 <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
+proba1_badanie <- merge(proba1, badanie, by = "id_gospodarstwa", all.x = T)
 
-proba_badanie2 <- merge(proba, badanie, by = "id_gospodarstwa", all.x = T)
+proba1_badanie <- proba1_badanie %>%
+  mutate(fpc=nrow(populacja))
 
 # obliczenie wag
+
+proba1_schemat <- svydesign(ids = ~id_gospodarstwa, fpc = ~fpc, data = proba1_badanie)
+
+wagi <- weights(proba1_schemat)
+
+proba1_badanie_bez_brakow <- proba1_badanie %>%
+  mutate(waga=wagi) %>%
+  filter(!is.na(wiek))
+
+proba1_bez_brakow_schemat <- svydesign(ids = ~id_gospodarstwa, weights = ~waga, 
+                                       fpc = ~fpc, data = proba1_badanie_bez_brakow)
+
 # kalibracja
+
+pop_total <- colSums(model.matrix(~woj,model.frame(~woj,populacja)))
+
+proba1_kalibracja <- calibrate(design = proba1_bez_brakow_schemat, formula = ~woj, population = pop_total)
+
+# estymacja
+
+niepelnosprawnosc_woj <- svyby(formula = ~niepelnosprawnosc, by = ~woj, 
+                               design = proba1_kalibracja, FUN = svytotal)
+
+# inny sposob losowania
+
+# ... 
+
+proba_badanie2 <- merge(proba2, badanie, by = "id_gospodarstwa", all.x = T)
+
+# ....
 
 save(proba_badanie1, proba_badanie2, file="proba.RData")
 
@@ -81,13 +113,13 @@ save(proba_badanie1, proba_badanie2, file="proba.RData")
 
 # Prezentacja
 
-Podczas zajęć w dniu 12.11.2018 r. zadania projektowe mają być przedstawione w krótkiej prezentacji (max. 5 slajdów) zawierającej:
+Podczas zajęć w dniu 19.11.2018 r. zadania projektowe mają być przedstawione w krótkiej prezentacji (max. 5 slajdów) zawierającej:
 
 1. Treść zadania projektowego
 2. zastosowane schematy losowania
 3. Rozmiar próby i uzyskane wyniki
 
-Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą być wgrane na moodle do dnia 11.11.2018 r.
+Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą być wgrane na moodle do dnia 18.11.2018 r., godz. 23:00.
 
 # Kryteria oceny
 
@@ -97,6 +129,7 @@ Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą by
 
 - utworzenie warstwy wykorzystując dane spoza zbioru danych - 1 punkt
 - dodatkowy schemat losowania - 1 punkt
-- 3 najlepsze wyniki na roku - 1 punkt
+- najlepsza praca w grupie wybrana przez prowadzącego - 1 punkt
+- najlepsza praca w grupie wybrana przez studentów - 1 punkt
 
-Najlepszy wynik jest mierzony jako relacja wielkości próby i maksymalnego błędu oszacowania uzyskanego dla wskaźnika.
+- oddanie pracy po terminie - -3 punkty

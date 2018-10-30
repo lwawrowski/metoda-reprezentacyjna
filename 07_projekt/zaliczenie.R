@@ -207,6 +207,7 @@ summary(w)
 sum(w)
 
 plot(weights(schemat2), weights(kalibracja))
+summary(weights(schemat2)/weights(kalibracja))
 
 svytotal(x = ~niepelnosprawnosc, design = kalibracja)
 
