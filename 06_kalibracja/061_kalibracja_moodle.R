@@ -15,6 +15,9 @@ proba %>%
 
 # braki
 
+proba_braki <- proba_braki %>%
+  filter(!is.na(niepelnosprawnosc))
+
 proba_braki %>%
   group_by(wiek) %>%
   summarise(n_proba_braki=sum(waga))

@@ -17,11 +17,13 @@ schemat <- svydesign(ids = ~id, strata = ~wiek, fpc = ~n, data=proba)
 
 proba <- proba %>%
   ungroup() %>%
-  mutate(waga=weights(schemat)) %>%
-  select(-n)
+  mutate(waga=as.numeric(weights(schemat))) %>%
+  select(kod:id,waga,niepelnosprawnosc)
 
-proba_braki <- proba %>%
-  sample_frac(0.8)
+proba_id <- sample(1:nrow(proba), 0.2*nrow(proba))
+
+proba_braki <- proba
+proba_braki$niepelnosprawnosc[proba_id] <- NA
 
 save(proba, proba_braki, populacja, file = "06_kalibracja/dane.RData")
 
@@ -38,6 +40,9 @@ proba %>%
   summarise(n_proba=sum(waga))
 
 # braki
+
+proba_braki <- proba_braki %>%
+  filter(!is.na(niepelnosprawnosc))
 
 proba_braki %>%
   group_by(wiek) %>%
