@@ -1,7 +1,7 @@
 ---
 title: "Projekt zaliczeniowy - wytyczne"
 author: "Łukasz Wawrowski"
-date: "Aktualizacja: 7.11.2018"
+date: "Aktualizacja: 8.11.2018"
 output: html_document
 ---
 
@@ -58,42 +58,53 @@ load("dane.RData")
 - liczba_osob - liczba osób w gospodarstwie domowym
 - dochód - ekwiwalentny dochód gospodarstwa domowego
 
-Przykład estymacji liczby osób pełnosprawnych w przekroju województw na podstawie próby prostej.
+Przykład estymacji liczby osób pełnosprawnych w przekroju województw z wykorzystaniem warstwowania po województwie i klasie miejscowości zamieszkania.
 
 ```{r eval=FALSE, include=TRUE}
 
 library(tidyverse)
 library(survey)
 
+# stworzenie warstwy
+
+populacja <- populacja %>%
+  mutate(warstwa1=paste0(woj,"_",klm))
+
 # losowanie próby 
 
 proba1 <- populacja %>%
-  # warstwy
+  group_by(warstwa1) %>%
   sample_frac(0.001)
 
 # obliczenie wag
 
-proba1 <- proba1 %>%
-  mutate(fpc=nrow(populacja))
+liczebnosc_warstw <- populacja %>%
+  group_by(warstwa1) %>%
+  count()
 
-proba1_schemat <- svydesign(ids = ~id_gospodarstwa, fpc = ~fpc, data = proba1)
+proba1 <- inner_join(proba1, liczebnosc_warstw, by = "warstwa1")
+
+proba1_schemat <- svydesign(ids = ~id_gospodarstwa, strata = ~warstwa1, fpc = ~n, data = proba1)
 
 wagi <- weights(proba1_schemat)
 
 # dodanie wag do zbioru
 
 proba1 <- proba1 %>%
+  ungroup() %>%
   mutate(waga=wagi)
 
 # dołączanie informacji o odpowiedziach
 
 proba1_badanie <- merge(proba1, badanie, by = "id_gospodarstwa", all.x = T)
 
+# usuwanie brakóW odpowiedzi
+
 proba1_badanie_bez_brakow <- proba1_badanie %>%
   filter(!is.na(wiek))
 
-proba1_bez_brakow_schemat <- svydesign(ids = ~id_gospodarstwa, weights = ~waga, 
-                                       fpc = ~fpc, data = proba1_badanie_bez_brakow)
+proba1_bez_brakow_schemat <- svydesign(ids = ~id_gospodarstwa, weights = ~waga, strata = ~warstwa1,
+                                       fpc = ~n, data = proba1_badanie_bez_brakow)
 
 # kalibracja w ramach województw
 
