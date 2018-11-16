@@ -1,7 +1,7 @@
 ---
-title: "Kryteria oceny projektu"
+title: "Projekt zaliczeniowy - wytyczne"
 author: "Łukasz Wawrowski"
-date: "Ostatnia aktualizacja: 4.11.2018"
+date: "Aktualizacja: 8.11.2018"
 output: html_document
 ---
 
@@ -58,38 +58,55 @@ load("dane.RData")
 - liczba_osob - liczba osób w gospodarstwie domowym
 - dochód - ekwiwalentny dochód gospodarstwa domowego
 
-Przykład estymacji liczby osób pełnosprawnych w przekroju województw na podstawie próby prostej.
+Przykład estymacji liczby osób pełnosprawnych w przekroju województw z wykorzystaniem warstwowania po województwie i klasie miejscowości zamieszkania.
 
 ```{r eval=FALSE, include=TRUE}
 
 library(tidyverse)
 library(survey)
 
-# losowanie próby 1
+# stworzenie warstwy
+
+populacja <- populacja %>%
+  mutate(warstwa1=paste0(woj,"_",klm))
+
+# losowanie próby 
+
 proba1 <- populacja %>%
-  # warstwy
+  group_by(warstwa1) %>%
   sample_frac(0.001)
-
-# dołączanie informacji o odpowiedziach
-proba1_badanie <- merge(proba1, badanie, by = "id_gospodarstwa", all.x = T)
-
-proba1_badanie <- proba1_badanie %>%
-  mutate(fpc=nrow(populacja))
 
 # obliczenie wag
 
-proba1_schemat <- svydesign(ids = ~id_gospodarstwa, fpc = ~fpc, data = proba1_badanie)
+liczebnosc_warstw <- populacja %>%
+  group_by(warstwa1) %>%
+  count()
+
+proba1 <- inner_join(proba1, liczebnosc_warstw, by = "warstwa1")
+
+proba1_schemat <- svydesign(ids = ~id_gospodarstwa, strata = ~warstwa1, fpc = ~n, data = proba1)
 
 wagi <- weights(proba1_schemat)
 
+# dodanie wag do zbioru
+
+proba1 <- proba1 %>%
+  ungroup() %>%
+  mutate(waga=wagi)
+
+# dołączanie informacji o odpowiedziach
+
+proba1_badanie <- merge(proba1, badanie, by = "id_gospodarstwa", all.x = T)
+
+# usuwanie brakóW odpowiedzi
+
 proba1_badanie_bez_brakow <- proba1_badanie %>%
-  mutate(waga=wagi) %>%
   filter(!is.na(wiek))
 
-proba1_bez_brakow_schemat <- svydesign(ids = ~id_gospodarstwa, weights = ~waga, 
-                                       fpc = ~fpc, data = proba1_badanie_bez_brakow)
+proba1_bez_brakow_schemat <- svydesign(ids = ~id_gospodarstwa, weights = ~waga, strata = ~warstwa1,
+                                       fpc = ~n, data = proba1_badanie_bez_brakow)
 
-# kalibracja
+# kalibracja w ramach województw
 
 pop_total <- colSums(model.matrix(~woj,model.frame(~woj,populacja)))
 
@@ -97,8 +114,8 @@ proba1_kalibracja <- calibrate(design = proba1_bez_brakow_schemat, formula = ~wo
 
 # estymacja
 
-niepelnosprawnosc_woj <- svyby(formula = ~niepelnosprawnosc, by = ~woj, 
-                               design = proba1_kalibracja, FUN = svytotal)
+pelnosprawnosc_woj <- svyby(formula = ~niepelnosprawnosc, by = ~woj, 
+                            design = proba1_kalibracja, FUN = svytotal)
 
 # inny sposob losowania
 
@@ -129,7 +146,7 @@ Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą by
 - przeprowadzenie kalibracji - 2 punkty
 - sposób prezentacji wyników - 1 punkt
 
-- utworzenie warstwy wykorzystując dane spoza zbioru danych - 1 punkt
+- zaproponowanie warstwy wykorzystując dane spoza zbioru danych - 1 punkt
 - dodatkowy schemat losowania - 1 punkt
 - najlepsza praca w grupie wybrana przez prowadzącego - 1 punkt
 - najlepsza praca w grupie wybrana przez studentów - 1 punkt
