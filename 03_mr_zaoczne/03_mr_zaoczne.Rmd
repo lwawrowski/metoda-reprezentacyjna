@@ -23,7 +23,7 @@ output:
 
 --
 
-- ponad 13 000 rozszerzeń (pakietów) - stan na 15.10.2018
+- 13 397 rozszerzeń (pakietów) - stan na 17.11.2018
 
 --
 
@@ -76,7 +76,7 @@ Do pobrania ze strony: [RStudio](https://www.rstudio.com/)
 # Projektowanie badania
 
 1. __Losowanie próby na podstawie operatu (populacji)__
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. Zebranie danych od respondentów
 4. Korekta post-hoc
 5. Szacowanie parametrów
@@ -128,12 +128,13 @@ Struktura populacji wg wieku jest następująca:
 library(tidyverse)
 library(survey)
 load("dane.RData")
+set.seed(123)
 ```
 
 ```{r echo=FALSE, fig.width=14, fig.height=6}
 ggplot(populacja, aes(x=as.factor(wiek))) + 
   geom_bar(aes(y = (..count..)/sum(..count..))) + 
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent, limits = c(0,0.15)) +
   theme_light() +
   xlab("Wiek") + ylab("Procent") + 
   ggtitle("Populacja 766686 osób")
@@ -150,9 +151,9 @@ proba <- populacja %>%
 
 ggplot(proba, aes(x=as.factor(wiek))) + 
   geom_bar(aes(y = (..count..)/sum(..count..))) + 
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent, limits = c(0,0.15)) +
   theme_light() +
-  xlab("Wiek") + ylab("Procent")+ 
+  xlab("Wiek") + ylab("Procent") + 
   ggtitle("Próba 997 osób")
 ```
 
@@ -167,9 +168,9 @@ proba <- populacja %>%
 
 ggplot(proba, aes(x=as.factor(wiek))) + 
   geom_bar(aes(y = (..count..)/sum(..count..))) + 
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent, limits = c(0,0.15)) +
   theme_light() +
-  xlab("Wiek") + ylab("Procent") + 
+  xlab("Wiek") + ylab("Procent") +
   ggtitle("Próba 997 osób")
 ```
 
@@ -187,7 +188,7 @@ proba <- populacja %>%
 
 ggplot(proba, aes(x=as.factor(wiek))) + 
   geom_bar(aes(y = (..count..)/sum(..count..))) + 
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent, limits = c(0,0.15)) +
   theme_light() +
   xlab("Wiek") + ylab("Procent") + 
   ggtitle("Próba 230 osób")
@@ -204,7 +205,7 @@ proba <- populacja %>%
 
 ggplot(proba, aes(x=as.factor(wiek))) + 
   geom_bar(aes(y = (..count..)/sum(..count..))) + 
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent, limits = c(0,0.15)) +
   theme_light() +
   xlab("Wiek") + ylab("Procent") + 
   ggtitle("Próba 230 osób")
@@ -219,7 +220,7 @@ ggplot(proba, aes(x=as.factor(wiek))) +
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. __Wyznaczenie wag z frakcji dla wylosowanych jednostek__
+2. __Wyznaczenie wag z próby dla wylosowanych jednostek__
 3. Zebranie danych od respondentów
 4. Korekta post-hoc
 5. Szacowanie parametrów
@@ -250,7 +251,7 @@ https://cran.r-project.org/web/packages/survey/index.html
 T. Lumley (2017) "survey: analysis of complex survey samples". R package version 3.32.  
 T. Lumley (2004) Analysis of complex survey samples. Journal of Statistical Software 9(1): 1-19  
 
-- wyznaczanie wag z frakcji
+- wyznaczanie wag z próby
 - deklaracja schematu losowania
 - estymacja wartości
 - nazwy zmiennych należy poprzedzić tyldą $\sim$
@@ -355,7 +356,7 @@ setNames(suma$waga, suma$mw)
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. __Zebranie danych od respondentów__
 4. Korekta post-hoc
 5. Szacowanie parametrów
@@ -365,6 +366,8 @@ setNames(suma$waga, suma$mw)
 # Braki odpowiedzi
 
 ![](nonresponse.png)
+
+---
 
 # Braki danych
 
@@ -379,7 +382,7 @@ Sposoby radzenia sobie z brakami danych:
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. Zebranie danych od respondentów
 4. __Korekta post-hoc__
 5. Szacowanie parametrów
@@ -563,7 +566,7 @@ $$\underline{\textbf{x}}_{i}=\left(x_{i1},x_{i2},\ldots,x_{ik}\right)^{T}.$$
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. Zebranie danych od respondentów
 4. Korekta post-hoc
 5. __Szacowanie parametrów__
@@ -578,7 +581,7 @@ Dzięki zastosowaniu odpowiednich formuł możemy zmierzyć błąd wynikający z
 
 ---
 
-# Estymator Horvitza-Thompsona
+# Estymator Horvitza-Thompsona (HT)
 
 Estymator wartości globalnej 
 
@@ -596,7 +599,7 @@ gdzie:
 
 ---
 
-# Wariancja estymatora Horvitza-Thompsona
+# Wariancja estymatora HT
 
 Estymator wartości globalnej 
 
@@ -649,6 +652,42 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
 ---
 
+# Estymacja wartości globalnej
+
+- wartość globalna ogółem
+
+```{r eval=FALSE}
+svytotal(x = ~cecha, design = schemat)
+```
+
+- wartość globalna w przekrojach
+
+```{r eval=FALSE}
+svyby(formula = ~cecha, by= ~przekroj, 
+      design = schemat, FUN = svytotal)
+```
+
+Wartości cechy muszą być zdefiniowane jako zmienne binarne.
+
+---
+
+# Estymacja wartości średniej
+
+- wartość średnia ogółem
+
+```{r eval=FALSE}
+svymean(x = ~cecha, design = schemat)
+```
+
+- wartość średnia w przekrojach
+
+```{r eval=FALSE}
+svyby(formula = ~cecha, by= ~przekroj, 
+      design = schemat, FUN = svymean)
+```
+
+---
+
 # Estymacja wskaźnika
 
 Ogółem:
@@ -661,8 +700,6 @@ svyratio(numerator = ~licznik, denominator = ~mianownik,
 
 - licznik i mianownik musi być zdefiniowany jako zmienna binarna.
 
---
-
 W przekrojach:
 
 ```{r eval=FALSE}
@@ -671,6 +708,51 @@ svyby(formula = ~licznik, denominator = ~mianownik,
 
 ```
 
+---
+
+# Estymacja wartości globalnej 
+
+Przykład liczba osób niepełnosprawnych:
+
+```{r}
+est <- svytotal(x = ~niepelnosprawnosc, design = schemat)
+est
+```
+
+Względny błąd oszacowania:
+
+```{r}
+sqrt(attr(est, "var"))/est[1]*100
+```
+
+Względny błąd oszacowania będzie mniejszy po zwiększeniu liczebności próby.
+
+---
+
+# Estymacja wartości globalnej 
+
+Liczba osób niepełnosprawnych w grupach wieku
+
+```{r}
+svyby(formula = ~niepelnosprawnosc, by = ~wiek, design = schemat, FUN = svytotal)
+```
+
+---
+
+# Estymacja wartości globalnej 
+
+Liczba osób niepełnosprawnych w grupach wieku
+
+```{r echo=FALSE}
+bywiek <- svyby(formula = ~niepelnosprawnosc, by = ~wiek, design = schemat, FUN = svytotal)
+bywiek <- bywiek %>%
+  mutate(cv=se/niepelnosprawnosc*100)
+bywiek
+```
+
+--
+
+Próba o liczebności 260 osób jest zdecydowanie zbyt mała, żeby publikować wyniki w przekroju wieku.
 
 ---
 
@@ -690,6 +772,84 @@ Obliczanie kwantyla rozkładu w R:
 qnorm(1-0.05/2)
 ```
 
+---
+
+# Przedział ufności
+
+95% przedział ufności dla wartości globalnej
+
+```{r}
+niep_total <- svytotal(x = ~niepelnosprawnosc, design = schemat)
+
+se <- sqrt(attr(niep_total, "var"))
+y <- niep_total[1]
+q <- qnorm(0.975)
+
+c(y-q*se, y+q*se)
+```
+
+Z 95% prawdopodobieństwem prawdziwa wartość liczby osób niepełnosprawnych znajduje się w podanym przedziale.
+
+---
+
+# Przedział ufności
+
+95% przedział ufności dla wartości globalnej w grupach wieku
+
+```{r echo=FALSE, fig.width=14, fig.height=6}
+bywiek <- bywiek %>%
+  mutate(dolna_granica=niepelnosprawnosc-se*q,
+         gorna_granica=niepelnosprawnosc+se*q)
+
+ggplot(bywiek, aes(x=wiek, y=niepelnosprawnosc)) + 
+  geom_point() +
+  geom_errorbar(aes(ymin=dolna_granica, ymax=gorna_granica)) +
+  ylab("Liczba osób niepełnosprawnych") +
+  xlab("Wiek") + 
+  ylim(-5000,40000) +
+  theme_light() + 
+  ggtitle("Próba 230 osób") +
+  coord_flip()
+```
+
+---
+
+# Większa próba
+
+95% przedział ufności dla wartości globalnej w grupach wieku
+
+```{r echo=FALSE, fig.width=14, fig.height=6}
+proba <- populacja %>%
+  group_by(wiek) %>%
+  sample_frac(0.0013)
+
+fpc <- populacja %>%
+  group_by(wiek) %>%
+  count()
+
+proba <- inner_join(proba, fpc, by="wiek")
+
+schemat <- svydesign(ids = ~id, strata = ~wiek, fpc = ~n, data=proba)
+
+bywiek <- svyby(formula = ~niepelnosprawnosc, by = ~wiek, design = schemat, FUN = svytotal)
+bywiek <- bywiek %>%
+  mutate(cv=se/niepelnosprawnosc*100)
+
+bywiek <- bywiek %>%
+  mutate(dolna_granica=niepelnosprawnosc-se*q,
+         gorna_granica=niepelnosprawnosc+se*q)
+
+ggplot(bywiek, aes(x=wiek, y=niepelnosprawnosc)) + 
+  geom_point() +
+  geom_errorbar(aes(ymin=dolna_granica, ymax=gorna_granica)) +
+  ylab("Liczba osób niepełnosprawnych") +
+  xlab("Wiek") +
+  ylim(-5000,40000) +
+  theme_light() +
+  ggtitle("Próba 997 osób") +
+  coord_flip()
+
+```
 
 
 ---

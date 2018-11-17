@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 
 --
 
-- ponad 13 000 rozszerzeń (pakietów) - stan na 15.10.2018
+- 13 397 rozszerzeń (pakietów) - stan na 17.11.2018
 
 --
 
@@ -78,7 +78,7 @@ Do pobrania ze strony: [RStudio](https://www.rstudio.com/)
 # Projektowanie badania
 
 1. __Losowanie próby na podstawie operatu (populacji)__
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. Zebranie danych od respondentów
 4. Korekta post-hoc
 5. Szacowanie parametrów
@@ -168,7 +168,7 @@ Struktura populacji wg wieku jest następująca:
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. __Wyznaczenie wag z frakcji dla wylosowanych jednostek__
+2. __Wyznaczenie wag z próby dla wylosowanych jednostek__
 3. Zebranie danych od respondentów
 4. Korekta post-hoc
 5. Szacowanie parametrów
@@ -199,7 +199,7 @@ https://cran.r-project.org/web/packages/survey/index.html
 T. Lumley (2017) "survey: analysis of complex survey samples". R package version 3.32.  
 T. Lumley (2004) Analysis of complex survey samples. Journal of Statistical Software 9(1): 1-19  
 
-- wyznaczanie wag z frakcji
+- wyznaczanie wag z próby
 - deklaracja schematu losowania
 - estymacja wartości
 - nazwy zmiennych należy poprzedzić tyldą `\(\sim\)`
@@ -321,7 +321,7 @@ setNames(suma$waga, suma$mw)
 
 ```
 ##   miasto     wieś 
-## 566856.8 199829.2
+## 583280.9 183405.1
 ```
 
 ---
@@ -329,7 +329,7 @@ setNames(suma$waga, suma$mw)
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. __Zebranie danych od respondentów__
 4. Korekta post-hoc
 5. Szacowanie parametrów
@@ -339,6 +339,8 @@ setNames(suma$waga, suma$mw)
 # Braki odpowiedzi
 
 ![](nonresponse.png)
+
+---
 
 # Braki danych
 
@@ -353,7 +355,7 @@ Sposoby radzenia sobie z brakami danych:
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. Zebranie danych od respondentów
 4. __Korekta post-hoc__
 5. Szacowanie parametrów
@@ -557,7 +559,7 @@ przy czym:
 # Projektowanie badania
 
 1. Losowanie próby na podstawie operatu (populacji)
-2. Wyznaczenie wag z frakcji dla wylosowanych jednostek
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
 3. Zebranie danych od respondentów
 4. Korekta post-hoc
 5. __Szacowanie parametrów__
@@ -572,7 +574,7 @@ Dzięki zastosowaniu odpowiednich formuł możemy zmierzyć błąd wynikający z
 
 ---
 
-# Estymator Horvitza-Thompsona
+# Estymator Horvitza-Thompsona (HT)
 
 Estymator wartości globalnej 
 
@@ -590,7 +592,7 @@ gdzie:
 
 ---
 
-# Wariancja estymatora Horvitza-Thompsona
+# Wariancja estymatora HT
 
 Estymator wartości globalnej 
 
@@ -643,6 +645,46 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
 ---
 
+# Estymacja wartości globalnej
+
+- wartość globalna ogółem
+
+
+```r
+svytotal(x = ~cecha, design = schemat)
+```
+
+- wartość globalna w przekrojach
+
+
+```r
+svyby(formula = ~cecha, by= ~przekroj, 
+      design = schemat, FUN = svytotal)
+```
+
+Wartości cechy muszą być zdefiniowane jako zmienne binarne.
+
+---
+
+# Estymacja wartości średniej
+
+- wartość średnia ogółem
+
+
+```r
+svymean(x = ~cecha, design = schemat)
+```
+
+- wartość średnia w przekrojach
+
+
+```r
+svyby(formula = ~cecha, by= ~przekroj, 
+      design = schemat, FUN = svymean)
+```
+
+---
+
 # Estymacja wskaźnika
 
 Ogółem:
@@ -656,8 +698,6 @@ svyratio(numerator = ~licznik, denominator = ~mianownik,
 
 - licznik i mianownik musi być zdefiniowany jako zmienna binarna.
 
---
-
 W przekrojach:
 
 
@@ -666,6 +706,90 @@ svyby(formula = ~licznik, denominator = ~mianownik,
       by = ~przekroj, design = schemat, FUN = svyratio)
 ```
 
+---
+
+# Estymacja wartości globalnej 
+
+Przykład liczba osób niepełnosprawnych:
+
+
+```r
+est &lt;- svytotal(x = ~niepelnosprawnosc, design = schemat)
+est
+```
+
+```
+##                    total    SE
+## niepelnosprawnosc 170441 21132
+```
+
+Względny błąd oszacowania:
+
+
+```r
+sqrt(attr(est, "var"))/est[1]*100
+```
+
+```
+##                   niepelnosprawnosc
+## niepelnosprawnosc          12.39868
+```
+
+Względny błąd oszacowania będzie mniejszy po zwiększeniu liczebności próby.
+
+---
+
+# Estymacja wartości globalnej 
+
+Liczba osób niepełnosprawnych w grupach wieku
+
+
+```r
+svyby(formula = ~niepelnosprawnosc, by = ~wiek, design = schemat, FUN = svytotal)
+```
+
+```
+##                    wiek niepelnosprawnosc       se
+## 15-19             15-19          6555.333 4418.931
+## 20-24             20-24         16890.000 6166.443
+## 25-29             25-29         13160.600 6037.580
+## 30-34             30-34         22912.815 7594.364
+## 35-39             35-39         23628.920 7733.234
+## 40-44             40-44         13299.818 6155.694
+## 45-49             45-49          9954.938 5349.812
+## 50-54             50-54          3281.600 3281.100
+## 55-59             55-59         20575.059 6963.675
+## 60-64             60-64         20003.684 6939.124
+## 65-69             65-69          6607.412 4523.101
+## 70 i więcej 70 i więcej         13570.370 6380.797
+```
+
+---
+
+# Estymacja wartości globalnej 
+
+Liczba osób niepełnosprawnych w grupach wieku
+
+
+```
+##           wiek niepelnosprawnosc       se       cv
+## 1        15-19          6555.333 4418.931 67.40970
+## 2        20-24         16890.000 6166.443 36.50943
+## 3        25-29         13160.600 6037.580 45.87617
+## 4        30-34         22912.815 7594.364 33.14461
+## 5        35-39         23628.920 7733.234 32.72783
+## 6        40-44         13299.818 6155.694 46.28404
+## 7        45-49          9954.938 5349.812 53.74029
+## 8        50-54          3281.600 3281.100 99.98476
+## 9        55-59         20575.059 6963.675 33.84522
+## 10       60-64         20003.684 6939.124 34.68923
+## 11       65-69          6607.412 4523.101 68.45496
+## 12 70 i więcej         13570.370 6380.797 47.02007
+```
+
+--
+
+Próba o liczebności 260 osób jest zdecydowanie zbyt mała, żeby publikować wyniki w przekroju wieku.
 
 ---
 
@@ -690,6 +814,44 @@ qnorm(1-0.05/2)
 ## [1] 1.959964
 ```
 
+---
+
+# Przedział ufności
+
+95% przedział ufności dla wartości globalnej
+
+
+```r
+niep_total &lt;- svytotal(x = ~niepelnosprawnosc, design = schemat)
+
+se &lt;- sqrt(attr(niep_total, "var"))
+y &lt;- niep_total[1]
+q &lt;- qnorm(0.975)
+
+c(y-q*se, y+q*se)
+```
+
+```
+## [1] 129021.8 211859.3
+```
+
+Z 95% prawdopodobieństwem prawdziwa wartość liczby osób niepełnosprawnych znajduje się w podanym przedziale.
+
+---
+
+# Przedział ufności
+
+95% przedział ufności dla wartości globalnej w grupach wieku
+
+![](03_mr_zaoczne_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+
+---
+
+# Większa próba
+
+95% przedział ufności dla wartości globalnej w grupach wieku
+
+![](03_mr_zaoczne_files/figure-html/unnamed-chunk-34-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -738,7 +900,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
