@@ -92,6 +92,8 @@ Oblicz wartość wyrażeń:
 
 Próba jest losowa jeśli spełnione są następujące warunki:
 
+--
+
 1. Każda jednostka w populacji generalnej posiada niezerowe prawdopodobieństwo znalezienia się w próbie - $\pi_i$.
 2. Prawdopodobieństwo $\pi_i$ jest znane dla każdej jednostki w próbie.
 3. Każda para jednostek w populacji generalnej posiada niezerowe prawdopodobieństwo znalezienia się w próbie - $\pi_{ij}$.
