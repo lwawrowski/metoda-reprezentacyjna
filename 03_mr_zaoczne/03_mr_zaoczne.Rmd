@@ -69,6 +69,8 @@ Do pobrania ze strony: [R-project](https://www.r-project.org/)
 
 Do pobrania ze strony: [RStudio](https://www.rstudio.com/)
 
+Wersja przeglądarkowa: [rstudio.cloud](https://rstudio.cloud/)
+
 <center><img src = "rstudio.png" height = "400px" /></center>
 
 ---
