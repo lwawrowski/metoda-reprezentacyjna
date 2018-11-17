@@ -172,6 +172,10 @@ save(gospodarstwa_badanie, file="07_projekt/badanie.RData")
 badanie <- gospodarstwa_badanie
 populacja <- gospodarstwa
 
+populacja <- populacja %>%
+  mutate(degurba=as.character(degurba),
+         klm=as.character(klm))
+
 save(populacja, badanie, file="07_projekt/dane.RData")
 
 load("07_projekt/dane.RData")
