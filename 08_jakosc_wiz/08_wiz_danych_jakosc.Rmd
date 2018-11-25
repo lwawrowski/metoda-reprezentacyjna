@@ -1,0 +1,49 @@
+---
+title: "Wizualizacja danych jakościowych"
+author: "Imię i nazwisko"
+date: "26 listopada 2018"
+output: html_document
+---
+
+# Zbiór danych
+
+Generalny Sondaż Społeczny realizowany w USA: http://gss.norc.org/.
+
+```{r}
+library(tidyverse)
+load("gss.RData")
+
+summary(gss)
+```
+
+Opis zmiennych:
+
+- vpsu - jednostka losowania pierwszego stopnia
+- vstrat - warstwa losowania
+- polviews - poglądy polityczne
+- adults - liczba osób dorosłych w gospodarstwie 
+- hompop - liczba osób w gospodarstwie
+- race - pochodzenie
+- region - region
+- age - wiek
+- sex - płeć
+- one - kolumna jedynek
+- wtssall - waga z próby
+- born_in_usa - czy osoba została urodzona w USA
+
+# Schemat losowania
+
+# Wizualizacja wyników
+
+## Wykres słupkowy
+
+## Wykres kafelkowy (mapa ciepła)
+
+## Procenty
+
+## Uwzględnianie braków danych
+
+
+# Zadanie
+
+

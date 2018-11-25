@@ -10,7 +10,7 @@ gss <- readRDS("08_jakosc_wiz/2016.rds")
 
 # gss_c <- readRDS("08_jakosc_wiz/gss 1972 2016 cross sectional cumulative data release 4 august 16 2018.rds")
 
-gss_df <- gss %>%
+gss <- gss %>%
   select(vpsu, vstrat, polviews, born, adults, hompop, race, region, age, sex, one, wtssall) %>%
   mutate(polviews = 
            factor( polviews ,
@@ -22,10 +22,6 @@ gss_df <- gss %>%
          
          born_in_usa = ifelse( born %in% 1:2 , as.numeric( born == 1 ) , NA ) ,
          
-         adults_in_hh = ifelse( adults > 8 , NA , adults ) ,
-         
-         persons_in_hh = ifelse( hompop > 11 , NA , hompop ) ,
-         
          race = factor( race , labels = c( "white" , "black" , "other" ) ) ,
          
          region = 
@@ -35,6 +31,10 @@ gss_df <- gss %>%
                                "South Atlantic" , "East South Central" ,
                                "West South Central" , "Mountain" , "Pacific" )
            ))
+
+save(gss, file="08_jakosc_wiz/gss.RData")
+
+summary(gss_df)
 
 gss_design <- 
   svydesign( 
