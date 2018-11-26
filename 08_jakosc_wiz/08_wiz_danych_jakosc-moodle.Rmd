@@ -45,7 +45,7 @@ __Zadanie 1 (5 min)__
 Na podstawie zadeklarowanego schematu losowania oszacuj liczbę osób w każdym regionie
 
 ```{r liczba osób wg regionów}
-region <- svyby(formula = ~one, by = ~region, design = schemat, FUN = svytotal)
+region <- ____
 ```
 
 # Wizualizacja wyników
@@ -55,9 +55,9 @@ region <- svyby(formula = ~one, by = ~region, design = schemat, FUN = svytotal)
 ### 1 zmienna
 
 ```{r wykres słupkowy}
-ggplot(region, aes(x=region, y=one)) + 
+ggplot(region, aes(____)) + 
   geom_col() +
-  xlab("Region") + ylab("Number of people") +
+  xlab(____) + ylab(____) +
   coord_flip()
 ```
 
@@ -68,18 +68,18 @@ __Zadanie 2. (5 min)__
 Na podstawie zadeklarowanego schematu losowania oszacuj liczbę osób w przekroju regionu i płci.
 
 ```{r liczba osób wg regionów i płci}
-region_sex <- svyby(formula = ~one, by = ~region+sex, design = schemat, FUN = svytotal)
+region_sex <- ____
 ```
 
 ```{r 1 wykres słupkowy region i płeć}
-ggplot(region_sex, aes(x=region, y=one, fill=sex)) + 
+ggplot(region_sex, aes(____)) + 
   geom_col() +
   coord_flip()
 ```
 
 ```{r 2 wykres słupkowy region i płeć}
-ggplot(region_sex, aes(x=region, y=one, fill=sex)) + 
-  geom_col(position="fill") +
+ggplot(region_sex, aes(____)) + 
+  geom_col(____) +
   coord_flip()
 
 ```
@@ -97,11 +97,8 @@ Sprawdź co się stanie po wpisaniu w argumencie position `dodge`.
 ## Wykres kafelkowy (mapa ciepła)
 
 ```{r wykres kafelkowy}
-ggplot(region_sex, aes(x=sex, y=region, fill=one)) + 
-  geom_tile() +
-  geom_text(aes(label=one), color="white") +
-  scale_fill_gradient(low="green", high="red")
-
+ggplot(region_sex, aes(____)) + 
+  geom_tile() 
 ```
 
 __Zadanie 3 (10 min)__

@@ -1,5 +1,5 @@
 ---
-title: "Kalibracja"
+title: "Dane jakościowe - wizualizacja"
 author: "Łukasz Wawrowski"
 date: ""
 output:
@@ -117,7 +117,18 @@ http://ue.poznan.pl/pl/
 
 <center><img src = "data-to-viz.png" height = "400px" /></center>
 
-https://www.data-to-viz.com/
+- https://www.data-to-viz.com/
+- https://www.r-graph-gallery.com/
+
+---
+
+# Pakiet ggplot2
+
+Pakiet do wizualizacji danych:
+
+- dokumentacja: https://ggplot2.tidyverse.org/
+- [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+- tworzenie wykresów poprzez dodawanie (`+`) kolejnnych warstw
 
 ---
 
@@ -129,19 +140,156 @@ load("gss.RData")
 ```
 
 
-```{r, fig.width=14, fig.height=6}
-ggplot(gss, aes(x=race)) # stworzenie siatki
+.pull-left[
+__Kod__
+```{r, eval=FALSE}
+ggplot(gss, aes(x=race)) # siatka
 ```
+]
+.pull-right[
+__Wynik__   
+   
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(gss, aes(x=race)) # siatka
+```
+
+]
+
+
 
 ---
 
 # Pakiet ggplot2
 
-```{r, fig.width=14, fig.height=6}
-ggplot(gss, aes(x=race)) + # stworzenie siatki
-  geom_bar() # określenie sposobu wizualizacji
+.pull-left[
+__Kod__
+```{r, eval=FALSE}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() # sposób wizualizacji
+```
+]
+.pull-right[
+__Wynik__   
+   
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() # sposób wizualizacji
 ```
 
+]
+
+---
+
+# Pakiet ggplot2
+
+.pull-left[
+__Kod__
+```{r, eval=FALSE}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) # zmiana skali
+```
+]
+.pull-right[
+__Wynik__   
+   
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) # zmiana skali
+```
+
+]
+
+---
+
+# Pakiet ggplot2
+
+.pull-left[
+__Kod__
+```{r, eval=FALSE}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) + # zmiana skali
+  xlab("Pochodzenie") + 
+  ylab("Liczebność") # etykiety
+  
+```
+]
+.pull-right[
+__Wynik__   
+   
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) + # zmiana skali
+  xlab("Pochodzenie") + 
+  ylab("Liczebność") # etykiety
+```
+
+]
+
+---
+
+# Pakiet ggplot2
+
+.pull-left[
+__Kod__
+```{r, eval=FALSE}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) + # zmiana skali
+  xlab("Pochodzenie") + 
+  ylab("Liczebność") + # etykiety
+  coord_flip() # obrócenie
+  
+```
+]
+.pull-right[
+__Wynik__   
+   
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) + # zmiana skali
+  xlab("Pochodzenie") + 
+  ylab("Liczebność") + # etykiety
+  coord_flip() # obrócenie
+```
+
+]
+
+---
+
+# Pakiet ggplot2
+
+.pull-left[
+__Kod__
+```{r, eval=FALSE}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) + # zmiana skali
+  xlab("Pochodzenie") + 
+  ylab("Liczebność") + # etykiety
+  coord_flip() + # obrócenie
+  theme_light() # motyw
+  
+```
+]
+.pull-right[
+__Wynik__   
+   
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(gss, aes(x=race)) + # siatka
+  geom_bar() + # sposób wizualizacji
+  ylim(0,2500) + # zmiana skali
+  xlab("Pochodzenie") + 
+  ylab("Liczebność") + # etykiety
+  coord_flip() + # obrócenie
+  theme_light() # motyw
+```
+
+]
 
 ---
 
