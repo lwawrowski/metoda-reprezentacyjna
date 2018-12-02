@@ -131,7 +131,7 @@ save(proba_badanie1, proba_badanie2, file="proba.RData")
 Podczas zajęć w dniu 3.02.2019 r. zadania projektowe mają być przedstawione w krótkiej prezentacji (około. 5 slajdów) zawierającej:
 
 1. Treść zadania projektowego
-2. zastosowane schematy losowania
+2. Zastosowane schematy losowania
 3. Rozmiar próby i uzyskane wyniki w podanym przekroju
 
 Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą być wgrane na moodle do dnia 2.02.2019 r., godz. 23:00.
@@ -139,7 +139,7 @@ Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą by
 # Kryteria oceny
 
 - zrealizowanie celu zadania - 5 punktów
-- przeprowadzenie kalibracji - 2 punkty
+- przeprowadzenie kalibracji - 1 punkt
 - sposób prezentacji wyników - 1 punkt
 
 - zaproponowanie warstwy wykorzystując dane spoza zbioru danych - 1 punkt

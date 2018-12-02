@@ -1,33 +1,8 @@
 library(tidyverse)
 library(survey)
 
-load("06_kalibracja/populacja.RData")
-
-proba <- populacja %>%
-  group_by(wiek) %>%
-  sample_frac(0.00131)
-
-pop_wiek <- populacja %>%
-  group_by(wiek) %>%
-  count()
-
-proba <- inner_join(proba, pop_wiek)
-
-schemat <- svydesign(ids = ~id, strata = ~wiek, fpc = ~n, data=proba)
-
-proba <- proba %>%
-  ungroup() %>%
-  mutate(waga=as.numeric(weights(schemat))) %>%
-  select(kod:id,waga,niepelnosprawnosc)
-
-proba_id <- sample(1:nrow(proba), 0.2*nrow(proba))
-
-proba_braki <- proba
-proba_braki$niepelnosprawnosc[proba_id] <- NA
-
-save(proba, proba_braki, populacja, file = "06_kalibracja/dane.RData")
-
-load("06_kalibracja/dane.RData")
+load("populacja.RData")
+load("proba_braki.RData")
 
 # struktura wieku
 
@@ -35,14 +10,14 @@ populacja %>%
   group_by(wiek) %>%
   count()
 
-proba %>%
+proba_braki %>%
   group_by(wiek) %>%
   summarise(n_proba=sum(waga))
 
 # braki
 
 proba_braki <- proba_braki %>%
-  filter(!is.na(niepelnosprawnosc))
+  filter(!is.na(bezr))
 
 proba_braki %>%
   group_by(wiek) %>%
@@ -74,12 +49,6 @@ populacja %>%
   group_by(plec) %>%
   count()
 
-proba %>%
-  group_by(plec) %>%
-  summarise(n_plec=sum(waga))
-
-# braki
-
 proba_braki %>%
   group_by(plec) %>%
   summarise(n_plec_braki=sum(waga),
@@ -90,10 +59,7 @@ proba_braki %>%
 pop_wiek_plec <- colSums(model.matrix(~wiek*plec,model.frame(~wiek*plec,populacja)))
 pop_wiek_plec
 
-pop_wiek_plec <- colSums(model.matrix(~wiek*plec-1,model.frame(~wiek*plec-1,populacja)))
-pop_wiek_plec
-
-kalibracja_wiek_plec <- calibrate(design = schemat, formula = ~wiek*plec-1, population = pop_wiek_plec)
+kalibracja_wiek_plec <- calibrate(design = schemat, formula = ~wiek*plec, population = pop_wiek_plec)
 
 proba_braki <- proba_braki %>%
   ungroup() %>%
@@ -107,10 +73,3 @@ proba_braki %>%
             n_proba_kal1=sum(waga_kal1),
             n_proba_kal2=sum(waga_kal2))
 
-# estymacja
-
-schemat_proba <- svydesign(ids = ~id, strata = ~wiek, weights = ~waga, data=proba)
-
-svytotal(~niepelnosprawnosc, design = schemat_proba)
-svytotal(~niepelnosprawnosc, design = kalibracja_wiek)
-svytotal(~niepelnosprawnosc, design = kalibracja_wiek_plec)

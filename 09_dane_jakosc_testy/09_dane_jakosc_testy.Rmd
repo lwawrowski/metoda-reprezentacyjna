@@ -1,0 +1,30 @@
+---
+title: "Testy danych jakościowych"
+author: "Imię i nazwisko"
+date: "3 grudnia 2018"
+output: html_document
+---
+
+# Rozgrzewka
+
+
+
+```{r}
+
+```
+
+# Testy statystyczne
+
+## Test $\chi^2$
+
+## Test proporcji
+
+```{r}
+data(api)
+dclus1<-svydesign(id=~dnum, fpc=~fpc, data=apiclus1)
+
+svyciprop(~I(ell==0), dclus1, method="li")
+```
+
+
+# Zadania
