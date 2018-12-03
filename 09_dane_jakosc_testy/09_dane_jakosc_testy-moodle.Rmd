@@ -10,17 +10,7 @@ output: html_document
 Na podstawie danych z Generalnego Sondażu Społecznego oszacuj liczbę osób urodzonych w USA (born_in_usa) według pochodzenia (race). Wyniki nanieś na wykres kafelkowy.
 
 ```{r}
-library(tidyverse)
-library(survey)
 
-load("gss.RData")
-
-schemat <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ wtssall, nest = TRUE)  
-
-usa_race <- svyby(formula = ~one, by = ~born_in_usa+race, design = schemat, FUN = svytotal)
-
-ggplot(usa_race, aes(x=born_in_usa, y=race, fill=one)) + 
-  geom_tile()
 ```
 
 # Analiza danych jakościowych
@@ -28,7 +18,7 @@ ggplot(usa_race, aes(x=born_in_usa, y=race, fill=one)) +
 ## Tabela kontyngencji
 
 ```{r}
-svytable(~ born_in_usa + race, schemat)
+svytable(formula = ____, design = ____)
 ```
 
 ## Test niezależności $\chi^2$
@@ -40,9 +30,13 @@ Ten test jest stosowany w przypadku badania niezależności cech jakościowych. 
 
 Na podstawie przyjętego poziomu istotności $\alpha$ (zwykle $\alpha=0.05$) i wartości p podejmuje się decyzję o odrzuceniu hipotezy zerowej. Jeśli $\alpha > p$ to są podstawy do odrzucenia hipotezy zerowej.
 
+Sprawdźmy czy istnieje zależność pomiędzy urodzeniem się w USA a pochodzeniem.
+
 ```{r}
-svychisq(~ born_in_usa + race, schemat)
+svychisq(formula = ____, design = ____)
 ```
+
+Wynik:
 
 ## Test proporcji
 
@@ -53,14 +47,18 @@ Ten test jest stosowany w przypadku badania równości proporcji w kilku grupach
 
 Jeśli $\alpha > p$ to są podstawy do odrzucenia hipotezy zerowej.
 
+Sprawdźmy czy odsetek mężczyzn jest taki sam we wszystkich regionach.
+
 ```{r}
-plec <- svyby(formula = ~sex, by= ~region, design = schemat, FUN = svytotal)
+plec <- svyby(formula = ____, by= ____, design = ____, FUN = ____)
 
-region <- svyby(formula = ~one, by= ~region, design = schemat, FUN = svytotal)
+region <- svyby(formula = ____, by= ____, design = ____, FUN = ____)
 
-prop.test(sex$sexMale, region$one)
+prop.test(x = ____, n = ____)
 
 ```
+
+Wynik: 
 
 # Zadania
 
