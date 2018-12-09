@@ -1,0 +1,54 @@
+---
+title: "Dane ilościowe - wizualizacja"
+author: "Imię i nazwisko"
+date: ""
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(survey)
+
+load("gss.RData")
+
+```
+
+# Jedna zmienna
+
+## Histogram
+
+```{r}
+ggplot(gss, aes(x=age)) + geom_histogram()
+
+```
+
+
+## Wykres gęstości
+
+```{r}
+ggplot(gss, aes(x=age)) + geom_density()
+
+```
+
+
+# Dwie zmienne
+
+## Wykres gęstości
+
+```{r}
+ggplot(gss, aes(x=age, fill=race)) + geom_density(alpha=0.5)
+```
+
+
+## Wykres pudełkowy
+
+```{r}
+ggplot(gss, aes(y=age, x=race)) + geom_boxplot()
+```
+
+
+## Wykres skrzypcowy
+
+```{r}
+ggplot(gss, aes(y=age, x=race)) + geom_violin()
+```
