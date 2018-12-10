@@ -18,7 +18,7 @@ _Zadanie 0. (5 min)_
 Określ schemat losowowania dla zbioru gss.
 
 ```{r}
-schemat <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ wtssall, nest = TRUE) 
+
 ```
 
 
@@ -27,7 +27,6 @@ schemat <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ wt
 ## Histogram
 
 ```{r, fig.width=10, fig.width=6}
-ggplot(gss, aes(x=age)) + geom_histogram(binwidth = 10)
 
 ```
 
@@ -35,7 +34,6 @@ ggplot(gss, aes(x=age)) + geom_histogram(binwidth = 10)
 ## Wykres gęstości
 
 ```{r}
-ggplot(gss, aes(x=age)) + geom_density()
 
 ```
 
@@ -43,9 +41,6 @@ _Zadanie 1. (5 min)_
 
 Przestaw na histogramie liczbę osób w gospodarstwie domowym.
 
-```{r}
-ggplot(gss, aes(x=hompop)) + geom_histogram(binwidth=1)
-```
 
 
 # Dwie zmienne
@@ -53,33 +48,28 @@ ggplot(gss, aes(x=hompop)) + geom_histogram(binwidth=1)
 ## Wykres gęstości
 
 ```{r}
-ggplot(gss, aes(x=age, fill=race)) + geom_density(alpha=0.5)
-```
 
+```
 
 
 ## Wykres pudełkowy
 
 ```{r}
-ggplot(gss, aes(y=age, x=race)) + geom_boxplot()
+
 ```
 
 ```{r}
-svyboxplot(age ~ race, schemat)
+
 ```
 
 
 ## Wykres skrzypcowy
 
 ```{r}
-ggplot(gss, aes(y=age, x=race)) + geom_violin()
+
 ```
 
 _Zadanie 2. (5 min)_
 
 Na dowolnym wykresie przedstaw rozkład wieku w zależności od poglądów politycznych.
-
-```{r}
-ggplot(gss, aes(y=age, x=region)) + geom_violin()
-```
 

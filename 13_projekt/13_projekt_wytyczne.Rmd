@@ -7,7 +7,7 @@ output: html_document
 
 # Zadanie
 
-Dla wybranych zmiennych z Polskiego Generalnego Sondażu Społecznego z 2010 roku wykonaj następujące zadania:
+Dla wybranych zmiennych z [Polskiego Generalnego Sondażu Społecznego](http://www.ads.org.pl/opis-szczeg.php?id=91) z 2010 roku wykonaj następujące zadania:
 
 - wizualizacja dwóch zmiennych jakościowych,
 - test niezależności $\chi^2$,
@@ -18,12 +18,17 @@ W zbiorze danych wartości zmiennych jakościowych są zastąpione przez ich kod
 
 # Przykład
 
+Zmienne z przykładu nie mogą zostać użyte w tej samej kombinacji w projekcie.
+
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(survey)
 
 load("pgss.RData")
 
+# modyfikacja zbioru
+# - dodanie kolumny jedynek
+# - dodanie etykiet do kodów zmiennych
 pgss <- pgss %>%
   mutate(one=1,
          q8=factor(q8, levels = c(1,2), labels = c("Mężczyzna", "Kobieta")),
@@ -86,3 +91,14 @@ Prezentacja w formacie .pdf oraz skrypt R muszą być wgrane na moodle do dnia 2
 - najlepsza praca w grupie wybrana przez prowadzącego - 1 punkt
 
 - oddanie pracy po terminie - -3 punkty
+
+# Skala ocen
+
+| Liczba punktów | Ocena |
+|----------------|-------|
+| poniżej 11     | ndst  |
+| 11-12          | dst   |
+| 13-14 | dst+ |
+| 15-16 | db |
+| 17-18 | db+ |
+| 19 i więcej | bdb |
