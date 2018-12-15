@@ -1,0 +1,43 @@
+---
+title: "Testy danych ilościowych"
+author: "Imię i nazwisko"
+date: "15 grudnia 2018"
+output: html_document
+---
+
+# Rozgrzewka (15 min.)
+
+Na wykresie przedstaw rozkład wieku w podziale na płeć z zaznaczoną wartością średnią.
+
+```{r}
+library(tidyverse)
+library(survey)
+
+load("gss.RData")
+
+schemat <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ wtssall, nest = TRUE)  
+
+usa_race <- svyby(formula = ~one, by = ~born_in_usa+race, design = schemat, FUN = svytotal)
+
+
+```
+
+# Analiza danych jakościowych
+
+## Test t-średnich
+
+```{r}
+svyttest(age ~ sex, schemat)
+```
+
+```{r}
+t.test(age ~ sex, gss)
+```
+
+
+## Test Manna-Whitneya
+
+```{r}
+svyranktest(age ~ sex, schemat)
+```
+
