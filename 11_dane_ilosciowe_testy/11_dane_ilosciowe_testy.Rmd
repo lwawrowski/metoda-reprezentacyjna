@@ -1,13 +1,9 @@
 ---
 title: "Testy danych ilościowych"
 author: "Imię i nazwisko"
-date: "15 grudnia 2018"
+date: "17 grudnia 2018"
 output: html_document
 ---
-
-# Rozgrzewka (15 min.)
-
-Na wykresie przedstaw rozkład wieku w podziale na płeć z zaznaczoną wartością średnią.
 
 ```{r}
 library(tidyverse)
@@ -17,27 +13,106 @@ load("gss.RData")
 
 schemat <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ wtssall, nest = TRUE)  
 
-usa_race <- svyby(formula = ~one, by = ~born_in_usa+race, design = schemat, FUN = svytotal)
+```
 
+# Rozgrzewka (15 min.)
+
+Na histogramie przedstaw rozkład wieku w zaznaczoną wartością średnią. Odpowiednie zapytanie do Google rozwiązuje problem w pierwszym wyniku.
+
+```{r}
 
 ```
 
-# Analiza danych jakościowych
+
+# Analiza danych ilościowych
+
+Analiza danych ilościowych zwykle polega na porównywaniu charakterystyk rozkładu w ramach różnych grup. Podczas zajęć skupimy się na metodach, które umożliwiają testowanie hipotez w dwóch grupach.
+
+## Sprawdzenie rozkładu normalnego
+
+Użycie niektórych metod wymaga spełnienia założenia o rozkładzie normalnym. W tym celu można zastosować np. test Shapiro-Wilka, gdzie:
+
+H0: rozkład zmiennej ma rozkład normalny
+H1: rozkład zmiennej nie ma rozkładu normalnego
+
+Test Shapiro-Wilka ma ograniczenie do 5000 obserwacji.
+
+### Przykład
+
+Sprawdzenie normalności w grupie mężczyzn
+
+```{r}
+shapiro.test(gss$age[gss$sex=="Male"])
+```
+
+Sprawdzenie normalności w grupie kobiet
+
+```{r}
+shapiro.test(gss$age[gss$sex=="Female"])
+```
+
+W obu przypadkach odrzucemy hipotezę zerową (wartości p są dużo mniejsze od przyjętego poziomu istotności 0,05) - rozkłady zmiennych nie są normalne. 
 
 ## Test t-średnich
+
+W przypadku, gdy rozkład zmiennej jest normalny można przeprowadzić test istotności dla dwóch średnich:
+
+H0: średnie w grupach są równe
+H1: średnie w grupach są różne
+
+### Przykład
+
+Sprawdźmy ile wynosi średnia wieku w ramach płci:
+
+```{r}
+gss %>%
+  group_by(sex) %>%
+  summarise(n=n(), # liczebność
+            srednia=mean(age, na.rm=TRUE)) # średnia z wyłączeniem braków danych
+```
+
+Różnica nie wygląda na zbyt dużą, więc możemy przypuszczać, że różnica niebędzie istotna statystycznie. Gdybyśmy mieli do czynienia z cechą o rozkładzie normalnym to zastosowalibyśmy test t-średnich. I tak to zrobimy, żeby zobaczyć jakiej funkcji należałoby użyć.
 
 ```{r}
 svyttest(age ~ sex, schemat)
 ```
 
-```{r}
-t.test(age ~ sex, gss)
-```
-
+Na podstawie wartości p (0,1083 > 0,05) możemy stwierdzić, że nie ma podstaw do odrzucenia hipotezy zerowej.
 
 ## Test Manna-Whitneya
+
+Jeżeli nie jest spełnione założenie o rozkładzie normalnym to można skorzystać z testu, który tego nie wymaga i jest oparty na rangach. Wówczas hipotezy są następujące:
+
+H0: zmienne w obu grupach mają ten sam rozkład
+H1: zmienne w obu grupach mają różny rozkład
+
+### Przykład
+
+Zastosowanie tego testu jest możliwe w funkcji `svyranktest`, który przyjmuje takie same argumenty jak test t-średnich.
 
 ```{r}
 svyranktest(age ~ sex, schemat)
 ```
 
+W tym przypadku także nie ma podstaw do odrzucenia hipotezy zerowej.
+
+## Więcej niż dwie grupy
+
+W pakiecie survey zostały zaimplementowane tylko te testy, które umożliwiają porównywanie dwóch grup. Natomiast istnieją oczywiście testy statystyczne dla większej ich liczby - np. ANOVA.
+
+Alternatywnie można dokonać grupowania danej zmiennej, tak aby miała dwie kategorie.
+
+### Przykład
+
+Zmienną dotyczącą liczby osób w gospodarstwie domowym można przekodować na cechę, która będzie miała dwie kategorię przyjmująć jako gospodarstwo małe takie liczące poniżej 3 osób, a jako duże 3 osoby i więcej. 
+
+```{r}
+gss <- gss %>%
+  mutate(hom_size=ifelse(hompop<3, "Small", "Big"))
+
+schemat2 <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ wtssall, nest = TRUE)  
+```
+
+# Zadanie
+
+Sprawdź czy wartości wieku różnią się w zależności od wielkości gospodarstwa domowego. Oblicz wartości średnie, przeprowadź test normalności i wybierz odpowiednie narzędzie analityczne.
