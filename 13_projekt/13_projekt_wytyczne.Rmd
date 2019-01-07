@@ -1,7 +1,7 @@
 ---
 title: "Projekt 2 - wytyczne"
 author: "Łukasz Wawrowski"
-date: "Aktualizacja: 9 grudnia 2018"
+date: "Aktualizacja: 7 stycznia 2019"
 output: html_document
 ---
 
@@ -12,7 +12,7 @@ Dla wybranych zmiennych z [Polskiego Generalnego Sondażu Społecznego](http://w
 - wizualizacja dwóch zmiennych jakościowych,
 - test niezależności $\chi^2$,
 - wizalizacja zmiennej jakościowej i ilościowej,
-- test t-średnich.
+- test t-średnich lub rang.
 
 W zbiorze danych wartości zmiennych jakościowych są zastąpione przez ich kody. W dokumentacji badania dostęne są kwestionariusze, z których można odczytać oryginalne wartości cech.
 
@@ -84,9 +84,8 @@ Prezentacja w formacie .pdf oraz skrypt R muszą być wgrane na moodle do dnia 2
 - test t-średnich - 2 punkty
 
 - dodatkowy test $\chi^2$ na innych zmiennych - 1 punkt
-- dodatkowy test t-średnich na innych zmiennych - 1 punkt
+- dodatkowy test t-średnich lub rang na innych zmiennych - 1 punkt
 - przeprowadzenie testu proporcji - 1 punkt
-- przeprowadzenie testu rang - 1 punkt
 - wizualizacja wykraczająca poza materiał omawiany podczas zajęć - 1 punkt
 - najlepsza praca w grupie wybrana przez prowadzącego - 1 punkt
 
@@ -96,9 +95,9 @@ Prezentacja w formacie .pdf oraz skrypt R muszą być wgrane na moodle do dnia 2
 
 | Liczba punktów | Ocena |
 |----------------|-------|
-| poniżej 11     | ndst  |
-| 11-12          | dst   |
-| 13-14 | dst+ |
-| 15-16 | db |
-| 17-18 | db+ |
-| 19 i więcej | bdb |
+| poniżej 7      | ndst  |
+| 7-8            | dst   |
+| 9-10           | dst+  |
+| 11-12          | db    |
+| 13-14          | db+   |
+| 15 i więcej    | bdb   |

@@ -33,13 +33,13 @@ sum(apipop$api.stu)
 1. Na podstawie próby oszacuj liczbę osób biorących udział w teście (api.stu).
 
 ```{r}
-svytotal(x = ~api.stu, design = schemat)
+
 ```
 
 2. Na podstawie próby oszacuj jaki odsetek wziął udział w teście (api.stu/enroll)
 
 ```{r}
-svyratio(numerator = ~api.stu, denominator = ~enroll, design = schemat)
+
 ```
 
 # Regresja liniowa
@@ -49,21 +49,23 @@ svyratio(numerator = ~api.stu, denominator = ~enroll, design = schemat)
 Oszacowanie wartości globalnej liczby osób biorących udział w teście na podstawie wartości wskaźnika
 
 ```{r}
-r1 <- svyratio(numerator = ~api.stu, denominator = ~enroll, design = schemat)
+r1 <- ____
 
-predict(r1, total = sum(apipop$enroll, na.rm = T))
+npop <- sum(apipop$enroll, na.rm = T)
+
+predict(r1, total = npop)
 
 ```
 
 ```{r}
-ggplot(apistrat, aes(enroll, api.stu)) + 
-  geom_point() +
-  geom_abline(intercept = 0)
+ggplot(apistrat, aes(enroll, api.stu)) + ____
+
 ```
 
 ### Zadanie (10 minut)
 
 Proszę powtórzyć powyższy tok obliczeń dla zmiennej English Language Learners (ell):
+
 
 - na podstawie próby oszacować wartość globalną
 - na podstawie próby oszacować wskaźnik (ell/enroll)
@@ -71,25 +73,7 @@ Proszę powtórzyć powyższy tok obliczeń dla zmiennej English Language Learne
 
 Co się dzieje z precyzją estymacji? Narysuj wykres - wskaże przyczynę takiego stanu rzeczy.
 
-```{r}
-svytotal(x = ~ell, schemat)
-```
 
-```{r}
-r2 <- svyratio(numerator = ~ell, denominator = ~enroll, schemat)
-r2
-```
-
-```{r}
-predict(r2, total = sum(apipop$enroll, na.rm = T))
-```
-
-```{r}
-ggplot(apistrat, aes(ell, api.stu)) + 
-  geom_point() +
-  geom_abline(intercept = 0)
-
-```
 
 ## Uwzględnienie wag z próby w regresji liniowej
 
@@ -147,7 +131,7 @@ Dokładnie ten sam wynik!
 
 ## Z wyrazem wolnym 
 
-Oszacowanie wartości globalnej liczby osób biorących udział w teście na podstawie modelu liniowego
+Oszacowanie wartości globalnej liczby osób biorących udział w teście na podstawie modelu liniowego.
 
 ### Bez wag z próby
 
@@ -165,15 +149,13 @@ m1
 W przypadku modelu funkcja predict wymaga, aby dane były w formie data.frame.
 
 ```{r}
-dane <- data.frame(enroll=sum(apipop$enroll, na.rm = T))
+dane <- data.frame(enroll=npop)
 
 predict(m1, newdata = dane, total = nrow(apipop))
 ```
 
 ```{r}
-ggplot(apistrat, aes(enroll, api.stu)) + 
-  geom_point() +
-  geom_smooth(method="lm")
+ggplot(apistrat, aes(enroll, api.stu)) + geom_point() + ____
 ```
 
 W modelu można także uwzględnić heteroskedastyczność wariancji
@@ -190,20 +172,3 @@ predict(m2, newdata = dane, total = nrow(apipop))
 ### Zadanie (10 minut)
 
 Proszę powtórzyć powyższy tok obliczeń dla zmiennej English Language Learners (ell). Czy zastosowanie modelu poprawia precyzję oszacowania?
-
-```{r}
-m3 <- svyglm(ell ~ enroll, schemat)
-summary(m3)
-```
-
-W przypadku modelu funkcja predict wymaga, aby dane były w formie data.frame.
-
-```{r}
-predict(m3, newdata = dane, total = nrow(apipop))
-```
-
-```{r}
-ggplot(apistrat, aes(enroll, ell)) + 
-  geom_point() +
-  geom_smooth(method="lm")
-```
