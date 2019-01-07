@@ -115,4 +115,4 @@ schemat2 <- svydesign(ids = ~ vpsu, strata = ~ vstrat, data = gss, weights = ~ w
 
 # Zadanie
 
-Sprawdź czy wartości wieku różnią się w zależności od wielkości gospodarstwa domowego. Oblicz wartości średnie, przeprowadź test normalności i wybierz odpowiednie narzędzie analityczne.
+Sprawdź czy wartości wieku różnią się w zależności od wielkości gospodarstwa domowego - nowoutworzona zmienna hom_size. Oblicz wartości średnie, przeprowadź test normalności i wybierz odpowiednie narzędzie analityczne.
