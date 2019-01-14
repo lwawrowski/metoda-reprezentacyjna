@@ -1,7 +1,7 @@
 ---
 title: "Projekt 2 - wytyczne"
 author: "Łukasz Wawrowski"
-date: "Aktualizacja: 7 stycznia 2019"
+date: "Aktualizacja: 14 stycznia 2019"
 output: html_document
 ---
 
@@ -53,7 +53,7 @@ ggplot(q8_q61h, aes(x=q8, y=q61h, fill=one)) +
 ```
 
 ```{r}
-svychisq(formula = ~q8 + q61h, design = schemat)
+svychisq(formula = ~q8 + q61h, design = schemat, statistic="Chisq")
 ```
 
 Nie ma podstaw do odrzucenia hipotezy zerowej - pomiędzy płcią a zaufaniem do pracy nie występuje zależność.
@@ -65,8 +65,20 @@ ggplot(pgss, aes(x=q8, y=q32)) +
   theme_minimal()
 ```
 
+Sprawdzenie normalności rozkładu dochodu w badanych grupach:
+
 ```{r}
-svyttest(formula = q32 ~ q8, design = schemat)
+shapiro.test(pgss$q32[pgss$q8=="Mężczyzna"])
+```
+
+```{r}
+shapiro.test(pgss$q32[pgss$q8=="Kobieta"])
+```
+
+Rozkład cech nie jest normalny, zatem stosujemy test oparty na rangach.
+
+```{r}
+svyranktest(formula = q32 ~ q8, design = schemat)
 ```
 
 Są podstawy do odrzucenia hipotezy zerowej - średnie dochody różnią się w grupach płci.
@@ -81,7 +93,7 @@ Prezentacja w formacie .pdf oraz skrypt R muszą być wgrane na moodle do dnia 2
 
 - wizualizacja - 3 punkty
 - test $\chi^2$ - 2 punkty
-- test t-średnich - 2 punkty
+- test t-średnich lub rang - 2 punkty
 
 - dodatkowy test $\chi^2$ na innych zmiennych - 1 punkt
 - dodatkowy test t-średnich lub rang na innych zmiennych - 1 punkt
