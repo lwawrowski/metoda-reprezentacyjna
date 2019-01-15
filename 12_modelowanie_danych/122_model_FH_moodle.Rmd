@@ -1,0 +1,126 @@
+---
+title: "Model Faya-Herriota"
+author: "Imię i nazwisko"
+date: "14 stycznia 2019"
+output: html_document
+---
+
+# Rozgrzewka 
+
+Zainstaluj pakiet: sae.  
+
+Metodologia: https://cran.r-project.org/web/packages/sae/index.html 
+
+Zbiór danych zawiera oszacowania bezpośrednie odsetka osób ubogich otrzymane na podstawie badania EU-SILC w przekroju podregionów w 2012 roku.
+
+- arpr_ht - oszacowanie bezpośrednie odsetka osób ubogich
+- arpr_ht_se - błąd standardowy oszacowania bezpośredniego
+- arpr_ht_cv - względny błąd oszacowania bezpośredniego
+
+Ile wynosi:
+
+- minimum i maksimum oszacowania bezpośredniego,
+- minimum i maksimum względnego błędu oszacowania?
+
+```{r}
+library(sae)
+library(tidyverse)
+
+load("dane.RData")
+
+
+```
+
+# Model liniowy
+
+```{r}
+ml <- lm(arpr_ht ~ ____, data = dane)
+summary(ml)
+```
+
+# Model Faya-Herriota
+
+```{r}
+attach(dane)
+fh <- mseFH(arpr_ht ~ ____, arpr_ht_se^2)
+detach(dane)
+
+dane <- dane %>%
+  mutate(arpr_fh=as.numeric(fh$est$eblup),
+         arpr_fh_se=sqrt(fh$mse),
+         arpr_fh_cv=arpr_fh_se/arpr_fh,
+         arpr_g=fh$est$fit$refvar/(fh$est$fit$refvar+dane$arpr_ht_se^2),
+         arpr_u=arpr_g*(dane$arpr_ht-arpr_fh))
+```
+
+
+## Zadanie (5 minut)
+
+Ile wynosi:
+
+- minimum i maksimum oszacowania modelu Faya-Herriota,
+- minimum i maksimum względnego błędu oszacowania modelu Faya-Herriota?
+
+```{r}
+
+
+```
+
+
+## Analiza wyników
+
+Zależność pomiędzy oszacowaniami
+
+```{r}
+ggplot(dane, aes(arpr_ht, arpr_fh)) + 
+  geom_point() +
+  geom_abline(intercept = 0) +
+  ylim(0,0.4) + xlim(0,0.4)
+
+```
+
+Zależność pomiędzy względnymi błędami oszacowań
+
+```{r}
+ggplot(dane, aes(arpr_ht_cv, arpr_fh_cv)) + 
+  geom_point() +
+  geom_abline(intercept = 0) +
+  ylim(0,0.5) + xlim(0,0.5)
+```
+
+Zależność pomiędzy wagą gamma a błędem standardowym
+
+```{r}
+ggplot(dane, aes(arpr_g, arpr_ht_se)) + 
+  geom_point() +
+  ylim(0,0.1) + xlim(0,1)
+```
+
+# Przestrzenny model Faya-Herriota
+
+```{r}
+attach(dane)
+sfh <- mseSFH(arpr_ht ~ ____, arpr_ht_se^2, podreg_nbq_w)
+detach(dane)
+
+dane <- dane %>%
+  mutate(arpr_sfh=as.numeric(sfh$est$eblup),
+         arpr_sfh_se=sqrt(sfh$mse),
+         arpr_sfh_cv=arpr_sfh_se/arpr_sfh)
+```
+
+## Zadanie (5 minut)
+
+Ile wynosi:
+
+- minimum i maksimum oszacowania przestrzennego modelu Faya-Herriota,
+- minimum i maksimum względnego błędu oszacowania przestrzennego modelu Faya-Herriota?
+
+```{r}
+
+
+```
+
+# Zadanie (15 minut)
+
+Sprawdź jak uwzględnienie w modelu innych zmiennych wpłynie na precyzję uzyskanych oszacowań.
