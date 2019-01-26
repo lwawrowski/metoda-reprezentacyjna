@@ -140,10 +140,21 @@ Prezentacja w formacie .pdf oraz projekt R (skrypt i plik proba.RData) muszą by
 
 - zrealizowanie celu zadania - 5 punktów
 - przeprowadzenie kalibracji - 1 punkt
-- sposób prezentacji wyników - 1 punkt
+- sposób prezentacji wyników - 2 punkty
 
-- zaproponowanie warstwy wykorzystując dane spoza zbioru danych - 1 punkt
+- zaproponowanie warstwy wykorzystując dane spoza zbioru danych - 3 punkty
+- obliczenie przedziałów ufności - 2 punkty
 - dodatkowy schemat losowania - 1 punkt
-- obliczenie przedziałów ufności - 1 punkt
 
 - oddanie pracy po terminie - -3 punkty
+
+# Skala ocen
+
+| Liczba punktów | Ocena |
+|----------------|-------|
+| poniżej 5      | ndst  |
+| 6-7            | dst   |
+| 8-9            | dst+  |
+| 10-11          | db    |
+| 12-13          | db+   |
+| 14             | bdb   |
