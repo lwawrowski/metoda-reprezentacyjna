@@ -8,7 +8,7 @@ output:
     css: ["default.css", "default-fonts.css"]
     lib_dir: libs
     nature:
-      ratio: "16:9"
+      ratio: "4:3"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -244,7 +244,7 @@ Zalety RStudio
 
 ---
 
-# Interfejs - pasek narzędzi / nowy plik
+## Interfejs - pasek narzędzi / nowy plik
 
 .pull-left[
 
@@ -839,7 +839,17 @@ Konwencje nazywania obiektów:
 
 ---
 
-# Jeden by wszystkimi rządzić - tidyverse
+class: inverse
+
+# Zadanie
+
+Oblicz w R wartość wyrażenia i przypisz wynik do obiektu.
+
+$$log_{10}100 + \sqrt{121}$$
+
+---
+
+# Zestaw analityka - tidyverse
 
 .pull-left[
 ```
@@ -850,7 +860,7 @@ install.packages("tidyverse")
 - haven - wczytywanie plików SAS, SPSS, Stata
 - jsonlite - wczytywanie JSON
 - xml2 - wczytywanie XML
-- httr - dostęp do danych ze stron html
+- httr - dostęp do stron html
 - rvest - web scraping
 - DBI - dostęp do baz danych
 - lubridate - operacje na datach
@@ -933,11 +943,60 @@ Zapisywanie do pliku tekstowego:
 
 ---
 
-# Wczytywanie danych o formacie R
+## Wczytywanie danych o formacie R
 
 - `load("zbior.RData")`
 
 - `dane <- readRDS("zbior.RDS")`
+
+---
+
+class: inverse
+
+# Zadanie
+
+Wywołaj funkcję `summary()` na wczytanym zbiorze danych.
+
+---
+
+# Przetwarzanie potokowe
+
+```
+obudź się %>%
+  wyjdź z łóżka %>%
+  idź do łazienki %>%
+  zjedź śniadanie %>%
+  ubierz się %>%
+  idź do pracy
+```
+
+---
+
+# Przetwarzanie potokowe
+
+Użycie operatora **pipe**: `%>%` (łącznik) ułatwia zarządzanie kodem i pisanie czytelnej składni poprzez wykorzystanie istniejących struktur danych:
+
+- nie trzeba tworzyć wielu nowych obiektów
+
+- nie trzeba zagnieżdżać w sobie wielu funkcji
+
+Znak `%>%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zostanie wpisany wynik działania wcześniejszej funkcji
+
+---
+
+# Wybrane funkcje
+
+- `select()` - wybór zmiennych
+
+- `filter()` - wybór obserwacji
+
+- `count()` - zliczanie obserwacji
+
+- `summarise()` - podsumowania danych
+
+- `group_by()` - operowanie na grupach
+
+- `rename()` - zmiana nazwy zmiennej
 
 ---
 
