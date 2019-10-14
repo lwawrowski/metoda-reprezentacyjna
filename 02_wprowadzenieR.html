@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html>
   <head>
     <title>Metoda reprezentacyjna</title>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="author" content="© Łukasz Wawrowski" />
     <link rel="stylesheet" href="default.css" type="text/css" />
     <link rel="stylesheet" href="default-fonts.css" type="text/css" />
@@ -709,7 +709,7 @@ Narzędzia profilowania kodu czyli sprawdzenie czasu wykonywania poszczególnych
 
 ---
 
-# Komentarze i sekcje
+# Komentarze
 
 &gt; Real programmers don't comment their code. If it was hard to write it should be hard to understand.
 
@@ -950,12 +950,16 @@ Wywołaj funkcję `summary()` na wczytanym zbiorze danych.
 
 ---
 
+&lt;center&gt;&lt;img src="img/magrittr.png" height="600"&gt;&lt;/center&gt;
+
+---
+
 # Przetwarzanie potokowe
 
 ```
 obudź się %&gt;%
   wyjdź z łóżka %&gt;%
-  idź do łazienki %&gt;%
+  skorzystaj z łazienki %&gt;%
   zjedź śniadanie %&gt;%
   ubierz się %&gt;%
   idź do pracy
@@ -973,6 +977,10 @@ Użycie operatora **pipe**: `%&gt;%` (łącznik) ułatwia zarządzanie kodem i p
 
 Znak `%&gt;%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zostanie wpisany wynik działania wcześniejszej funkcji
 
+--
+
+Skrót klawiszowy: ctrl + shift + m
+
 ---
 
 # Wybrane funkcje
@@ -981,13 +989,15 @@ Znak `%&gt;%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zo
 
 - `filter()` - wybór obserwacji
 
+- `mutate()` - tworzenie/modyfikacja zmiennej
+
+- `rename()` - zmiana nazwy zmiennej
+
 - `count()` - zliczanie obserwacji
 
 - `summarise()` - podsumowania danych
 
 - `group_by()` - operowanie na grupach
-
-- `rename()` - zmiana nazwy zmiennej
 
 ---
 
@@ -995,7 +1005,6 @@ class: inverse, center, middle
 
 # Pytania?
     </textarea>
-<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "ratio": "4:3",
@@ -1006,74 +1015,16 @@ class: inverse, center, middle
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
-(function(d) {
-  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
   if (!r) return;
   s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
   d.head.appendChild(s);
-})(document);
-
-(function(d) {
-  var el = d.getElementsByClassName("remark-slides-area");
-  if (!el) return;
-  var slide, slides = slideshow.getSlides(), els = el[0].children;
-  for (var i = 1; i < slides.length; i++) {
-    slide = slides[i];
-    if (slide.properties.continued === "true" || slide.properties.count === "false") {
-      els[i - 1].className += ' has-continuation';
-    }
-  }
-  var s = d.createElement("style");
-  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
-  d.head.appendChild(s);
-})(document);
-// delete the temporary CSS (for displaying all slides initially) when the user
-// starts to view slides
-(function() {
-  var deleted = false;
-  slideshow.on('beforeShowSlide', function(slide) {
-    if (deleted) return;
-    var sheets = document.styleSheets, node;
-    for (var i = 0; i < sheets.length; i++) {
-      node = sheets[i].ownerNode;
-      if (node.dataset["target"] !== "print-only") continue;
-      node.parentNode.removeChild(node);
-    }
-    deleted = true;
-  });
-})();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
-
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
-  }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
+})();</script>
 
 <script>
 (function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
-
-<script>
-slideshow._releaseMath = function(el) {
-  var i, text, code, codes = el.getElementsByTagName('code');
+  var i, text, code, codes = document.getElementsByTagName('code');
   for (i = 0; i < codes.length;) {
     code = codes[i];
     if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
@@ -1087,8 +1038,7 @@ slideshow._releaseMath = function(el) {
     }
     i++;
   }
-};
-slideshow._releaseMath(document);
+})();
 </script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
