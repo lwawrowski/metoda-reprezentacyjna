@@ -1,0 +1,129 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Organizacja zajęć"
+author: "&copy; Łukasz Wawrowski"
+date: ""
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Prowadzący
+
+__dr Łukasz Wawrowski__  
+lukasz.wawrowski@ue.poznan.pl
+
+Konsultacje 
+
+- poniedziałki: 14:00-14:45
+- wtorki: 8:00-8:45
+
+Pokój 405C
+
+http://statystyka.ue.poznan.pl
+
+---
+
+# Plan zajęć
+
+1. Wprowadzenie do metody reprezentacyjnej
+2. Wprowadzenie do środowiska R
+3. Projektowanie badania
+4. Próba losowa
+5. Losowanie proste
+6. Losowanie złożone
+7. Metody wyznaczania wag
+8. Kalibracja
+9. Imputacja
+10. Bootstrap
+11. Modelowanie danych
+12. Analiza danych jakościowych 
+13. Analiza danych ilościowych
+14. Projekt
+15. Projekt
+
+---
+
+# Zaliczenie przedmiotu
+
+1. Dwa quizy na początku zajęć (20 punktów)
+
+2. Projekt zaliczeniowy realizowany podczas zajęć (20 punktów)
+
+---
+
+# Skala ocen
+
+|  %  | ocena |
+|:---:|:-----:|
+|0-59 | ndst  |
+|60-69| dst   |
+|70-74| dst+  |
+|75-84| db    |
+|85-89| db+   |
+|90-100| bdb   |
+
+---
+
+# Narzędzia
+
+R (https://www.r-project.org/) oraz RStudio (https://www.rstudio.com/)
+
+- lokalna wersja programu
+
+- https://rstudio.cloud/
+
+---
+
+# Nieobecności
+
+§ 27 pkt. 6 regulaminu studiów UEP
+
+Student jest zobowiązany usprawiedliwić nieobecność na zajęciach obowiązkowych
+u prowadzącego __w ciągu 7 dni roboczych__ od daty nieobecności. Usprawiedliwienia
+nieobecności dokonuje się w formie pisemnej, załączając kserokopię dokumentu
+poświadczającego niemożność uczestniczenia w zajęciach. Usprawiedliwienia
+nieobecności można dokonać również w formie elektronicznej, poprzez przesłanie na
+adres e-mail prowadzącego zajęcia skanu dokumentu poświadczającego niemożność
+stawiennictwa na zajęciach. Prowadzący zajęcia ma prawo żądać od studenta
+przedłożenia oryginału dokumentu potwierdzającego obiektywną przyczynę
+nieobecności, przy czym dokumentem takim może być jedynie zaświadczenie lekarskie
+o niezdolności do nauki albo inne urzędowe zaświadczenie (w tym zaświadczenie
+wydane przez rektora albo właściwego dyrektora studiów), stwierdzające wystąpienie
+zdarzenia uniemożliwiającego obecność. 
+
+---
+
+# Nieobecności
+
+Dozwolone są dwie nieusprawiedliwione nieobecności.
+
+Obniżenie oceny o 2 punkty za każdą nieobecność.
+
+---
+
+# Frekwencja
+
+Na moodle znajduje się zasób o nazwie _Frekwencja_
+
+Na początku każdych zajęć należy wybrać status _Obecność_
+
+W przypadku braku akcji zostanie przypisany status _Nieobecność_
+
+---
+
+# Moodle
+
+Metoda reprezentacyjna - stacj. II st. - (lab.) - dr Łukasz Wawrowski
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
