@@ -54,7 +54,7 @@ class: inverse
 
 Wybierz lokale wyborcze, które znajdują się w Poznaniu i w których liczba mieszkańców jest większa od zera.
 
-<div class="countdown" id="timer_5dad87f9" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dad8c2f" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -136,7 +136,7 @@ class: inverse
 
 Oblicz prawdopodobieństwo dla wylosowanych lokali wyborczych. W tym celu użyj funkcji `mutate()`.
 
-<div class="countdown" id="timer_5dad88f6" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dad8ae5" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -145,6 +145,20 @@ Oblicz prawdopodobieństwo dla wylosowanych lokali wyborczych. W tym celu użyj 
 # Pakiet _sampling_
 
 Pakiet [sampling](https://cran.r-project.org/web/packages/sampling/index.html) oferuje funkcje służące do losowania prób z wykorzystaniem różnych schematów losowania.
+
+---
+
+# Losowanie proporcjonalne
+
+Losowanie z prawdopodobieństami proporcjonalnymi do wartości cechy.
+
+W funkcji `sample_n` lub `sample_frac` należy podać argument `weight`.
+
+Aby wyznaczyć te prawdopodbieństwa w populacji korzysta się z funkcji:
+
+```
+inclusionprobabilities(a = cecha, n = liczebnosc_proby)
+```
 
 ---
 
@@ -168,7 +182,7 @@ class: inverse
 
 Przeprowadź losowanie warstwowe wykorzystując jako warstwę numer okręgu do senatu. Liczebności dobierz proporcjonalnie do liczby lokali, w taki sposób, żeby wylosować lokale dla 500 ankieterów.
 
-<div class="countdown" id="timer_5dad8a3f" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dad8b84" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

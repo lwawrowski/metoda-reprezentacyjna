@@ -8,8 +8,12 @@ obwody_poznan <- obwody %>%
   filter(powiat == "Poznań") %>%
   filter(mieszkancy != 0)
 
-losowanie_proste <- obwody_poznan %>%
+losowanie_proste <- obwody %>%
   sample_n(30)
+
+sum(losowanie_proste$wyborcy)
+
+inclusionprobabilities(1/obwody_poznan$wyborcy, 30)
 
 losowanie_proste <- obwody_poznan %>%
   sample_frac(0.1) %>%

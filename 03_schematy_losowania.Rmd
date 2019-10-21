@@ -132,6 +132,20 @@ Pakiet [sampling](https://cran.r-project.org/web/packages/sampling/index.html) o
 
 ---
 
+# Losowanie proporcjonalne
+
+Losowanie z prawdopodobieństami proporcjonalnymi do wartości cechy.
+
+W funkcji `sample_n` lub `sample_frac` należy podać argument `weight`.
+
+Aby wyznaczyć te prawdopodbieństwa w populacji korzysta się z funkcji:
+
+```
+inclusionprobabilities(a = cecha, n = liczebnosc_proby)
+```
+
+---
+
 # Losowanie warstwowe
 
 Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
