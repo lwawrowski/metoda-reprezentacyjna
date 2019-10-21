@@ -1,0 +1,187 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Schematy losowania"
+author: "&copy; Łukasz Wawrowski"
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(countdown)
+options(scipen=100)
+```
+
+# Problem
+
+Przeprowadzić badanie exit-poll w Poznaniu mając do dyspozycji 30 ankieterów.
+
+---
+
+# Pakiet _janitor_ 
+
+Surowe dane zwykle nie posiadają nazw kolumn przystosowanych do przetwarzania przez komputer
+
+- nazwy zmiennych nie powinny zawierać polskich liter i spacji
+
+- nazwy zmiennych nie powinny zaczynać się od liczby
+
+Te problemy rozwiązuje pakiet _janitor_ (dozorca, woźny) i funkcja `clean_names()`:
+
+```r
+
+zbior <- janitor::clean_names(zbior)
+
+```
+
+- funkcja ta zamienia wielkie litery na małe, spacje na podkreślniki i znaki transliteruje do ASCII.
+
+---
+
+class: inverse
+
+# Zadanie
+
+Wybierz lokale wyborcze, które znajdują się w Poznaniu i w których liczba mieszkańców jest większa od zera.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Próba losowa
+
+Próba jest losowa jeśli spełnione są następujące warunki:
+
+--
+
+1. Każda jednostka w populacji generalnej posiada niezerowe prawdopodobieństwo znalezienia się w próbie - $\pi_i$.
+
+2. Prawdopodobieństwo $\pi_i$ jest znane dla każdej jednostki w próbie.
+
+3. Każda para jednostek w populacji generalnej posiada niezerowe prawdopodobieństwo znalezienia się w próbie - $\pi_{ij}$.
+
+4. Prawdopodobieństwo $\pi_{ij}$ jest znane dla każdej pary jednostek w próbie.
+
+---
+
+# Liczba możliwych prób
+
+Dwumian Newtona: ${n\choose k}=\frac{n!}{k!\cdot(n-k)!}$
+
+- Losowanie próby o liczebności 4 z populacji o liczebności 10
+
+```{r}
+choose(10,4)
+```
+
+- Losowanie próby o liczebności 10 z populacji o liczebności 200
+
+```{r}
+choose(200,10)
+```
+
+---
+
+# Losowanie proste
+
+Prawdopodobieństwo dostania się do próby jest takie samo dla wszystkich jednostek.
+
+- funkcja `sample_n()` oraz `sample_frac()`
+
+---
+
+# Prawdopodobieństwo
+
+Prawdopodobieństwo dostania się (inkluzji) do próby.
+
+Losujemy próbę o wielkości 38 000 osób z Polski (populacja 38 milionów). Prawdopodobieństwo wylosowania pojedyńczej jednostki wynosi:
+
+$$\pi_i=38000/38000000=1/1000$$
+
+Każda osoba w próbie reprezentuje 1000 mieszkańców Polski.
+
+W związku z tym waga z próby jest równa:
+
+$$w_i=1/\pi_i=1000$$
+
+Suma wag z próby powinna być równa liczebności populacji.
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oblicz prawdopodobieństwo dla wylosowanych lokali wyborczych. W tym celu użyj funkcji `mutate()`.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Pakiet _sampling_
+
+Pakiet [sampling](https://cran.r-project.org/web/packages/sampling/index.html) oferuje funkcje służące do losowania prób z wykorzystaniem różnych schematów losowania.
+
+---
+
+# Losowanie warstwowe
+
+Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
+
+Funkcja `strata`
+
+```r
+strata(data, stratanames, size)
+```
+
+- trzeba podać liczebność dla każdej warstwy
+
+---
+
+class: inverse
+
+# Zadanie
+
+Przeprowadź losowanie warstwowe wykorzystując jako warstwę numer okręgu do senatu. Liczebności dobierz proporcjonalnie do liczby lokali, w taki sposób, żeby wylosować lokale dla 500 ankieterów.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Losowanie zespołowe
+
+Z operatu losowane są całe grupy (zespoły).
+
+Funkcja `cluster`
+
+```r
+strata(data, clustername, size)
+```
+
+---
+
+# Losowanie systematyczne
+
+Losowanie co k-tej jednostki.
+
+Funkcja `UPsystematic`
+
+```r
+UPsystematic(pik)
+```
+
+- operuje na prawdopodobieństwach, zatem wielkość próby należy określić wcześniej
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
