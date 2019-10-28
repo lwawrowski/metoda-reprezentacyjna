@@ -146,6 +146,24 @@ inclusionprobabilities(a = cecha, n = liczebnosc_proby)
 
 ---
 
+class: inverse
+
+# Zadanie
+
+Jaki jest efekt działania poniższego kodu?
+
+```
+los_prop <- obwody %>%
+  mutate(p_prop=inclusionprobabilities(wyborcy, 1000)) %>%
+  sample_n(1000, weight = wyborcy)
+```
+
+--
+
+Ile wynosi suma wag dla wylosowanych jednostek?
+
+---
+
 # Losowanie warstwowe
 
 Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
@@ -193,6 +211,16 @@ UPsystematic(pik)
 ```
 
 - operuje na prawdopodobieństwach, zatem wielkość próby należy określić wcześniej
+
+---
+
+class: inverse
+
+# Zadanie
+
+Wczytaj do R zbiór danych _przystanki_ za pomocą funkcji `load("data/przystanki.RData")`. Zaproponuj schemat losowania wykorzystujący dodatkowe zmienne, który umożliwi wylosowanie 100 przystanków komunikacji miejskiej. 
+
+`r countdown(minutes = 15, seconds = 0, top = 0)`
 
 ---
 
