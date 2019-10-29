@@ -182,7 +182,7 @@ class: inverse
 
 # Zadanie
 
-Przeprowadź losowanie warstwowe wykorzystując jako warstwę numer okręgu do senatu. Liczebności dobierz proporcjonalnie do liczby lokali, w taki sposób, żeby wylosować lokale dla 500 ankieterów.
+Przeprowadź losowanie warstwowe wykorzystując jako warstwę numer okręgu do senatu. Wyznacz liczebność próby w każdym z okręgów tak, aby zapewnić pracę dla 500 ankieterów.
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
@@ -195,7 +195,7 @@ Z operatu losowane są całe grupy (zespoły).
 Funkcja `cluster`
 
 ```r
-strata(data, clustername, size)
+cluster(data, clustername, size)
 ```
 
 ---
