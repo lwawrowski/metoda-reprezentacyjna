@@ -1,0 +1,222 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Estymacja"
+author: "&copy; Łukasz Wawrowski"
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(countdown)
+options(scipen=100)
+```
+
+
+# Wprowadzenie
+
+> Statystycy są chyba jedynymi specjalistami, którzy nie tylko dumnie oświadczają, że udzielane przez nich odpowiedzi najprawdopodobniej są obarczone błędem, ale też dokładają wszelkich starań, by precyzyjnie określić wielkość tego błędu.
+
+Bruce Frey, _75 sposobów na statystykę. Jak zmierzyć świat i wygrać z prawdopodobieństwem_
+
+---
+
+# Problem
+
+---
+
+### Estymator Horvitza-Thompsona
+
+Estymator wartości globalnej 
+
+$$\hat{y}^{HT}=\sum\limits_{i=1}^{n}{y_iw_i}$$
+
+Estymator wartości średniej
+
+$$\hat{\bar{y}}^{HT}=\frac{1}{n}\sum\limits_{i=1}^{n}{y_iw_i}$$
+
+gdzie:
+
+- $n$ - liczebność próby,
+- $x_i$ - wartość cechy dla $i$-tej jednostki,
+- $w_i$ - wartość wagi dla $i$-tej jednostki.
+
+---
+
+### Wariancja estymatora Horvitza-Thompsona
+
+Estymator wartości globalnej 
+
+$$V(\hat{y}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s_y}{n}$$
+
+Estymator wartości średniej
+
+$$V(\hat{\bar{y}}^{HT})=\frac{N-n}{N} \cdot \frac{s_y}{n}$$
+
+gdzie: 
+
+- $N$ - liczebność populacji,
+- $n$ - liczebność próby,
+- $s_x$ - wariancja cechy $x$.
+
+---
+
+# Finite Population Correction
+
+Różnica pomiędzy losowaniem ze zwracaniem, a losowaniem bez zwracania
+
+$$\text{FPC}=\frac{N-n}{N}$$
+
+???
+
+https://www.statisticshowto.datasciencecentral.com/finite-population-correction-factor/
+
+---
+
+## Błąd standardowy oszacowania
+
+Interpretowalną miarą błędu jest błąd standardowy:
+
+$$\text{SE}=\sqrt{V(\hat{y^{HT}})}$$
+
+--
+
+Względny błąd oszacowania:
+
+$$\text{CV}=\frac{\text{SE}}{\hat{y^{HT}}}$$
+
+Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
+
+---
+
+# Zależności
+
+- większa próba = większe koszty
+- większa próba = mniejszy błąd oszacowania
+
+---
+
+# Zbiór danych
+
+National Health and Nutrition Examination Survey (NHANES)
+
+https://www.cdc.gov/nchs/nhanes/index.htm
+
+- Ocena zdrowia dzieci i dorosłych w USA
+- operat jest warstwowany cechami geograficznymi i ludnością
+- 4-stopniowy schemat losowania:
+  - 1 stopień: losowanie hrabstw w ramach warstw
+  - 2 stopień: losowanie miast w ramach hrabstw
+  - 3 stopień: losowanie gospodarstw w ramach miast
+  - 4 stopień: losowanie osób w ramach gospodarstw
+
+---
+
+# Pakiet survey
+
+- deklaracja schematu losowania
+- estymacja wartości
+- nazwy zmiennych należy poprzedzić tyldą $\sim$
+
+---
+
+# Wyniki nieprzeważone i przeważone
+
+.pull-left[
+
+<img src="nonweighted.png" width=400px>
+
+]
+
+--
+
+.pull-right[
+
+<img src="weighted.png" width=400px>
+]
+
+---
+
+# Rozgrzewka
+
+```{r message=FALSE, warning=FALSE}
+library(survey)
+
+data(api)
+```
+
+Na podstawie zbioru `apistrat` oszacuj średnią wartość Academic Performance Index (`api00`). Jednostki losowania pierwszego stopnia to `cds`, warstwa - `stype`, waga  - `pw`.
+
+--
+
+```{r}
+dstrat <- svydesign(id=~cds,strata=~stype, weights=~pw, 
+                    data=apistrat)
+
+svymean(~api00, dstrat)
+
+```
+
+---
+
+# Estymacja wskaźnika
+
+Ogółem:
+
+```{r eval=FALSE}
+svyratio(numerator = ~licznik, denominator = ~mianownik, 
+         design = schemat)
+```
+
+
+- licznik i mianownik musi być zdefiniowany jako zmienna binarna.
+
+--
+
+W przekrojach:
+
+```{r eval=FALSE}
+svyby(formula = ~licznik, denominator = ~mianownik, 
+      by = ~przekroj, design = schemat, FUN = svyratio)
+
+```
+
+
+---
+
+# Przedział ufności
+
+W jakim przedziale i z jakim prawdopodobieństwem znajduje się wartość prawdziwa:
+
+$$\left(\hat{y}^{HT}- z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})} \leq \hat{y}^{HT} \leq \hat{y}^{HT}+ z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})}\right)$$
+
+- 90% przedział ufności - $z_\alpha = 1,64$, dla $\alpha=0,10$
+- 95% przedział ufności - $z_\alpha = 1,96$, dla $\alpha=0,05$
+- 99% przedział ufności - $z_\alpha = 2,58$, dla $\alpha=0,01$
+
+Obliczanie kwantyla rozkładu w R:
+
+```{r}
+qnorm(1-0.05/2)
+```
+
+---
+
+# Zadanie
+
+Skonstruować 90% przedziały ufności dla oszacowanego odsetka niepełnosprawnych ogółem i w grupach wieku, a następnie porównać je z wartością prawdziwą.
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+

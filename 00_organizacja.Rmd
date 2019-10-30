@@ -34,11 +34,11 @@ http://statystyka.ue.poznan.pl
 
 1. Wprowadzenie do metody reprezentacyjnej
 2. Wprowadzenie do środowiska R
-3. Projektowanie badania
-4. Próba losowa
-5. Losowanie proste
-6. Losowanie złożone
-7. Metody wyznaczania wag
+3. Próba losowa, losowanie proste
+4. Losowanie złożone
+5. Estymacja średniej
+6. Estymacja wskaźnika
+7. Bootstrap
 8. Kalibracja
 9. Imputacja
 10. Bootstrap

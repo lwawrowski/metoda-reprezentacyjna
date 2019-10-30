@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Metoda reprezentacyjna</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="© Łukasz Wawrowski" />
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="default-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Metoda reprezentacyjna
+## Estymacja
+### © Łukasz Wawrowski
+
+---
+
+
+
+
+
+# Wprowadzenie
+
+&gt; Statystycy są chyba jedynymi specjalistami, którzy nie tylko dumnie oświadczają, że udzielane przez nich odpowiedzi najprawdopodobniej są obarczone błędem, ale też dokładają wszelkich starań, by precyzyjnie określić wielkość tego błędu.
+
+Bruce Frey, _75 sposobów na statystykę. Jak zmierzyć świat i wygrać z prawdopodobieństwem_
+
+---
+
+# Problem
+
+---
+
+### Estymator Horvitza-Thompsona
+
+Estymator wartości globalnej 
+
+`$$\hat{y}^{HT}=\sum\limits_{i=1}^{n}{x_iw_i}$$`
+
+Estymator wartości średniej
+
+`$$\hat{\bar{y}}^{HT}=\frac{1}{n}\sum\limits_{i=1}^{n}{x_iw_i}$$`
+
+gdzie:
+
+- `\(n\)` - liczebność próby,
+- `\(x_i\)` - wartość cechy dla `\(i\)`-tej jednostki,
+- `\(w_i\)` - wartość wagi dla `\(i\)`-tej jednostki.
+
+---
+
+### Wariancja estymatora Horvitza-Thompsona
+
+Estymator wartości globalnej 
+
+`$$V(\hat{y}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s_x}{n}$$`
+
+Estymator wartości średniej
+
+`$$V(\hat{\bar{y}}^{HT})=\frac{N-n}{N} \cdot \frac{s_x}{n}$$`
+
+gdzie: 
+
+- `\(N\)` - liczebność populacji,
+- `\(n\)` - liczebność próby,
+- `\(s_x\)` - wariancja cechy `\(x\)`.
+
+---
+
+# Finite Population Correction
+
+Różnica pomiędzy losowaniem ze zwracaniem, a losowaniem bez zwracania
+
+`$$\text{FPC}=\frac{N-n}{N}$$`
+
+???
+
+https://www.statisticshowto.datasciencecentral.com/finite-population-correction-factor/
+
+---
+
+## Błąd standardowy oszacowania
+
+Interpretowalną miarą błędu jest błąd standardowy:
+
+`$$\text{SE}=\sqrt{V(\hat{y^{HT}})}$$`
+
+--
+
+Względny błąd oszacowania:
+
+`$$\text{CV}=\frac{\text{SE}}{\hat{y^{HT}}}$$`
+
+Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
+
+---
+
+# Zależności
+
+- większa próba = większe koszty
+- większa próba = mniejszy błąd oszacowania
+
+---
+
+# Zbiór danych
+
+National Health and Nutrition Examination Survey (NHANES)
+
+https://www.cdc.gov/nchs/nhanes/index.htm
+
+- Ocena zdrowia dzieci i dorosłych w USA
+- operat jest warstwowany cechami geograficznymi i ludnością
+- 4-stopniowy schemat losowania:
+  - 1 stopień: losowanie hrabstw w ramach warstw
+  - 2 stopień: losowanie miast w ramach hrabstw
+  - 3 stopień: losowanie gospodarstw w ramach miast
+  - 4 stopień: losowanie osób w ramach gospodarstw
+
+---
+
+# Pakiet survey
+
+- deklaracja schematu losowania
+- estymacja wartości
+- nazwy zmiennych należy poprzedzić tyldą `\(\sim\)`
+
+---
+
+# Wyniki nieprzeważone i przeważone
+
+.pull-left[
+
+&lt;img src="nonweighted.png" width=400px&gt;
+
+]
+
+--
+
+.pull-right[
+
+&lt;img src="weighted.png" width=400px&gt;
+]
+
+---
+
+# Rozgrzewka
+
+
+```r
+library(survey)
+
+data(api)
+```
+
+Na podstawie zbioru `apistrat` oszacuj średnią wartość Academic Performance Index (`api00`). Jednostki losowania pierwszego stopnia to `cds`, warstwa - `stype`, waga  - `pw`.
+
+--
+
+
+```r
+dstrat &lt;- svydesign(id=~cds,strata=~stype, weights=~pw, 
+                    data=apistrat)
+
+svymean(~api00, dstrat)
+```
+
+```
+##         mean     SE
+## api00 662.29 9.5361
+```
+
+---
+
+# Estymacja wskaźnika
+
+Ogółem:
+
+
+```r
+svyratio(numerator = ~licznik, denominator = ~mianownik, 
+         design = schemat)
+```
+
+
+- licznik i mianownik musi być zdefiniowany jako zmienna binarna.
+
+--
+
+W przekrojach:
+
+
+```r
+svyby(formula = ~licznik, denominator = ~mianownik, 
+      by = ~przekroj, design = schemat, FUN = svyratio)
+```
+
+
+---
+
+# Przedział ufności
+
+W jakim przedziale i z jakim prawdopodobieństwem znajduje się wartość prawdziwa:
+
+`$$\left(\hat{y}^{HT}- z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})} \leq \hat{y}^{HT} \leq \hat{y}^{HT}+ z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})}\right)$$`
+
+- 90% przedział ufności - `\(z_\alpha = 1,64\)`, dla `\(\alpha=0,10\)`
+- 95% przedział ufności - `\(z_\alpha = 1,96\)`, dla `\(\alpha=0,05\)`
+- 99% przedział ufności - `\(z_\alpha = 2,58\)`, dla `\(\alpha=0,01\)`
+
+Obliczanie kwantyla rozkładu w R:
+
+
+```r
+qnorm(1-0.05/2)
+```
+
+```
+## [1] 1.959964
+```
+
+---
+
+# Zadanie
+
+Skonstruować 90% przedziały ufności dla oszacowanego odsetka niepełnosprawnych ogółem i w grupach wieku, a następnie porównać je z wartością prawdziwą.
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "4:3",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
