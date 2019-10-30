@@ -31,6 +31,44 @@ Bruce Frey, _75 sposobów na statystykę. Jak zmierzyć świat i wygrać z prawd
 
 # Problem
 
+Oszacować liczbę osób z podwyższonym cholesterolem w grupach płci.
+
+---
+
+# Pakiet [survey](https://cran.r-project.org/web/packages/survey/index.html)
+
+- deklaracja schematu losowania
+
+- estymacja wartości
+
+- dane z badań reprezentacyjnych
+
+---
+
+# Dane
+
+National Health and Nutrition Examination Survey (NHANES)
+
+https://www.cdc.gov/nchs/nhanes/index.htm
+
+- Ocena zdrowia dzieci i dorosłych w USA
+- operat jest warstwowany cechami geograficznymi i ludnością
+- 4-stopniowy schemat losowania:
+  - 1 stopień: losowanie hrabstw w ramach warstw
+  - 2 stopień: losowanie miast w ramach hrabstw
+  - 3 stopień: losowanie gospodarstw w ramach miast
+  - 4 stopień: losowanie osób w ramach gospodarstw
+
+---
+
+class: inverse
+
+# Zadanie
+
+Ile osób w próbie ma podwyższony cholesterol?
+
+`r countdown(minutes = 5, seconds = 0, top = 0)`
+
 ---
 
 ### Estymator Horvitza-Thompsona
@@ -46,7 +84,7 @@ $$\hat{\bar{y}}^{HT}=\frac{1}{n}\sum\limits_{i=1}^{n}{y_iw_i}$$
 gdzie:
 
 - $n$ - liczebność próby,
-- $x_i$ - wartość cechy dla $i$-tej jednostki,
+- $y_i$ - wartość cechy dla $i$-tej jednostki,
 - $w_i$ - wartość wagi dla $i$-tej jednostki.
 
 ---
@@ -65,7 +103,7 @@ gdzie:
 
 - $N$ - liczebność populacji,
 - $n$ - liczebność próby,
-- $s_x$ - wariancja cechy $x$.
+- $s_y$ - wariancja cechy $y$.
 
 ---
 
@@ -75,9 +113,7 @@ Różnica pomiędzy losowaniem ze zwracaniem, a losowaniem bez zwracania
 
 $$\text{FPC}=\frac{N-n}{N}$$
 
-???
-
-https://www.statisticshowto.datasciencecentral.com/finite-population-correction-factor/
+[źródło](https://www.statisticshowto.datasciencecentral.com/finite-population-correction-factor/)
 
 ---
 
@@ -100,39 +136,16 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 # Zależności
 
 - większa próba = większe koszty
+
 - większa próba = mniejszy błąd oszacowania
 
 ---
 
-# Zbiór danych
-
-National Health and Nutrition Examination Survey (NHANES)
-
-https://www.cdc.gov/nchs/nhanes/index.htm
-
-- Ocena zdrowia dzieci i dorosłych w USA
-- operat jest warstwowany cechami geograficznymi i ludnością
-- 4-stopniowy schemat losowania:
-  - 1 stopień: losowanie hrabstw w ramach warstw
-  - 2 stopień: losowanie miast w ramach hrabstw
-  - 3 stopień: losowanie gospodarstw w ramach miast
-  - 4 stopień: losowanie osób w ramach gospodarstw
-
----
-
-# Pakiet survey
-
-- deklaracja schematu losowania
-- estymacja wartości
-- nazwy zmiennych należy poprzedzić tyldą $\sim$
-
----
-
-# Wyniki nieprzeważone i przeważone
+## Wyniki nieprzeważone i przeważone
 
 .pull-left[
 
-<img src="nonweighted.png" width=400px>
+<img src="img/nonweighted.png" width=400px>
 
 ]
 
@@ -140,30 +153,98 @@ https://www.cdc.gov/nchs/nhanes/index.htm
 
 .pull-right[
 
-<img src="weighted.png" width=400px>
+<img src="img/weighted.png" width=400px>
 ]
 
 ---
 
-# Rozgrzewka
+# Pakiet [survey](https://cran.r-project.org/web/packages/survey/index.html)
 
-```{r message=FALSE, warning=FALSE}
-library(survey)
+- deklaracja schematu losowania
 
-data(api)
-```
+- estymacja wartości
 
-Na podstawie zbioru `apistrat` oszacuj średnią wartość Academic Performance Index (`api00`). Jednostki losowania pierwszego stopnia to `cds`, warstwa - `stype`, waga  - `pw`.
+- dane z badań reprezentacyjnych
 
---
+- nazwy zmiennych należy poprzedzić tyldą $\sim$
 
-```{r}
-dstrat <- svydesign(id=~cds,strata=~stype, weights=~pw, 
-                    data=apistrat)
+- nazwy funkcji rozpoczynają się od `svy`
 
-svymean(~api00, dstrat)
+---
+
+## Deklaracja schematu losowania
 
 ```
+svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi, 
+          nest = TRUE, data = zbior_danych)
+```
+
+- `id` - jednostki losowania pierwszego stopnia
+
+- `strata` - zmienna zawierająca identyfikator warstwy
+
+- `weights` - zmienna zawierająca wagi z próby
+
+- `nest` - wartość TRUE albo FALSE wskazująca czy wartości `id` są zagnieżdżone w `strata`
+
+- `data` - zbiór danych
+
+---
+
+# Estymacja wartości globalnej
+
+```
+svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
+```
+
+- `x` - estymowana cecha - najlepiej jako zmienna zero-jedynkowa
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
+
+---
+
+# Estymacja wartości średniej
+
+```
+svymean(x = ~cecha, design = schemat, na.rm = FALSE)
+```
+
+- `x` - estymowana cecha - zmienna ciągła
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
+
+---
+
+# Estymacja w grupach
+
+```
+svyby(formula = ~cecha, by = ~podzial, design = schemat, 
+      FUN = funkcja, na.rm = FALSE)
+```
+
+- `formula` - estymowana cecha
+
+- `by` - zmienna grupująca
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `FUN` - funkcja wykorzystana do estymacji: `svytotal`, `svymean`, ...
+
+- `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oszacuj liczbę osób z podwyższonym cholesterolem w grupach wieku.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
