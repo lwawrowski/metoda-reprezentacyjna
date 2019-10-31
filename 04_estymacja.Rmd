@@ -238,9 +238,33 @@ Oszacuj liczbę osób z podwyższonym cholesterolem w grupach wieku.
 
 ---
 
+# API
+
+The Academic Performance Index
+
+```{r eval=FALSE}
+data(api)
+```
+
+- `apipop` - cała populacja
+
+- `apisrs` - próba wylosowana z wykorzystaniem losowania prostego
+
+- `apistrat` - losowanie warstwowe ze względu na typ szkoły
+
+- `apiclus1` - losowanie zespołowe okręgów szkół
+
+- `apiclus2` - dwu-stopniowe losowanie zespołowe
+
+---
+
 class: inverse
 
 # Zadanie
+
+Na podstawie próby wylosowanej z wykorzystaniem warstw (`apistrat`) oszacuj liczbę uczniów biorących udział w teście kompetencji (zmienna `api.stu`) w przekroju typu szkoły (`stype`).
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
@@ -255,30 +279,6 @@ svymean(x = ~cecha, design = schemat, na.rm = FALSE)
 - `design` - schemat losowania określony za pomocą funkcji `svydesign()`
 
 - `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
-
----
-
-# Estymacja wskaźnika
-
-Ogółem
-
-```{r eval=FALSE}
-svyratio(numerator = ~licznik, denominator = ~mianownik, 
-         design = schemat)
-```
-
-
-- licznik i mianownik musi być zdefiniowany jako zmienna binarna.
-
---
-
-W grupach:
-
-```{r eval=FALSE}
-svyby(formula = ~licznik, denominator = ~mianownik, 
-      by = ~podzial, design = schemat, FUN = svyratio)
-
-```
 
 ---
 
@@ -300,9 +300,67 @@ qnorm(1-0.05/2)
 
 ---
 
+# Funkcje z pakietu _stats_
+
+Przedział ufności
+
+```{r eval=FALSE}
+confint(object = obiekt, level = 0.95)
+```
+
+- `object` - obiekt uzyskany z wykorzystaniem funkcji `svytotal`, `svyby`, ...
+
+- `level` - długość przedziału ufności (0.90, 0.95, 0.99)
+
+Względny błąd oszacowania
+
+```{r eval=FALSE}
+cv(object = obiekt)
+```
+
+- `object` - obiekt uzyskany z wykorzystaniem funkcji `svytotal`, `svyby`, ...
+
+---
+
 # Zadanie
 
-Skonstruować 90% przedziały ufności dla oszacowanego odsetka niepełnosprawnych ogółem i w grupach wieku, a następnie porównać je z wartością prawdziwą.
+Skonstruuj 90% przedziały ufności dla oszcowań średniego wyniku testu kompetencji (`api00`) w przekroju typu szkoły (`stype`). Czy wartości rzeczywiste znajdują się w tych przedziałach?
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Estymacja wskaźnika
+
+Ogółem
+
+```{r eval=FALSE}
+svyratio(numerator = ~licznik, denominator = ~mianownik, 
+         design = schemat)
+```
+
+
+- licznik i mianownik musi być zdefiniowany jako zmienna zero-jedynkowa
+
+--
+
+W grupach:
+
+```{r eval=FALSE}
+svyby(formula = ~licznik, denominator = ~mianownik, 
+      by = ~podzial, design = schemat, FUN = svyratio)
+
+```
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oszacuj odsetek uczniów, którzy wzięli udział w teście kompetencji w przekroju typu szkoły (`stype`).
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
