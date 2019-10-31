@@ -16,6 +16,14 @@ nhanes %>%
 schemat <- svydesign(id=~SDMVPSU, strata=~SDMVSTRA, weights=~WTMEC2YR, nest=TRUE,data=nhanes) 
 summary(schemat)
 
-svytotal(x = ~HI_CHOL, design = schemat, na.rm = T)
+a <- svytotal(x = ~HI_CHOL, design = schemat, na.rm = T)
 
 svyby(formula = ~HI_CHOL, by = ~RIAGENDR, design = schemat, FUN = svytotal, na.rm = T)
+
+data(api)
+
+cv(a)
+
+confint(a, level = 0.9)
+
+# http://r-survey.r-forge.r-project.org/survey/survey-wss-2010.pdf

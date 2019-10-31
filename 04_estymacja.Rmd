@@ -91,19 +91,21 @@ gdzie:
 
 ### Wariancja estymatora Horvitza-Thompsona
 
-Estymator wartości globalnej 
+Dla prostego schematu losowania obowiązują następujące wzory:
 
-$$V(\hat{y}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s_y}{n}$$
+- Estymator wartości globalnej 
 
-Estymator wartości średniej
+$$V(\hat{y}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s^2_y}{n}$$
 
-$$V(\hat{\bar{y}}^{HT})=\frac{N-n}{N} \cdot \frac{s_y}{n}$$
+- Estymator wartości średniej
+
+$$V(\hat{\bar{y}}^{HT})=\frac{N-n}{N} \cdot \frac{s^2_y}{n}$$
 
 gdzie: 
 
 - $N$ - liczebność populacji,
 - $n$ - liczebność próby,
-- $s_y$ - wariancja cechy $y$.
+- $s^2_y$ - wariancja cechy $y$.
 
 ---
 
@@ -121,13 +123,13 @@ $$\text{FPC}=\frac{N-n}{N}$$
 
 Interpretowalną miarą błędu jest błąd standardowy:
 
-$$\text{SE}=\sqrt{V(\hat{y^{HT}})}$$
+$$\text{SE}=\sqrt{V(\hat{y}^{HT})}$$
 
 --
 
 Względny błąd oszacowania:
 
-$$\text{CV}=\frac{\text{SE}}{\hat{y^{HT}}}$$
+$$\text{CV}=\frac{\text{SE}}{\hat{y}^{HT}}$$
 
 Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
@@ -135,9 +137,9 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
 # Zależności
 
-- większa próba = większe koszty
-
 - większa próba = mniejszy błąd oszacowania
+
+- większa próba = większe koszty
 
 ---
 
@@ -174,7 +176,9 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
 ## Deklaracja schematu losowania
 
-```
+Określenie schematu losowania, żeby R mógł dobrać odpowiednie wzory do estymacji.
+
+```{r eval=FALSE}
 svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi, 
           nest = TRUE, data = zbior_danych)
 ```
@@ -193,7 +197,7 @@ svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi,
 
 # Estymacja wartości globalnej
 
-```
+```{r eval=FALSE}
 svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
 ```
 
@@ -205,23 +209,9 @@ svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
 
 ---
 
-# Estymacja wartości średniej
-
-```
-svymean(x = ~cecha, design = schemat, na.rm = FALSE)
-```
-
-- `x` - estymowana cecha - zmienna ciągła
-
-- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
-
-- `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
-
----
-
 # Estymacja w grupach
 
-```
+```{r eval=FALSE}
 svyby(formula = ~cecha, by = ~podzial, design = schemat, 
       FUN = funkcja, na.rm = FALSE)
 ```
@@ -232,7 +222,7 @@ svyby(formula = ~cecha, by = ~podzial, design = schemat,
 
 - `design` - schemat losowania określony za pomocą funkcji `svydesign()`
 
-- `FUN` - funkcja wykorzystana do estymacji: `svytotal`, `svymean`, ...
+- `FUN` - funkcja wykorzystana do estymacji np. `svytotal`
 
 - `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
 
@@ -248,9 +238,29 @@ Oszacuj liczbę osób z podwyższonym cholesterolem w grupach wieku.
 
 ---
 
+class: inverse
+
+# Zadanie
+
+---
+
+# Estymacja wartości średniej
+
+```{r eval=FALSE}
+svymean(x = ~cecha, design = schemat, na.rm = FALSE)
+```
+
+- `x` - estymowana cecha - zmienna ciągła
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
+
+---
+
 # Estymacja wskaźnika
 
-Ogółem:
+Ogółem
 
 ```{r eval=FALSE}
 svyratio(numerator = ~licznik, denominator = ~mianownik, 
@@ -262,14 +272,13 @@ svyratio(numerator = ~licznik, denominator = ~mianownik,
 
 --
 
-W przekrojach:
+W grupach:
 
 ```{r eval=FALSE}
 svyby(formula = ~licznik, denominator = ~mianownik, 
-      by = ~przekroj, design = schemat, FUN = svyratio)
+      by = ~podzial, design = schemat, FUN = svyratio)
 
 ```
-
 
 ---
 
