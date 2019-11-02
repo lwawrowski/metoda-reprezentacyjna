@@ -322,6 +322,8 @@ cv(object = obiekt)
 
 ---
 
+class: inverse
+
 # Zadanie
 
 Skonstruuj 90% przedziały ufności dla oszcowań średniego wyniku testu kompetencji (`api00`) w przekroju typu szkoły (`stype`). Czy wartości rzeczywiste znajdują się w tych przedziałach?
