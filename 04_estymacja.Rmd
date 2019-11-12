@@ -201,7 +201,7 @@ svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi,
 svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
 ```
 
-- `x` - estymowana cecha - najlepiej jako zmienna zero-jedynkowa
+- `x` - estymowana cecha 
 
 - `design` - schemat losowania określony za pomocą funkcji `svydesign()`
 
@@ -274,7 +274,7 @@ Na podstawie próby wylosowanej z wykorzystaniem warstw (`apistrat`) oszacuj lic
 svymean(x = ~cecha, design = schemat, na.rm = FALSE)
 ```
 
-- `x` - estymowana cecha - zmienna ciągła
+- `x` - estymowana cecha 
 
 - `design` - schemat losowania określony za pomocą funkcji `svydesign()`
 
@@ -340,9 +340,6 @@ Ogółem
 svyratio(numerator = ~licznik, denominator = ~mianownik, 
          design = schemat)
 ```
-
-
-- licznik i mianownik musi być zdefiniowany jako zmienna zero-jedynkowa
 
 --
 
