@@ -120,7 +120,7 @@ class: inverse
 
 # Zadanie
 
-Oblicz prawdopodobieństwo dla wylosowanych lokali wyborczych. W tym celu użyj funkcji `mutate()`.
+Oblicz prawdopodobieństwo wylosowania do próby 30 lokali wyborczych z Poznania. W tym celu użyj funkcji `mutate()`.
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
@@ -150,17 +150,9 @@ class: inverse
 
 # Zadanie
 
-Jaki jest efekt działania poniższego kodu?
+Jakie będzie prawdopodobieństwo dostania się do próby obwodu z największą liczbą wyborców, w przypadku gdy postanowiono wylosować 5123 obwody?
 
-```
-los_prop <- obwody %>%
-  mutate(p_prop=inclusionprobabilities(wyborcy, 1000)) %>%
-  sample_n(1000, weight = wyborcy)
-```
-
---
-
-Ile wynosi suma wag dla wylosowanych jednostek?
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
