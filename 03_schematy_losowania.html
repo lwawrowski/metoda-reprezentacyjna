@@ -54,7 +54,7 @@ class: inverse
 
 Wybierz lokale wyborcze, które znajdują się w Poznaniu i w których liczba mieszkańców jest większa od zera.
 
-<div class="countdown" id="timer_5db70d5b" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dceb576" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -134,9 +134,9 @@ class: inverse
 
 # Zadanie
 
-Oblicz prawdopodobieństwo dla wylosowanych lokali wyborczych. W tym celu użyj funkcji `mutate()`.
+Oblicz prawdopodobieństwo wylosowania do próby 30 lokali wyborczych z Poznania. W tym celu użyj funkcji `mutate()`.
 
-<div class="countdown" id="timer_5db70c9a" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dceb2a8" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -166,17 +166,11 @@ class: inverse
 
 # Zadanie
 
-Jaki jest efekt działania poniższego kodu?
+Jakie będzie prawdopodobieństwo dostania się do próby obwodu z największą liczbą wyborców, w przypadku gdy postanowiono wylosować 5123 obwody?
 
-```
-los_prop &lt;- obwody %&gt;%
-  mutate(p_prop=inclusionprobabilities(wyborcy, 1000)) %&gt;%
-  sample_n(1000, weight = wyborcy)
-```
-
---
-
-Ile wynosi suma wag dla wylosowanych jednostek?
+<div class="countdown" id="timer_5dceb504" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 
 ---
 
@@ -200,7 +194,7 @@ class: inverse
 
 Przeprowadź losowanie warstwowe wykorzystując jako warstwę numer okręgu do senatu. Wyznacz liczebność próby w każdym z okręgów tak, aby zapewnić pracę dla 500 ankieterów.
 
-<div class="countdown" id="timer_5db70bd1" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dceb35c" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -238,7 +232,7 @@ class: inverse
 
 Wczytaj do R zbiór danych _przystanki_ za pomocą funkcji `load("data/przystanki.RData")`. Zaproponuj schemat losowania wykorzystujący dodatkowe zmienne, który umożliwi wylosowanie 100 przystanków komunikacji miejskiej. 
 
-<div class="countdown" id="timer_5db70b1f" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dceb528" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
