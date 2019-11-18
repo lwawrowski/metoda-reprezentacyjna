@@ -1,0 +1,248 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Braki danych"
+author: "&copy; Łukasz Wawrowski"
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(countdown)
+options(scipen=100)
+```
+
+# Braki danych
+
+![](img/nonresponse.png)
+
+
+---
+
+# Możliwe rozwiązania
+
+- Nonrespondents -> kalibracja
+
+- Item missing data -> imputacja
+
+---
+
+# Projektowanie badania
+
+1. Losowanie próby na podstawie operatu (populacji)
+
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
+
+3. Zebranie danych od respondentów - występowanie braków odpowiedzi
+
+4. **Korekta post-hoc**
+
+5. Szacowanie parametrów
+
+---
+
+# Kalibracja
+
+Metoda wykorzystywana w estymacji różnych parametrów w badaniach statystycznych z brakami odpowiedzi
+
+- twórcy metody: [Deville, J., & Sarndal, C. (1992). Calibration Estimators in Survey Sampling. Journal of the American Statistical Association, 87(418), 376-382. doi:10.2307/2290268](https://www.jstor.org/stable/2290268)
+
+- z polskiego podwórka: [Szymkowiak, M. (2019). Podejście kalibracyjne w badaniach społeczno-ekonomicznych. Wydawnictwo Uniwersytetu Ekonomicznego w Poznaniu](http://poznan.ksiegarnienaukowe.pl/ksiazka/Szymkowiak-Marcin/Podejscie-kalibracyjne-w-badaniach-spoleczno-ekonomicznych,pwnpoJXI54V5F)
+
+---
+
+# Kalibracja
+
+- Zakładamy, że populacja $U=\left\{1,2,\ldots,N\right\}$  składa się z $N$ elementów.
+- Z populacji tej losujemy zgodnie z określonym schematem losowania próbę $s\subseteq U$, składającą się z $n$ elementów.
+- Niech $\pi_{i}$ oznacza prawdopodobieństwo inkluzji pierwszego rzędu tj. $\pi_{i}=P\left(i\in s\right)$ a $w_{i}=1/\pi_{i}$ wagę przypisaną $i$-tej jednostce w procesie losowania.
+- Zakładamy, że głównym celem jest oszacowanie wartości globalnej zmiennej $y$: 
+$$Y=\sum_{i=1}^{N}y_{i},$$
+gdzie $y_{i}$ oznacza wartość zmiennej $y$ dla $i$-tej jednostki, $i=1,\ldots,N$.
+
+---
+
+# Kalibracja
+
+- Niech ponadto $x_{1},\ldots,x_{k}$ oznaczają zmienne pomocnicze, a $\mathbf{X}_{j}$ oznacza wartość globalną zmiennej $x_{j}$, $j=1,\ldots,k$, tj.
+$$\mathbf{X}_{j}=\sum_{i=1}^{N}x_{ij},$$
+gdzie $x_{ij}$ oznacza wartość $j$ - tej zmiennej pomocniczej dla $i$ - tej jednostki badania.
+- Do oszacowania wartości globalnej zmiennej $y$ wykorzystujemy estymator Horvitza-Thompsona:
+
+$$\hat{Y}_{HT}=\sum_{i=1}^{n}w_{i}y_{i}$$
+
+---
+
+# Kalibracja
+
+- W praktyce bardzo często zdarza się, że:
+
+$$\sum_{s}w_{i}x_{ij} \neq \mathbf{X}_{j}$$
+co oznacza konieczność rozważenia zastosowania kalibracji.
+
+---
+
+# Kalibracja
+
+- Zatem niech $\mathbf{w}=\left(w_{1},\ldots,w_{n}\right)^{T}$ będzie wektorem wag wynikających ze schematu losowania próby, a $\mathbf{d}=\left(d_{1},\ldots,d_{n}\right)^{T}$ poszukiwanym wektorem wag kalibracyjnych, gdzie $n$ oznacza liczebność próby.
+- Niech $G$ będzie dowolną funkcją spełniającą następujące warunki:
+  - $G\left(\cdot\right)$ jest dwukrotnie różniczkowalna,
+  - $G\left(\cdot\right)\geq 0$,
+  - $G\left(1\right)=0$,
+  - $G'\left(1\right)=0$,
+  - $G''\left(1\right)=1$.
+- Nowo wyznaczone wagi powinny nieznacznie się różnić od wag $d_{i}$ oraz powinny spełniać warunek:
+$$\sum_{s}d_{i}x_{ij} = \mathbf{X}_{j}$$
+
+---
+
+### Wyznaczanie wag kalibracyjnych
+
+- Minimalizacja funkcji odległości: 
+$$D\left(\mathbf{d},\mathbf{w}\right)=\sum_{i=1}^{n}w_{i}G\left(\frac{d_{i}}{w_{i}}\right)\longrightarrow \textrm{min}$$
+- Równania kalibracyjne: 
+$$\sum_{i=1}^{n}d_{i}x_{ij}=\mathbf{X}_{j},\quad j=1,\ldots,k,$$
+- Warunki ograniczające:
+$$L\leq \frac{d_{i}}{w_{i}}\leq U, \quad \text{gdzie: } L<1\  \text{i}\  U>1,\  i=1,\ldots,n.$$
+
+---
+
+# Funkcja G
+
+W praktycznych zastosowaniach najczęściej wykorzystuje się funkcję $G$ wpostaci $G_{1}\left(x\right)=\frac{1}{2}\left(x-1\right)^{2}$. w tym przypadku mamy bowiem:
+
+$$D\left(\mathbf{w},\mathbf{d}\right)=\sum_{i=1}^{n}d_{i}G\left(\frac{w_{i}}{d_{i}}\right)=\sum_{i=1}^{n}d_{i}\frac{1}{2}\left(\frac{w_{i}}{d_{i}}-1\right)^{2}=\frac{1}{2}\sum_{i=1}^{n}\frac{\left(w_{i}-d_{i}\right)^{2}}{d_{i}}.$$
+
+W literaturze wskazuje się wiele różnych postaci tej funkcji.
+
+---
+
+# Wagi kalibracyjne
+
+Wektor wag kalibracyjnych $\mathbf{d}=\left(d_{1},d_{2},\ldots,d_{n}\right)^{T}$ jest rozwiązaniem zadania minimalizacji:
+$$\mathbf{d}=\textrm{argmin}_{v}D\left(\textbf{v},\textbf{w}\right),$$
+$$\mathbf{X}=\tilde{\textbf{X}},$$
+przy czym
+$$D\left(\mathbf{v},\textbf{w}\right)=\frac{1}{2}\sum_{i=1}^n\frac{\left(v_{i}-w_{i}\right)^{2}}{w_{i}}$$
+$$\tilde{\mathbf{X}}=\left(\sum_{i=1}^n{d_{i}x_{i1}},\sum_{i=1}^n{d_{i}x_{i2}},\ldots,\sum_{i=1}^n{d_{i}x_{ik}}\right)^{T},\quad \mathbf{X}=\left(\sum_{i=1}^N{x_{i1}},\sum_{i=1}^N{x_{i2}},\ldots,\sum_{i=1}^N{x_{ik}}\right)^{T}.$$
+
+---
+
+# Wagi kalibracyjne
+
+Rozwiązaniem zadania minimalizacji jest wektor wag kalibracyjnych $\mathbf{d}=\left(d_{1},d_{2},\ldots,d_{n}\right)^{T}$, którego składowe spełniają równanie
+$$d_{i}=w_{i}+w_{i}\left(\textbf{X}-\hat{\textbf{X}}\right)^{T}\left(\sum_{i=1}^n{w_{i}\underline{\textbf{x}}_{i}\underline{\textbf{x}}_{i}^{T}}\right)^{-1}\underline{\textbf{x}}_{i}$$
+przy czym:
+$$\hat{\textbf{X}}=\left(\sum_{i=1}^n{w_{i}x_{i1}},\sum_{i=1}^n{w_{i}x_{i2}},\ldots,\sum_{i=1}^n{w_{i}x_{ik}}\right)^{T},$$
+$$\underline{\textbf{x}}_{i}=\left(x_{i1},x_{i2},\ldots,x_{ik}\right)^{T}.$$
+
+---
+
+# Algorytm kalibracji
+
+1. Sprawdź czy wagi w próbie sumują się liczebności populacji w przekrojach, w których jest przeprowadzana estymacja
+
+2. Jeśli nie to na podstawie populacji wyznacz wartości globalne w tych przekrojach - zmienne pomocnicze w kalibracji
+
+3. Dokonaj korekty wag, w taki sposób, aby suma wag w przekrojach odpowiadała liczebności populacji - zadanie optymalizacyjne
+
+---
+
+# Kalibracja w pakiecie survey
+
+Wyznaczenie wartości globalnych dla jednej zmiennej.
+
+Krok po kroku:
+
+```{r eval=FALSE}
+mf <- model.frame(~zmienna, populacja)
+mm <- model.matrix(~zmienna, mf)
+pop_zmienna <- colSums(mm)
+```
+
+Zagnieżdżone funkcje:
+
+```{r eval=FALSE}
+pop_zmienna <- colSums(model.matrix(~zmienna,
+                       model.frame(~zmienna,populacja)))
+```
+
+---
+
+# Kalibracja w pakiecie survey
+
+Funkcja `calibrate` dla jednej zmiennej
+
+```{r eval=FALSE}
+kal_zmienna <- calibrate(design = schemat, formula = ~zmienna, 
+                         population = pop_zmienna)
+```
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `formula` - zmienna, w której ma być zapewniona zgodność w próbie i populacji
+
+- `population` - wartości globalne w populacji
+
+---
+
+# Kalibracja w pakiecie survey
+
+Wyznaczenie wartości globalnych dla dwóch zmiennych.
+
+Krok po kroku:
+
+```{r eval=FALSE}
+mf <- model.frame(~zm1*zm2, populacja)
+mm <- model.matrix(~zm1*zm2, mf)
+pop_zm1zm2 <- colSums(mm)
+```
+
+Zagnieżdżone funkcje:
+
+```{r eval=FALSE}
+pop_zm1zm2 <- colSums(model.matrix(~zm1*zm2,
+                       model.frame(~zm1*zm2,populacja)))
+```
+
+---
+
+# Kalibracja w pakiecie survey
+
+Funkcja `calibrate` dla jednej zmiennej
+
+```{r eval=FALSE}
+kal_zmienna <- calibrate(design = schemat, formula = ~zm1*zm2, 
+                         population = pop_zm1zm2)
+```
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `formula` - zmienne, w których ma być zapewniona zgodność w próbie i populacji
+
+- `population` - wartości globalne w populacji
+
+---
+
+class: inverse
+
+# Zadanie
+
+Na podstawie zbiorów `apipop` (populacja) i `apistrat` (próba) oblicz liczbę szkół danego typu (`stype`). Następnie dla zbioru `apistrat` utwórz schemat losowania i **oszacuj** liczbę szkół danego typu.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+
