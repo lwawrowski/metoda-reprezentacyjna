@@ -79,7 +79,9 @@ class: inverse
 
 # Zadanie
 
-Dla zbioru _apiclus1_ oszacuj metodą bootstrap błąd standardowy oszacowania zmiennej `api99`. Wylosuj 500 podprób i sprawdź jaka jest różnica pomiędzy wynikiem otrzymanym z wykorzystaniem metody bootstrap oraz sposobem analitycznym.
+Dla zbioru _apiclus1_ oszacuj metodą bootstrap błąd standardowy oszacowania średniej wartości zmiennej `api99`. Wylosuj 500 podprób i sprawdź jaka jest różnica pomiędzy wynikiem otrzymanym z wykorzystaniem metody bootstrap oraz sposobem analitycznym.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
