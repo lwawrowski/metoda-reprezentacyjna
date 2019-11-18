@@ -34,10 +34,10 @@ http://statystyka.ue.poznan.pl
 
 1. Wprowadzenie do metody reprezentacyjnej
 2. Wprowadzenie do środowiska R
-3. Próba losowa, losowanie proste
-4. Losowanie złożone
-5. Estymacja średniej
-6. Estymacja wskaźnika
+3. Proste schematy losowania
+4. Złożone schematy losowania
+5. Estymacja wartości globalnej
+6. Estymacja wartości średniej i wskaźnika
 7. Bootstrap
 8. Kalibracja
 9. Imputacja

@@ -38,11 +38,11 @@ http://statystyka.ue.poznan.pl
 
 15.11.2019
 
-- schematy losowania próby, estymacja parametrów
+- schematy losowania próby
 
 1.12.2019
 
-- kalibracja i imputacja, analiza danych 
+- estymacja parametrów
 
 19.01.2020
 
