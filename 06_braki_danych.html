@@ -246,9 +246,42 @@ class: inverse
 
 Na podstawie zbiorów `apipop` (populacja) i `apistrat` (próba) oblicz liczbę szkół danego typu (`stype`). Następnie dla zbioru `apistrat` utwórz schemat losowania i **oszacuj** liczbę szkół danego typu.
 
-<div class="countdown" id="timer_5dd26553" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5dd39d19" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+
+---
+
+### Mechanizmy powstawania braków danych
+
+**Całkowicie losowy - Missing Completely at Random (MCAR)**
+
+- Proces powstawania braków jest całkowicie losowy.
+
+**Losowy - Missing at Random (MAR)**
+
+- Braki danych zależą od zmiennych obserwowanych np. mężczyźni odmawiają odpowiedzi w pytaniach o depresję, a kobiety o wagę. 
+- Można sprawdzić np. testem `\(\chi^2\)`.
+
+**Nielosowy - Missing not at Random (MNAR)**
+
+Braki danych zależą od zmiennych obserwowalnych i nieobserwowalnych np. inteligencji, statusu społecznego.
+
+[Rubin, D. (1976). Inference and Missing Data. Biometrika, 63(3), 581-592](https://www.jstor.org/stable/2335739)
+
+---
+
+# Możliwe rozwiązania
+
+- usunięcie obserwacji z brakami danych
+
+- zastępowanie wartości średnią, medianą, dominantą
+
+- imputacja nieparametryczna - metoda najbliższych sąsiadów
+
+- imputacja regresyjna
+
+- wielokrotna imputacja
 
 ---
 

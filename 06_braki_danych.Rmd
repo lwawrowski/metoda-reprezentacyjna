@@ -242,6 +242,40 @@ Na podstawie zbiorów `apipop` (populacja) i `apistrat` (próba) oblicz liczbę 
 
 ---
 
+### Mechanizmy powstawania braków danych
+
+**Całkowicie losowy - Missing Completely at Random (MCAR)**
+
+- Proces powstawania braków jest całkowicie losowy.
+
+**Losowy - Missing at Random (MAR)**
+
+- Braki danych zależą od zmiennych obserwowanych np. mężczyźni odmawiają odpowiedzi w pytaniach o depresję, a kobiety o wagę. 
+- Można sprawdzić np. testem $\chi^2$.
+- Lepszym określeniem byłoby Missing Conditionally at Random
+
+**Nielosowy - Missing not at Random (MNAR)**
+
+- Braki danych zależą od zmiennych obserwowalnych i nieobserwowalnych np. inteligencji, statusu społecznego.
+
+[Rubin, D. (1976). Inference and Missing Data. Biometrika, 63(3), 581-592](https://www.jstor.org/stable/2335739)
+
+---
+
+# Możliwe rozwiązania
+
+- usunięcie obserwacji z brakami danych
+
+- zastępowanie wartości średnią, medianą, dominantą
+
+- imputacja nieparametryczna - metoda najbliższych sąsiadów (pakiet `VIM`)
+
+- imputacja regresyjna (pakiet `mice`)
+
+- wielokrotna imputacja (pakiet `mice`)
+
+---
+
 class: center, middle, inverse
 
 # Pytania?
