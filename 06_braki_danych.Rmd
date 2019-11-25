@@ -391,7 +391,7 @@ class: inverse
 
 ---
 
-# Zastępowanie brakóW danych
+# Zastępowanie braków danych
 
 Zmienna ilościowa
 
@@ -498,7 +498,7 @@ class: inverse
 
 # Zadanie
 
-Dokonaj imputacji metodą hot-deck zmiennej "Ile powinien zarabiać minister?" (`in5e`) z wykorzystaniem zmiennych pomocniczych: wiek respondenta, liczba osób w gospodarstwie domowym oraz region. Porównaj rozkład otrzymanych wyników z danymi sprzed imputacji.
+Dokonaj imputacji metodą k najbliższych sąsiadów zmiennej "Ile powinien zarabiać minister?" (`in5e`) z wykorzystaniem zmiennych pomocniczych: wiek respondenta, liczba osób w gospodarstwie domowym oraz region. Porównaj rozkład otrzymanych wyników z danymi sprzed imputacji.
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
