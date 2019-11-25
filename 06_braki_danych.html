@@ -246,7 +246,7 @@ class: inverse
 
 Na podstawie zbiorów `apipop` (populacja) i `apistrat` (próba) oblicz liczbę szkół danego typu (`stype`). Następnie dla zbioru `apistrat` utwórz schemat losowania i **oszacuj** liczbę szkół danego typu.
 
-<div class="countdown" id="timer_5dd39d19" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5ddbc2f3" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -262,10 +262,11 @@ Na podstawie zbiorów `apipop` (populacja) i `apistrat` (próba) oblicz liczbę 
 
 - Braki danych zależą od zmiennych obserwowanych np. mężczyźni odmawiają odpowiedzi w pytaniach o depresję, a kobiety o wagę. 
 - Można sprawdzić np. testem `\(\chi^2\)`.
+- Lepszym określeniem byłoby Missing Conditionally at Random
 
 **Nielosowy - Missing not at Random (MNAR)**
 
-Braki danych zależą od zmiennych obserwowalnych i nieobserwowalnych np. inteligencji, statusu społecznego.
+- Braki danych zależą od zmiennych obserwowalnych i nieobserwowalnych np. inteligencji, statusu społecznego.
 
 [Rubin, D. (1976). Inference and Missing Data. Biometrika, 63(3), 581-592](https://www.jstor.org/stable/2335739)
 
@@ -277,11 +278,263 @@ Braki danych zależą od zmiennych obserwowalnych i nieobserwowalnych np. inteli
 
 - zastępowanie wartości średnią, medianą, dominantą
 
+- metoda hot-deck
+
 - imputacja nieparametryczna - metoda najbliższych sąsiadów
 
 - imputacja regresyjna
 
 - wielokrotna imputacja
+
+---
+
+### Polski Generalny Sondaż Społeczny
+
+- q8 - płeć respondenta (1 = M, 2 = K)
+
+- q14a/q16a - poziom wykształcenia ojca/matki
+
+- q21 - przeciętna liczba godzin pracy na tydzień
+
+- q22g - liczba zatrudnionych w zakładzie pracy
+
+- q32 - dochody z pracy respondenta
+
+- q34 - na jakie dochody respondent zasługuje
+
+- in1f - dobre znajomości czynnikiem sukcesu
+
+- in4e - ile zarabia minister?
+
+- in5e - ile powinien zarabiać minister?
+
+- in7a - większy % podatku od bogatych
+
+---
+
+# Poziom wykształcenia
+
+Jakie wykształcenie posiadał Pana(-i) ojciec/matka (opiekun) wtedy, gdy miał(a) Pan(i) około 14 lat?
+
+0 - brak wykształcenia szkolnego  
+1 - niepełne podstawowe  
+2 - podstawowe  
+3 - zasadnicze zawodowe  
+4 - niepełne średnie  
+5 - średnie ogólnokształcące  
+6 - średnie zawodowe  
+7 - policealne/pomaturalne  
+8 - nieukończone studia wyższe  
+9 - ukończone studia licencjackie/inżynierskie  
+10 - ukończone studia magisterskie/lekarskie  
+98 - inne
+
+---
+
+# Dobre znajomości
+
+Jak ważne, Pana(-i) zdaniem, dla osiągnięcia sukcesu w życiu są ważne dobre znajomości?
+
+1 - decydujące  
+2 - bardzo ważne  
+3 - średnio ważne  
+4 - niezbyt ważne  
+5 - bez znaczenia  
+8 - trudno powiedzieć  
+
+---
+
+# Podatki
+
+Jak Pan(i) sądzi, czy ludzie dużo zarabiający powinni oddawać na podatki większą część swoich dochodów niż ludzie mało zarabiający, taką samą czy też mniejszą część?
+
+1 - znacznie większą część  
+2 - większą część  
+3 - taką samą część  
+4 - mniejszą część  
+5 - znacznie mniejszą część  
+8 - trudno powiedzieć  
+
+---
+
+class: inverse
+
+# Zadanie
+
+Jakie wykształcenie ojca najczęściej występowało wśród respondentów? Ilu respondentów nie podało odpowiedzi na to pytanie?
+
+<div class="countdown" id="timer_5ddbc1cb" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+# Usuwanie braków danych
+
+W przypadku cech logicznych i numerycznych brak danych jest oznaczany jako `NA`. Jest to wartość nieliczbowa i **nie powinna** być filtrowana w następujący sposób:
+
+- `zmienna == NA`
+
+- `zmienna != NA`
+
+- `zmienna == "NA"`
+
+- `zmienna != "NA"`
+
+Prawidłowo odbywa się to z wykorzystaniem funkcji `is.na()`:
+
+- `is.na(zmienna)`
+
+- `!is.na(zmienna)`
+
+Funkcja `complete.cases()` służy do identyfikacji obserwacji, które nie zawierają braków danych.
+
+---
+
+class: inverse
+
+# Zadanie
+
+1. Zmienna `q34` zawiera informacje o dochodach z pracy respondenta. Utwórz nowy zbiór danych, który nie będzie zawierał braków danych w tej zmiennej.
+
+2. Ile obserwacji liczyłby ten zbiór danych gdyby usunąć wszystkie obserwacje zawierające braki danych.
+
+<div class="countdown" id="timer_5ddbc4bc" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+# Zastępowanie brakóW danych
+
+Zmienna ilościowa
+
+
+```r
+dane &lt;- dane_braki %&gt;%
+  mutate(zmienna=if_else(condition = is.na(zmienna), 
+                         true = mean(zmienna, na.rm = T), 
+                         false = zmienna))
+```
+
+
+Zmienna jakościowa
+
+
+```r
+dominanta &lt;- names(sort(table(pgss$q14a), decreasing = T))[1]
+
+dane &lt;- dane_braki %&gt;%
+  mutate(zmienna=if_else(condition = is.na(zmienna), 
+                         true = dominanta, 
+                         false = zmienna))
+```
+
+---
+
+# Pakiet VIM
+
+[Visualization and Imputation of Missing Values](https://cran.r-project.org/web/packages/VIM/index.html)
+
+[Alexander Kowarik, Matthias Templ (2016). Imputation with the R Package VIM. Journal of Statistical Software, 74(7), 1-16.](https://www.jstatsoft.org/article/view/v074i07/v74i07.pdf)
+
+---
+
+# Metoda hot-deck
+
+Dla każdego braku danych poszukiwany jest _dawca_ - obserwacja podobna pod kątem cech skorelowanych ze zmienną (pomocniczych), która zawiera brak danych. 
+
+Warianty:
+
+- losowa - stworzenie grup imputacyjnych na podstawie cech pomocniczcych. Dawca wybierany jest losowo z odpowiedniej grupy.
+
+- sekwencyjna - uporządkowanie danych na podstawie cech pomocniczcych. Dawca wybierany jest jako pierwsza obserwacja o takich samych cechach pomocniczych.
+
+---
+
+# Metoda hot-deck
+
+Funkcja `hotdeck`
+
+
+```r
+hotdeck(data = zbior, variable = "cecha", 
+        ord_var = c("zmienna1", "zmienna2"), domain_var = "domena")
+```
+
+- `data` - zbiór danych wejściowych
+
+- `variable` - cecha/cechy do imputacji
+
+- `ord_var` - zmienne pomocnicze
+
+- `domain_var` - zmienne domenowe - w ramach, których ma być przeprowadzona imputacja
+
+---
+
+class: inverse
+
+# Zadanie
+
+Dokonaj imputacji metodą hot-deck zmiennej "Ile powinien zarabiać minister?" (`in5e`) z wykorzystaniem zmiennych pomocniczych: wiek respondenta oraz liczba osób w gospodarstwie domowym w ramach regionów. Porównaj rozkład otrzymanych wyników z danymi sprzed imputacji.
+
+<div class="countdown" id="timer_5ddbc2af" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+# Metoda najbliższych sąsiadów
+
+Poszukiwanie obserwacji dawcy na podstawie wybranych zmiennych oraz kryterium minimalnej odległości dla wybranej liczby `\(k\)` sąsiadów.
+
+Obliczanie odległości opiera się na metryce Gowera (1971), która umożliwia obliczanie odległości dla cech jakościowych i ilościowych.
+
+Imputowana wartość dla cech ilościowych to mediana z wartości `\(k\)` sąsiadów, a dla cech jakościowych najczęściej występujący wariant.
+
+---
+
+# Metoda najbliższych sąsiadów
+
+Funkcja `kNN`
+
+
+```r
+kNN(data = zbior, variable = c("cecha1", "cecha2"), 
+    dist_var = c("zmienna1", "zmienna2", "zmienna3"), k = 5)
+```
+
+- `data` - zbiór danych wejściowych
+
+- `variable` - cecha/cechy do imputacji
+
+- `dist_var` - zmienne wykorzystywane do obliczenia odległości
+
+- `k` - liczba sąsiadów
+
+---
+
+class: inverse
+
+# Zadanie
+
+Dokonaj imputacji metodą hot-deck zmiennej "Ile powinien zarabiać minister?" (`in5e`) z wykorzystaniem zmiennych pomocniczych: wiek respondenta, liczba osób w gospodarstwie domowym oraz region. Porównaj rozkład otrzymanych wyników z danymi sprzed imputacji.
+
+<div class="countdown" id="timer_5ddbc24f" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+# Pozostałe metody
+
+**Imputacja regresyjna**
+
+Dopasowanie modelu regresyjnego do zmiennej, która zawiera braki danych np. dochód.
+
+**Wielokrotna imputacja**
+
+Wielokrotne imputowanie braków danych
 
 ---
 
