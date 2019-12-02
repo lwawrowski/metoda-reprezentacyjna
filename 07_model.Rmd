@@ -58,7 +58,7 @@ class: inverse
 
 Wykorzystując model bez wyrazu wolnego oszacuj liczbę English Language Learners (`ell`).
 
-`r countdown(minutes = 10, seconds = 0, top = 0)`
+`r countdown(minutes = 5, seconds = 0, top = 0)`
 
 ---
 
@@ -179,7 +179,7 @@ class: inverse
 
 Użyj modelu z wyrazem wolnym do oszacowania liczby English Language Learners (`ell`).
 
-`r countdown(minutes = 10, seconds = 0, top = 0)`
+`r countdown(minutes = 5, seconds = 0, top = 0)`
 
 ---
 

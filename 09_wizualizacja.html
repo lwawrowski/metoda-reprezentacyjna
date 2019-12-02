@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Metoda reprezentacyjna</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="© Łukasz Wawrowski" />
+    <link href="libs/countdown-0.3.3/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown-0.3.3/countdown.js"></script>
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="default-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Metoda reprezentacyjna
+## Wizualizacja
+### © Łukasz Wawrowski
+
+---
+
+
+
+
+# Źródła wiedzy
+
+- [Przewodnik po wizualizacji danych](https://www.data-to-viz.com/)
+
+- [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/)
+
+- [Color Brewer](http://colorbrewer2.org)
+
+- [Nazwy kolorów do użycia w R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+
+---
+
+# Proste wykresy
+
+- `plot()` - wykres punktowy/liniowy
+
+- `hist()` - histogram
+
+- `barplot()` - wykres kolumnowy
+
+- `boxplot()` - wykres pudełkowy
+
+---
+
+# Pakiet `ggplot2`
+
+Tworzenie wykresów poprzez dodawanie (`+`) kolejnych warstw.
+
+- [dokumentacja](https://ggplot2.tidyverse.org/)
+
+- [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+
+- [rozszerzenia](http://www.ggplot2-exts.org/gallery/)
+
+- [top 50](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+- [wykresy krok po kroku](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+
+???
+
+Pierwsza wersja 10.06.2007
+
+---
+
+# Niezbędny kod
+
+
+```r
+ggplot(data = zbior_danych, aes(x = cecha1, y=cecha2))
+```
+
+
+- x - zawartość osi x
+
+- y - zawartość osi y
+
+- fill - wypełnienie
+
+- size - rozmiar
+
+- color - kolor
+
+- shape - kształt
+
+---
+
+# Wykres punktowy - `geom_point`
+
+Obowiązkowe argumenty `aes`:
+
+- x 
+
+- y
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point()
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+]
+
+
+---
+
+# Dodatkowe elementy
+
+- `xlim(0,10)` - minimum i maksimum osi x
+
+- `ylim(-5,5)` - minimum i maksimum osi y
+
+- `xlab("tekst")` - etykieta osi x
+
+- `ylab("tekst")` - etykieta osi y
+
+- `ggtitle("tekst")` - tytuł wykresu
+
+- `labs(subtitle = "tekst")` - podtytuł
+
+- `labs(caption = "tekst")` - podpis
+
+- `coord_flip()` - obraca wykres
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled")
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500)
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index")
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+# Motywy
+
+- theme_bw
+- theme_classic
+- theme_dark
+- theme_gray - domyślnie
+- theme_light
+- theme_linedraw
+- theme_minimal
+- theme_void
+
+Powyższe motywy są zaimplementowane w pakiecie ggplot2, ale można także skorzystać z dodatkowych pakietów:
+
+- [ggthemes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
+- [bbplot](https://github.com/bbc/bbplot)
+- [xkcd](https://cran.r-project.org/web/packages/xkcd/)
+
+Albo stworzyć [swój własny motyw](https://www.statworx.com/de/blog/custom-themes-in-ggplot2/).
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+class: inverse
+
+# Zadanie
+
+Porównaj na wykres punktowym zmienne `api00` i `api99`.
+
+<div class="countdown" id="timer_5de54b59" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+# Wykres słupkowy - `geom_bar` / `geom_col`
+
+- `geom_bar` - funkcja sama oblicza wartości do wyświetlenia na podstawie zbioru danych jednostkowych
+
+- `geom_col` - funkcja otrzymuje już obliczone wartości (dane zagregowane)
+
+---
+
+# Wykres słupkowy - `geom_bar`
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x = stype)) +
+  geom_bar()
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+# Wykres słupkowy - `geom_bar`
+
+.pull-left[
+
+
+```r
+ggplot(apistrat, aes(x = stype)) +
+  geom_bar(fill = "deepskyblue2")
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+# Wykres słupkowy - `geom_col`
+
+
+```r
+api_stype &lt;- svyby(formula = ~api00, by = ~stype,
+                   design = dstrat, FUN = svymean)
+api_stype
+```
+
+```
+##   stype  api00       se
+## E     E 674.43 12.38248
+## H     H 625.82 14.93713
+## M     M 636.60 16.21471
+```
+
+
+---
+
+# Wykres słupkowy - `geom_col`
+
+.pull-left[
+
+
+```r
+ggplot(api_stype, aes(x = stype, 
+                      y = api00)) +
+  geom_col()
+```
+
+]
+
+.pull-right[
+
+![](09_wizualizacja_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oszacuj liczbę osób biorących udział w teście w przekroju typu szkoły i przedstaw na wykresie.
+
+
+<div class="countdown" id="timer_5de54bb4" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

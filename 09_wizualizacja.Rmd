@@ -1,13 +1,13 @@
 ---
 title: "Metoda reprezentacyjna"
-subtitle: "Estymacja modelowa"
+subtitle: "Wizualizacja"
 author: "&copy; Łukasz Wawrowski"
 output:
   xaringan::moon_reader:
     css: ["default.css", "default-fonts.css"]
     lib_dir: libs
     nature:
-      ratio: "4:3"
+      ratio: "16:9"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -17,65 +17,96 @@ output:
 ```{r include=FALSE}
 library(tidyverse)
 library(countdown)
+library(survey)
 options(scipen=100)
+
+data(api)
+dstrat<-svydesign(id=~1,strata=~stype, weights=~pw, data=apistrat, fpc=~fpc)
 ```
 
-class: inverse
+# Źródła wiedzy
 
-# Zadanie
+- [Przewodnik po wizualizacji danych](https://www.data-to-viz.com/)
 
-1. Na podstawie próby `apistrat` oszacuj liczbę uczniów biorących udział w teście kompetencji (`api.stu`).
+- [Fundamentals of Data Visualization](https://serialmentor.com/dataviz/)
 
-2. Na podstawie próby `apistrat` oszacuj odsetek uczeniów, którzy wzięli udział w teście kompetencji (`api.stu/enroll`).
+- [Color Brewer](http://colorbrewer2.org)
 
-`r countdown(minutes = 10, seconds = 0, top = 0)`
-
----
-
-# Model bez wyrazu wolnego
-
-- wykorzystanie dodatkowej zmiennej w estymacji
-
-- zakładamy, że zależność pomiędzy zmiennymi jest proporcjonalna
-
-$$\hat{y}=\hat{\alpha} \cdot x + \epsilon$$
+- [Nazwy kolorów do użycia w R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
 
 ---
 
-# Tok obliczeń
+# Proste wykresy
 
-1. Na podstawie próby oszacować wartość globalną wybranej cechy - jako wartość referencyjna
+- `plot()` - wykres punktowy/liniowy
 
-2. Na podstawie próby oszacować wskaźnik dla wybranej cechy - jako $\hat{\alpha}$ w modelu
+- `hist()` - histogram
 
-3. Na podstawie informacji o wartości mianownika w populacji $x$ oraz wartości wskaźnika $\hat{\alpha}$ można oszacować wartość globalną wybranej cechy z lepszą precyzją
+- `barplot()` - wykres kolumnowy
 
----
-
-class: inverse
-
-# Zadanie
-
-Wykorzystując model bez wyrazu wolnego oszacuj liczbę English Language Learners (`ell`).
-
-`r countdown(minutes = 10, seconds = 0, top = 0)`
+- `boxplot()` - wykres pudełkowy
 
 ---
 
-# Wagi z próby w regresji
+# Pakiet `ggplot2`
+
+Tworzenie wykresów poprzez dodawanie (`+`) kolejnych warstw.
+
+- [dokumentacja](https://ggplot2.tidyverse.org/)
+
+- [cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+
+- [rozszerzenia](http://www.ggplot2-exts.org/gallery/)
+
+- [top 50](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+- [wykresy krok po kroku](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html)
+
+???
+
+Pierwsza wersja 10.06.2007
+
+---
+
+# Niezbędny kod
+
+```{r eval=FALSE}
+ggplot(data = zbior_danych, aes(x = cecha1, y=cecha2))
+```
+
+
+- x - zawartość osi x
+
+- y - zawartość osi y
+
+- fill - wypełnienie
+
+- size - rozmiar
+
+- color - kolor
+
+- shape - kształt
+
+---
+
+# Wykres punktowy - `geom_point`
+
+Obowiązkowe argumenty `aes`:
+
+- x 
+
+- y
+
+---
+
+# Wykres punktowy
 
 .pull-left[
 
 ```{r eval=FALSE}
-punkty1 <- data.frame(id1=1:5,
-          x1=c(21,20,22,17,16),
-          y1=c(40,41,42,39,37))
-
-ggplot(punkty1, aes(x1, y1)) + 
-  geom_point() + 
-  xlim(10,25) + 
-  ylim(30,45)
-
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point()
 ```
 
 ]
@@ -83,93 +114,222 @@ ggplot(punkty1, aes(x1, y1)) +
 .pull-right[
 
 ```{r echo=FALSE}
-punkty1 <- data.frame(id1=1:5,
-                    x1=c(21,20,22,17,16),
-                    y1=c(40,41,42,39,37))
-
-ggplot(punkty1, aes(x1, y1)) + 
-  geom_point() + 
-  xlim(15,25) + 
-  ylim(35,45)
-
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point()
 ```
 
 ]
 
----
-
-### Estymacja współczynnika kierunkowego
-
-1. Tworzymy wszystkie możliwe pary punktów $n(n-1)/2$
-
-2. Obliczamy wartości beta dla każdej pary $\beta_{ij}=\frac{y_i-y_j}{x_i-x_j}$
-
-3. Obliczamy wagi dla każdej pary $w_{ij}=(x_i-x_j)^2$
-
-4. Współczynnik kierunkowy to $\beta=\frac{\sum w_{ij}\beta_{ij}}{\sum w_{ij}}$
 
 ---
 
-# Porównanie z KMNK
+# Dodatkowe elementy
+
+- `xlim(0,10)` - minimum i maksimum osi x
+
+- `ylim(-5,5)` - minimum i maksimum osi y
+
+- `xlab("tekst")` - etykieta osi x
+
+- `ylab("tekst")` - etykieta osi y
+
+- `ggtitle("tekst")` - tytuł wykresu
+
+- `labs(subtitle = "tekst")` - podtytuł
+
+- `labs(caption = "tekst")` - podpis
+
+- `coord_flip()` - obraca wykres
+
+---
+
+# Wykres punktowy
 
 .pull-left[
 
-Pary punktów
-
-```{r include=FALSE}
-punkty2 <- data.frame(id2=1:5,
-                    x2=c(21,20,22,17,16),
-                    y2=c(40,41,42,39,37))
-
-punkty <- expand.grid(id1=punkty1$id1, id2=punkty2$id2)
-
-punkty <- punkty[punkty$id1!=punkty$id2,]
-
-pary_punktow <- as.data.frame(unique(t(apply(punkty[,1:2], 1, sort))))
-names(pary_punktow) <- names(punkty)
-
-pary_punktow <- merge(pary_punktow, punkty1)
-pary_punktow <- merge(pary_punktow, punkty2)
-
-pary_punktow
-
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled")
 ```
-
-
-```{r}
-pary_punktow <- pary_punktow%>%
-  mutate(b=(y1-y2)/(x1-x2),
-         w=(x1-x2)^2)
-
-beta <- sum(pary_punktow$w*
-              pary_punktow$b)/
-            sum(pary_punktow$w)
-beta
-```
-
 
 ]
 
 .pull-right[
 
-KMNK
-
-```{r}
-lm(y1 ~ x1, data=punkty1)
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled")
 ```
-
 
 ]
 
 ---
 
-# Model z wyrazem wolnym
+# Wykres punktowy
 
-- wykorzystanie dodatkowej zmiennej w estymacji
+.pull-left[
 
-- uwzględnienie wag z próby
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500)
+```
 
-$$\hat{y}=\hat{\alpha} + \hat{\beta} \cdot x + \epsilon$$
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500)
+```
+
+]
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index")
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index")
+```
+
+]
+
+---
+
+# Motywy
+
+- theme_bw
+- theme_classic
+- theme_dark
+- theme_gray - domyślnie
+- theme_light
+- theme_linedraw
+- theme_minimal
+- theme_void
+
+Powyższe motywy są zaimplementowane w pakiecie ggplot2, ale można także skorzystać z dodatkowych pakietów:
+
+- [ggthemes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
+- [bbplot](https://github.com/bbc/bbplot)
+- [xkcd](https://cran.r-project.org/web/packages/xkcd/)
+
+Albo stworzyć [swój własny motyw](https://www.statworx.com/de/blog/custom-themes-in-ggplot2/).
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
 
 ---
 
@@ -177,7 +337,105 @@ class: inverse
 
 # Zadanie
 
-Użyj modelu z wyrazem wolnym do oszacowania liczby English Language Learners (`ell`).
+Porównaj na wykres punktowym zmienne `api00` i `api99`.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Wykres słupkowy - `geom_bar` / `geom_col`
+
+- `geom_bar` - funkcja sama oblicza wartości do wyświetlenia na podstawie zbioru danych jednostkowych
+
+- `geom_col` - funkcja otrzymuje już obliczone wartości (dane zagregowane)
+
+---
+
+# Wykres słupkowy - `geom_bar`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x = stype)) +
+  geom_bar()
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x = stype)) +
+  geom_bar()
+```
+
+]
+
+---
+
+# Wykres słupkowy - `geom_bar`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x = stype)) +
+  geom_bar(fill = "deepskyblue2")
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x = stype)) +
+  geom_bar(fill = "deepskyblue2")
+```
+
+]
+
+---
+
+# Wykres słupkowy - `geom_col`
+
+```{r}
+api_stype <- svyby(formula = ~api00, by = ~stype,
+                   design = dstrat, FUN = svymean)
+api_stype
+```
+
+
+---
+
+# Wykres słupkowy - `geom_col`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(api_stype, aes(x = stype, 
+                      y = api00)) +
+  geom_col()
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(api_stype, aes(x = stype, 
+                      y = api00)) +
+  geom_col()
+```
+
+]
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oszacuj liczbę osób biorących udział w teście w przekroju typu szkoły i przedstaw na wykresie.
+
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
