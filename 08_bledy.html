@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Metoda reprezentacyjna</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="© Łukasz Wawrowski" />
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="default-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Metoda reprezentacyjna
+## Błędy i pułapki
+### © Łukasz Wawrowski
+
+---
+
+
+
+
+# !@#$%^&amp;
+
+![](img/wprost.png)
+
+[źródło](https://www.wprost.pl/tygodnik/10274294/kto-jest-najlepiej-zarabiajacym-polskim-pisarzem-nowy-ranking-wprost.html)
+
+---
+
+# Błąd pomiaru
+
+Measurement error - różnica pomiędzy tym, co chcemy zmierzyć, a tym co otrzymujemy od respondenta.
+
+- Have you ever, even once, used any form of cocaine? (National Survey on Drug Use and Health)
+
+--
+
+Response bias (efekt respondenta) - wpływ respondenta na otrzymywane wyniki. 
+
+---
+
+# Błąd przetwarzania
+
+Processing error - błąd wynikający z zebrania odpowiedzi bez szerszego kontekstu. Także błąd kodowania pytań otwartych.
+
+- Ile razy dziennie doświadczasz agresji ze strony innych ludzi? (National Crime Victimization Survey)
+
+--
+
+- Czy w ciągu ostatnich miesięcy słyszałeś o jakichkolwiek zmianach w nastrojach rynkowych? (Surveys of Consumers)
+
+---
+
+# Błąd pokrycia
+
+![](img/operat.png)
+
+---
+
+# Błąd pokrycia
+
+Coverage error - objęcie badaniem niekompletnej zbiorowości. 
+
+Coverage bias -  różnica pomiędzy wynikami dla jednostek objętych i nieobjętych badaniem.
+
+--
+
+Ankiety telefoniczne przykładem występowania błędu pokrycia.
+
+---
+
+# Sampling error
+
+Sampling bias - jednostki w operacie losowania nie mają szans na dostanie się do próby
+
+Sampling variance - wielokrotne losowanie próby daje różne wyniki
+
+---
+
+# Nonresponse error
+
+Uczniowie nieobecni podczas testu kompetencji z matematyki mogą celowo opuszczać ten dzień w szkole ze względu na świadomość mniejszych umiejętności. 
+
+Uzyskany przez szkołę wynik będzie z tego względu wyższy niż w przypadku obecności wszystkich uczniów.
+
+---
+
+# Adjustement error
+
+Wykorzystanie danych na temat populacji, wskaźnika kompletności w poprawie jakości próby może spowodować przeszacowanie lub niedoszacowanie wyników dla określonych grup.
+
+---
+
+class: center, middle
+
+TOTAL SURVEY ERROR
+
+---
+
+### Błąd przeżywalności (survivor bias)
+
+Opieranie się wyłącznie na dostępnych danych bez głębszej analizy przyczyn.
+
+- hełmy żołnierzy - wprowadzenie nowego kształtu hełmu podczas I WŚ i nagły wzrost liczby żołnierzy w szpitalach
+
+- opancerzenie bombowców - wzmacnianie uszkodzonych elementów samolotów podczas II WŚ
+
+- większa przeżywalność zwierząt po upadku z wysokich pięter niż z niskich 
+
+- zakładanie firmy, bo wszystkim, którzy to zrobili się udało
+
+- wynalezienie leku na białaczkę zwiększyło liczbę chorych
+
+- palacze umierają rzadziej
+
+---
+
+# Paradoks Simpsona
+
+Efekt działania kilku grup wydaje się odwrócony, kiedy grupy są połączone.
+
+![](img/simpson.png)
+
+---
+
+### Nabór na Uniwersytecie w Berkley
+
+Spośród kandydatów przyjęto 44% mężczyzn i 35% kobiet.
+
+Universytet został oskarżony o seksizm i sprawa została skierowana do sądu.
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "4:3",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

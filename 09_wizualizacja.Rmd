@@ -1,0 +1,189 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Estymacja modelowa"
+author: "&copy; Łukasz Wawrowski"
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(countdown)
+options(scipen=100)
+```
+
+class: inverse
+
+# Zadanie
+
+1. Na podstawie próby `apistrat` oszacuj liczbę uczniów biorących udział w teście kompetencji (`api.stu`).
+
+2. Na podstawie próby `apistrat` oszacuj odsetek uczeniów, którzy wzięli udział w teście kompetencji (`api.stu/enroll`).
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Model bez wyrazu wolnego
+
+- wykorzystanie dodatkowej zmiennej w estymacji
+
+- zakładamy, że zależność pomiędzy zmiennymi jest proporcjonalna
+
+$$\hat{y}=\hat{\alpha} \cdot x + \epsilon$$
+
+---
+
+# Tok obliczeń
+
+1. Na podstawie próby oszacować wartość globalną wybranej cechy - jako wartość referencyjna
+
+2. Na podstawie próby oszacować wskaźnik dla wybranej cechy - jako $\hat{\alpha}$ w modelu
+
+3. Na podstawie informacji o wartości mianownika w populacji $x$ oraz wartości wskaźnika $\hat{\alpha}$ można oszacować wartość globalną wybranej cechy z lepszą precyzją
+
+---
+
+class: inverse
+
+# Zadanie
+
+Wykorzystując model bez wyrazu wolnego oszacuj liczbę English Language Learners (`ell`).
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Wagi z próby w regresji
+
+.pull-left[
+
+```{r eval=FALSE}
+punkty1 <- data.frame(id1=1:5,
+          x1=c(21,20,22,17,16),
+          y1=c(40,41,42,39,37))
+
+ggplot(punkty1, aes(x1, y1)) + 
+  geom_point() + 
+  xlim(10,25) + 
+  ylim(30,45)
+
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+punkty1 <- data.frame(id1=1:5,
+                    x1=c(21,20,22,17,16),
+                    y1=c(40,41,42,39,37))
+
+ggplot(punkty1, aes(x1, y1)) + 
+  geom_point() + 
+  xlim(15,25) + 
+  ylim(35,45)
+
+```
+
+]
+
+---
+
+### Estymacja współczynnika kierunkowego
+
+1. Tworzymy wszystkie możliwe pary punktów $n(n-1)/2$
+
+2. Obliczamy wartości beta dla każdej pary $\beta_{ij}=\frac{y_i-y_j}{x_i-x_j}$
+
+3. Obliczamy wagi dla każdej pary $w_{ij}=(x_i-x_j)^2$
+
+4. Współczynnik kierunkowy to $\beta=\frac{\sum w_{ij}\beta_{ij}}{\sum w_{ij}}$
+
+---
+
+# Porównanie z KMNK
+
+.pull-left[
+
+Pary punktów
+
+```{r include=FALSE}
+punkty2 <- data.frame(id2=1:5,
+                    x2=c(21,20,22,17,16),
+                    y2=c(40,41,42,39,37))
+
+punkty <- expand.grid(id1=punkty1$id1, id2=punkty2$id2)
+
+punkty <- punkty[punkty$id1!=punkty$id2,]
+
+pary_punktow <- as.data.frame(unique(t(apply(punkty[,1:2], 1, sort))))
+names(pary_punktow) <- names(punkty)
+
+pary_punktow <- merge(pary_punktow, punkty1)
+pary_punktow <- merge(pary_punktow, punkty2)
+
+pary_punktow
+
+```
+
+
+```{r}
+pary_punktow <- pary_punktow%>%
+  mutate(b=(y1-y2)/(x1-x2),
+         w=(x1-x2)^2)
+
+beta <- sum(pary_punktow$w*
+              pary_punktow$b)/
+            sum(pary_punktow$w)
+beta
+```
+
+
+]
+
+.pull-right[
+
+KMNK
+
+```{r}
+lm(y1 ~ x1, data=punkty1)
+```
+
+
+]
+
+---
+
+# Model z wyrazem wolnym
+
+- wykorzystanie dodatkowej zmiennej w estymacji
+
+- uwzględnienie wag z próby
+
+$$\hat{y}=\hat{\alpha} + \hat{\beta} \cdot x + \epsilon$$
+
+---
+
+class: inverse
+
+# Zadanie
+
+Użyj modelu z wyrazem wolnym do oszacowania liczby English Language Learners (`ell`).
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+

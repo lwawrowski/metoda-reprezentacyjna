@@ -1,0 +1,138 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Błędy i pułapki"
+author: "&copy; Łukasz Wawrowski"
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(countdown)
+options(scipen=100)
+```
+
+# !@#$%^&
+
+![](img/wprost.png)
+
+[źródło](https://www.wprost.pl/tygodnik/10274294/kto-jest-najlepiej-zarabiajacym-polskim-pisarzem-nowy-ranking-wprost.html)
+
+---
+
+# Błąd pomiaru
+
+Measurement error - różnica pomiędzy tym, co chcemy zmierzyć, a tym co otrzymujemy od respondenta.
+
+- Have you ever, even once, used any form of cocaine? (National Survey on Drug Use and Health)
+
+--
+
+Response bias (efekt respondenta) - wpływ respondenta na otrzymywane wyniki. 
+
+---
+
+# Błąd przetwarzania
+
+Processing error - błąd wynikający z zebrania odpowiedzi bez szerszego kontekstu. Także błąd kodowania pytań otwartych.
+
+- Ile razy dziennie doświadczasz agresji ze strony innych ludzi? (National Crime Victimization Survey)
+
+--
+
+- Czy w ciągu ostatnich miesięcy słyszałeś o jakichkolwiek zmianach w nastrojach rynkowych? (Surveys of Consumers)
+
+---
+
+# Błąd pokrycia
+
+![](img/operat.png)
+
+---
+
+# Błąd pokrycia
+
+Coverage error - objęcie badaniem niekompletnej zbiorowości. 
+
+Coverage bias -  różnica pomiędzy wynikami dla jednostek objętych i nieobjętych badaniem.
+
+--
+
+Ankiety telefoniczne przykładem występowania błędu pokrycia.
+
+---
+
+# Sampling error
+
+Sampling bias - jednostki w operacie losowania nie mają szans na dostanie się do próby
+
+Sampling variance - wielokrotne losowanie próby daje różne wyniki
+
+---
+
+# Nonresponse error
+
+Uczniowie nieobecni podczas testu kompetencji z matematyki mogą celowo opuszczać ten dzień w szkole ze względu na świadomość mniejszych umiejętności. 
+
+Uzyskany przez szkołę wynik będzie z tego względu wyższy niż w przypadku obecności wszystkich uczniów.
+
+---
+
+# Adjustement error
+
+Wykorzystanie danych na temat populacji, wskaźnika kompletności w poprawie jakości próby może spowodować przeszacowanie lub niedoszacowanie wyników dla określonych grup.
+
+---
+
+class: center, middle
+
+TOTAL SURVEY ERROR
+
+---
+
+### Błąd przeżywalności (survivor bias)
+
+Opieranie się wyłącznie na dostępnych danych bez głębszej analizy przyczyn.
+
+- hełmy żołnierzy - wprowadzenie nowego kształtu hełmu podczas I WŚ i nagły wzrost liczby żołnierzy w szpitalach
+
+- opancerzenie bombowców - wzmacnianie uszkodzonych elementów samolotów podczas II WŚ
+
+- większa przeżywalność zwierząt po upadku z wysokich pięter niż z niskich 
+
+- zakładanie firmy, bo wszystkim, którzy to zrobili się udało
+
+- wynalezienie leku na białaczkę zwiększyło liczbę chorych
+
+- palacze umierają rzadziej
+
+---
+
+# Paradoks Simpsona
+
+Efekt działania kilku grup wydaje się odwrócony, kiedy grupy są połączone.
+
+![](img/simpson.png)
+
+---
+
+### Nabór na Uniwersytecie w Berkley
+
+Spośród kandydatów przyjęto 44% mężczyzn i 35% kobiet.
+
+Universytet został oskarżony o seksizm i sprawa została skierowana do sądu.
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+
