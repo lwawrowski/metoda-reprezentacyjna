@@ -397,18 +397,16 @@ ggplot(apistrat, aes(x = stype)) +
 
 # Wykres słupkowy - `geom_col`
 
+.pull-left[
+
 ```{r}
-api_stype <- svyby(formula = ~api00, by = ~stype,
-                   design = dstrat, FUN = svymean)
+api_stype <- svyby(formula = ~api00, 
+                   by = ~stype,
+                   design = dstrat, 
+                   FUN = svymean)
 api_stype
 ```
 
-
----
-
-# Wykres słupkowy - `geom_col`
-
-.pull-left[
 
 ```{r eval=FALSE}
 ggplot(api_stype, aes(x = stype, 

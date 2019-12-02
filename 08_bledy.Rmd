@@ -20,7 +20,7 @@ library(countdown)
 options(scipen=100)
 ```
 
-# !@#$%^&
+### !@#$%^&
 
 ![](img/wprost.png)
 
@@ -94,7 +94,7 @@ Wykorzystanie danych na temat populacji, wskaźnika kompletności w poprawie jak
 
 class: center, middle
 
-TOTAL SURVEY ERROR
+# TOTAL SURVEY ERROR
 
 ---
 

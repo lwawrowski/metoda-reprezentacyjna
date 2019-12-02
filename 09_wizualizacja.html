@@ -296,7 +296,7 @@ class: inverse
 
 Porównaj na wykres punktowym zmienne `api00` i `api99`.
 
-<div class="countdown" id="timer_5de54b59" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5de55e42" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -352,10 +352,14 @@ ggplot(apistrat, aes(x = stype)) +
 
 # Wykres słupkowy - `geom_col`
 
+.pull-left[
+
 
 ```r
-api_stype &lt;- svyby(formula = ~api00, by = ~stype,
-                   design = dstrat, FUN = svymean)
+api_stype &lt;- svyby(formula = ~api00, 
+                   by = ~stype,
+                   design = dstrat, 
+                   FUN = svymean)
 api_stype
 ```
 
@@ -366,12 +370,6 @@ api_stype
 ## M     M 636.60 16.21471
 ```
 
-
----
-
-# Wykres słupkowy - `geom_col`
-
-.pull-left[
 
 
 ```r
@@ -397,7 +395,7 @@ class: inverse
 Oszacuj liczbę osób biorących udział w teście w przekroju typu szkoły i przedstaw na wykresie.
 
 
-<div class="countdown" id="timer_5de54bb4" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5de560eb" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
