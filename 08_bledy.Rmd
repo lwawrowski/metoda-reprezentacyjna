@@ -20,6 +20,22 @@ library(countdown)
 options(scipen=100)
 ```
 
+# Metoda reprezentacyjna
+
+- Booth, C., (1889-1903), [Life and Labour of the People of London](https://booth.lse.ac.uk/) 
+
+- Thurstone, L. i Chave, E., (1929), The Measurement of Attitude, Chicago: University of Chicago.
+
+- Likert, R., (1932), A technique for the measurement of attitudes, Archives of psychology, 140, pp. 5-53.
+
+- Hansen, M., (1939), Survey of Unemployment.
+
+- Deming, W., (1950), Some Theory of Sampling, New York: Dover.
+
+- Hansen, M., Hurwitz, W. i Madow, W., (1953), Sample survey methods and theory, Wiley.
+
+---
+
 ### !@#$%^&
 
 ![](img/wprost.png)
@@ -126,9 +142,19 @@ Efekt działania kilku grup wydaje się odwrócony, kiedy grupy są połączone.
 
 ### Nabór na Uniwersytecie w Berkley
 
-Spośród kandydatów przyjęto 44% mężczyzn i 35% kobiet.
+Spośród kandydatów przyjęto 45% mężczyzn i 30% kobiet.
 
 Universytet został oskarżony o seksizm i sprawa została skierowana do sądu.
+
+---
+
+class: inverse
+
+# Zadanie
+
+Na podstawie zbioru danych [berkley](data/berkley.RData) oblicz odsetek przyjętych kobiet i mężczyzn. Proponuję wykorzystać przetwarzanie potokowe i funkcje `group_by`, `summarise` i `mutate`.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 

@@ -1,0 +1,18 @@
+---
+title: "Kryteria projektu"
+author: "Łukasz Wawrowski"
+date: "9 12 2019"
+output: html_document
+---
+
+Na podstawie wybranego studium przypadku przeprowadź obliczenia oraz przygotuj raport w formie dokumentu lub prezentacji. W ocenie pod uwagę brane są poniższe kryteria: 
+
+- Projekt zawiera wizualizacje danych: 0-4 pkt
+
+- Wykorzystanie innych źródeł danych (raporty, dane GUS, inne badania): 0-5 pkt
+
+- Adekwatność wykorzystanych metod: 0-5 pkt
+
+- Jakość prezentacji/raportu (tabele zamiast zrzutów ekranu, dobór kolorów, itp.): 0-4 pkt
+
+- Jakość kodu (komentarze, odpowiednie nazwy obiektów): 0-2 pkt 

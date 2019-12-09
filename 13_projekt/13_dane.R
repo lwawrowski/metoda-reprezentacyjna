@@ -6,7 +6,10 @@ library(haven)
 pgss <- read_spss("13_projekt/P0091SAV.sav")
 
 pgss_2010 <- pgss %>%
-  filter(pgssyear==2010)
+  filter(pgssyear==2010) %>% 
+  select(which(colSums(is.na(.)) != 1263))
+
+save(pgss_2010, file="data/pgss2010.RData")
 
 save(pgss_2010, file="13_projekt/pgss10.RData")
 
