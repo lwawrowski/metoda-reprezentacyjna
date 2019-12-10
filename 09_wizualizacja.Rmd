@@ -343,6 +343,67 @@ Porównaj na wykres punktowym zmienne `api00` i `api99`.
 
 ---
 
+# Eksport wykresu
+
+- w zakładce Plots -> Export
+
+- funkcja `ggsave()`
+
+   - `filename` - nazwa pliku z rozszerzeniem (png, pdf)
+   
+   - `width` i `height` - szerokość i wysokość (domyślnie w calach)
+   
+   - `scale` - skalowanie po zmianie rozdzielczości
+   
+   - `dpi` - liczba punktów na cal
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray() +
+  ggsave("figs/apifig1.png", 
+         width = 12, 
+         height = 10, 
+         scale = 0.5, 
+         dpi = 1200)
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_gray()
+```
+
+]
+
+
+
+---
+
 # Wykres słupkowy - `geom_bar` / `geom_col`
 
 - `geom_bar` - funkcja sama oblicza wartości do wyświetlenia na podstawie zbioru danych jednostkowych
