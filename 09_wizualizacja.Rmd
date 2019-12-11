@@ -615,7 +615,13 @@ class: inverse
 
 # Zadanie
 
-Oszacuj liczbę osób biorących udział w teście w przekroju typu szkoły i przedstaw na wykresie.
+Oszacuj liczbę uczniów biorących udział w teście w przekroju typu szkoły i przedstaw na wykresie słupkowym.
+
+```{r echo=FALSE, fig.align='center', fig.height=6}
+apistu_stype <- svyby(formula = ~api.stu, by = ~stype, design = dstrat, FUN = svytotal)
+
+ggplot(apistu_stype, aes(x = stype, y = api.stu)) + geom_col(fill = "red")
+```
 
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
