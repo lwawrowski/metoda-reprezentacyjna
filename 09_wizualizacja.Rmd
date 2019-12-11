@@ -71,7 +71,7 @@ Pierwsza wersja 10.06.2007
 # Niezbędny kod
 
 ```{r eval=FALSE}
-ggplot(data = zbior_danych, aes(x = cecha1, y=cecha2))
+ggplot(data = zbior_danych, aes(x = cecha1, y = cecha2))
 ```
 
 
@@ -86,6 +86,29 @@ ggplot(data = zbior_danych, aes(x = cecha1, y=cecha2))
 - color - kolor
 
 - shape - kształt
+
+---
+
+# Niezbędny kod
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll)) 
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll))
+```
+
+]
+
 
 ---
 
@@ -243,7 +266,7 @@ ggplot(apistrat, aes(x=api.stu,
 - theme_bw
 - theme_classic
 - theme_dark
-- theme_gray - domyślnie
+- theme_gray (domyślnie)
 - theme_light
 - theme_linedraw
 - theme_minimal
@@ -272,7 +295,7 @@ ggplot(apistrat, aes(x=api.stu,
   xlim(0,3000) +
   ylim(0,3500) +
   ggtitle("Academic Performance Index") +
-  theme_gray()
+  theme_light()
 ```
 
 ]
@@ -288,7 +311,7 @@ ggplot(apistrat, aes(x=api.stu,
   xlim(0,3000) +
   ylim(0,3500) +
   ggtitle("Academic Performance Index") +
-  theme_gray()
+  theme_light()
 ```
 
 ]
@@ -309,7 +332,7 @@ ggplot(apistrat, aes(x=api.stu,
   xlim(0,3000) +
   ylim(0,3500) +
   ggtitle("Academic Performance Index") +
-  theme_gray()
+  theme_light()
 ```
 
 ]
@@ -326,7 +349,47 @@ ggplot(apistrat, aes(x=api.stu,
   xlim(0,3000) +
   ylim(0,3500) +
   ggtitle("Academic Performance Index") +
-  theme_gray()
+  theme_light()
+```
+
+]
+
+---
+
+# Wykres punktowy
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  scale_color_discrete(name = "School type") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_light()
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(apistrat, aes(x=api.stu, 
+                     y=enroll,
+                     color=stype)) + 
+  geom_point() +
+  xlab("Students tested") +
+  ylab("Students enrolled") +
+  scale_color_discrete(name = "School type") +
+  xlim(0,3000) +
+  ylim(0,3500) +
+  ggtitle("Academic Performance Index") +
+  theme_light()
 ```
 
 ]
@@ -373,7 +436,7 @@ ggplot(apistrat, aes(x=api.stu,
   xlim(0,3000) +
   ylim(0,3500) +
   ggtitle("Academic Performance Index") +
-  theme_gray() +
+  theme_light() +
   ggsave("figs/apifig1.png", 
          width = 12, 
          height = 10, 
@@ -395,12 +458,10 @@ ggplot(apistrat, aes(x=api.stu,
   xlim(0,3000) +
   ylim(0,3500) +
   ggtitle("Academic Performance Index") +
-  theme_gray()
+  theme_light()
 ```
 
 ]
-
-
 
 ---
 
@@ -489,6 +550,67 @@ ggplot(api_stype, aes(x = stype,
 
 ---
 
+# Wykres słupkowy - `geom_col`
+
+.pull-left[
+
+```{r}
+api_stype_aw <- svyby(formula = ~api00, 
+                      by = ~stype+awards,
+                      design = dstrat, 
+                      FUN = svymean)
+api_stype_aw
+```
+
+
+```{r eval=FALSE}
+ggplot(api_stype_aw, aes(x = stype, 
+                         y = api00,
+                         fill = awards)) +
+  geom_col()
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(api_stype_aw, aes(x = stype, 
+                         y = api00,
+                         fill = awards)) +
+  geom_col()
+```
+
+]
+
+---
+
+# Wykres słupkowy - `geom_col`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(api_stype_aw, aes(x = stype, 
+                         y = api00,
+                         fill = awards)) +
+  geom_col(position = "dodge")
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE}
+ggplot(api_stype_aw, aes(x = stype, 
+                         y = api00,
+                         fill = awards)) +
+  geom_col(position = "dodge")
+```
+
+]
+
+---
+
 class: inverse
 
 # Zadanie
@@ -497,6 +619,20 @@ Oszacuj liczbę osób biorących udział w teście w przekroju typu szkoły i pr
 
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+# Podsumowanie
+
+- różne role w zależności od typu wykresu
+
+- odpowiedni typ danych w zależności od roli
+
+- `geom_bar` dla danych jednostkowych np. analiza próby
+
+- `geom_col` dla danych zagregowanych, np. wyniki funkcji `svyby`
+
+- więcej przykładów na stronie [Podstawy programowania w R - wizualizacja danych](http://www.wawrowski.edu.pl/ppr/wizualizacja-danych.html)
 
 ---
 
