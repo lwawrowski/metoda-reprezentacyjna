@@ -25,7 +25,7 @@ Na podstawie studium przypadku przeprowadź obliczenia oraz przygotuj raport w f
 
 - Jakość kodu (komentarze, odpowiednie nazwy obiektów): 0-2 pkt 
 
-# Polski Generalny Sondaż Społeczny
+# 1. Polski Generalny Sondaż Społeczny
 
 Polski Generalny Sondaż Społeczny obejmuje badanie indywidualnych postaw, cenionych wartości, orientacji i zachowań społecznych, jak również pomiar zróżnicowania społeczno-demograficznego, zawodowego, edukacyjnego i ekonomicznego reprezentatywnych grup i warstw społecznych w Polsce.
 
@@ -44,3 +44,19 @@ gdzie:
 Liczebność populacji Polski w 2010 roku można znaleźć m.in. w Banku Danych Lokalnych. Będzie miało to znaczenie przy szacowaniu wartości globalnych. W zbiorze PGSS nie ma informacji o warstwach i jednostkach losowania pierwszego stopnia, dlatego w deklaracji schematu losowania podajemy tylko id respondenta oraz wagę. 
 
 Otrzymane wyniki porównaj z aktualnymi lub archiwalnymi badaniami społecznymi prowadzonymi przez GUS lub niezależne ośrodki (np. Diagnoza Społeczna).
+
+# 2. Academic Performance Index
+
+Dla zbioru `apipop` zaproponuj schemat losowania, który uwzględni typ szkoły oraz populację hrabstwa (zmienna _cname_). Dane o populacji hrabstw są dostępne w internecie. Można dokonać grupowania hrabstw, tak aby nowoutworzone warstwy miały porównywalną liczebność populacji. Rozmiar próby dobierz tak, aby względne błędy oszacowań średniej wartości zmiennej _api99_ w ramach hrabstw nie przekraczały 5%. Z drugiej strony nie interesuje nas próba nieznacznie mniejsza od populacji - szukamy najmniejszej próby, która spełni to założenie. Następnie sprawdź czy na podstawie wylosowanej próby wyniki dla zmiennej _api00_ będą charakteryzowały się porównywalną efektywnością.
+
+# 3. PISA
+
+https://www.oecd.org/pisa/data/2018database/
+
+https://pisa.ibe.edu.pl/
+
+# 4. ESS
+
+Na podstawie zbioru danych z [European Social Survey ](https://www.europeansocialsurvey.org/data/country.html?c=poland) przeprowadź estymację 4 wybranych cech. W przypadku pojawienia się braków danych przeprowadź imputację. 
+
+https://cimentadaj.github.io/blog/2019-11-15-release-essurvey/essurvey-release/
