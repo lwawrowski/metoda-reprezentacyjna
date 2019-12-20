@@ -46,4 +46,6 @@ a <- apipop %>%
 
 ess <- read_sav("data/ESS9PL.sav")
 save(ess, file = "data/ess.RData")
-sum(ess$pweight)
+sum(ess$dweight)
+
+load("data/PISA2012.RData")

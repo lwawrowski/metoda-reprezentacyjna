@@ -25,7 +25,7 @@ Na podstawie studium przypadku przeprowadź obliczenia oraz przygotuj raport w f
 
 - Jakość kodu (komentarze, odpowiednie nazwy obiektów): 0-2 pkt 
 
-# 1. Polski Generalny Sondaż Społeczny
+# 1. PGSS
 
 Polski Generalny Sondaż Społeczny obejmuje badanie indywidualnych postaw, cenionych wartości, orientacji i zachowań społecznych, jak również pomiar zróżnicowania społeczno-demograficznego, zawodowego, edukacyjnego i ekonomicznego reprezentatywnych grup i warstw społecznych w Polsce.
 
@@ -45,18 +45,36 @@ Liczebność populacji Polski w 2010 roku można znaleźć m.in. w Banku Danych 
 
 Otrzymane wyniki porównaj z aktualnymi lub archiwalnymi badaniami społecznymi prowadzonymi przez GUS lub niezależne ośrodki (np. Diagnoza Społeczna).
 
-# 2. Academic Performance Index
+# 2. API
 
 Dla zbioru `apipop` zaproponuj schemat losowania, który uwzględni typ szkoły oraz populację hrabstwa (zmienna _cname_). Dane o populacji hrabstw są dostępne w internecie. Można dokonać grupowania hrabstw, tak aby nowoutworzone warstwy miały porównywalną liczebność populacji. Rozmiar próby dobierz tak, aby względne błędy oszacowań średniej wartości zmiennej _api99_ w ramach hrabstw nie przekraczały 5%. Z drugiej strony nie interesuje nas próba nieznacznie mniejsza od populacji - szukamy najmniejszej próby, która spełni to założenie. Następnie sprawdź czy na podstawie wylosowanej próby wyniki dla zmiennej _api00_ będą charakteryzowały się porównywalną efektywnością.
 
 # 3. PISA
 
-https://www.oecd.org/pisa/data/2018database/
+Na podstawie zbioru z badania [PISA](data/pisa_school.RData) dotyczącego szkół dokonaj oszacowania wybranych trzech cech dla Polski oraz conajmniej 4 innych krajów. Kwestionariusze znajdują się na oficjalnej [stronie badania](https://www.oecd.org/pisa/data/2018database/). W Polsce za badanie PISA odpowiedzialny jest [Instytut Badań Edukacyjnych](https://pisa.ibe.edu.pl/).
 
-https://pisa.ibe.edu.pl/
+Do zadeklarowania schematu losowania użyj zmiennych _STRATUM_ i _W_FSTUWT_SCH_SUM_.
 
 # 4. ESS
 
-Na podstawie zbioru danych z [European Social Survey ](https://www.europeansocialsurvey.org/data/country.html?c=poland) przeprowadź estymację 4 wybranych cech. W przypadku pojawienia się braków danych przeprowadź imputację. 
+Na podstawie zbioru danych z [European Social Survey ](data/ess.RData) przeprowadź estymację 3 wybranych cech w wybranych przekrojach (np. płeć, region, itp.). W przypadku pojawienia się braków danych przeprowadź imputację. Informacje o badaniu ESS znajdują się na [stronie internetowej badania](https://www.europeansocialsurvey.org/data/country.html?c=poland).
 
-https://cimentadaj.github.io/blog/2019-11-15-release-essurvey/essurvey-release/
+W badaniu ESS zmienna _dweight_ zawiera tzw. wagę analityczną, która sumuje się do liczebności próby. Wyznaczenie wagi z próby jest możliwe poprzez zastosowanie następującego wzoru:
+
+$$w=\frac{w_a}{n}\cdot N$$
+
+gdzie:
+
+- $w_a$ - waga analityczna
+- $n$ - liczebność próby
+- $N$ - liczebność populacji
+
+Liczebność populacji Polski w 2018 roku można znaleźć m.in. w Banku Danych Lokalnych. Będzie miało to znaczenie przy szacowaniu wartości globalnych.
+
+# 5. BDL
+
+Z [Banku Danych Lokalnych](https://bdl.stat.gov.pl/BDL/start) pobierz dowolne dane na poziomie gmin, a następnie wykorzystując metodę losowania warstwowego wylosuj próbę. W raporcie/prezentacji przedstaw wpływ różnych sposobów warstwowania oraz liczebności próby na otrzywane wyniki. Wykorzystaj przedziały ufności do prezentacji wyników z próby i porównania z danymi z populacji.
+
+**Przykład**
+
+Pobieram dane na temat zasięgu korzystania ze środowiskowej pomocy społecznej na poziomie gmin. Traktując informacje o typie gminy, województwie oraz liczbie ludności jako warstwy losuję 100/200/300 gmin i na tej podstawie szacuję średni zasięg korzystania ze środowiskowej pomocy społecznej dla województw.
