@@ -25,11 +25,13 @@ Na podstawie studium przypadku przeprowadź obliczenia oraz przygotuj raport w f
 
 - Jakość kodu (komentarze, odpowiednie nazwy obiektów): 0-2 pkt 
 
+Na moodle proszę umieścić raport/prezentację oraz kod źródłowy programu R.
+
 # 1. PGSS
 
 Polski Generalny Sondaż Społeczny obejmuje badanie indywidualnych postaw, cenionych wartości, orientacji i zachowań społecznych, jak również pomiar zróżnicowania społeczno-demograficznego, zawodowego, edukacyjnego i ekonomicznego reprezentatywnych grup i warstw społecznych w Polsce.
 
-Na podstawie zbioru [PGSS 2010](data/pgss2010.RData) wybierz conajmniej trzy cechy, które zawierają braki danych (max. 30%). Dla wybranych cech dokonaj estymacji dla kilku wybranych przekrojów społeczno-ekonomicznych (grupy wieku, wykształcenie, itp.) lub terytorialnych (województwa, klasa miejscowości zamieszkania, itp.). Przed estymacją zastosuj jedną z metod radzenia sobie z brakami danych.
+Dla trzech wybranych cech ze zbioru zbioru [PGSS 2010](data/pgss2010.RData) dokonaj estymacji dla kilku wybranych przekrojów społeczno-ekonomicznych (grupy wieku, wykształcenie, itp.) lub terytorialnych (województwa, klasa miejscowości zamieszkania, itp.). W razie potrzeby przed estymacją zastosuj jedną z metod radzenia sobie z brakami danych.
 
 W PGSS zmienna _weight_ zawiera tzw. wagę analityczną, która sumuje się do liczebności próby. Wyznaczenie wagi z próby jest możliwe poprzez zastosowanie następującego wzoru:
 
@@ -57,7 +59,7 @@ Do zadeklarowania schematu losowania użyj zmiennych _STRATUM_ i _W_FSTUWT_SCH_S
 
 # 4. ESS
 
-Na podstawie zbioru danych z [European Social Survey ](data/ess.RData) przeprowadź estymację 3 wybranych cech w wybranych przekrojach (np. płeć, region, itp.). W przypadku pojawienia się braków danych przeprowadź imputację. Informacje o badaniu ESS znajdują się na [stronie internetowej badania](https://www.europeansocialsurvey.org/data/country.html?c=poland).
+Na podstawie zbioru danych z [European Social Survey ](data/ess.RData) przeprowadź estymację trzech wybranych cech w wybranych przekrojach (np. płeć, region, itp.). W przypadku pojawienia się braków danych przeprowadź imputację. Informacje o badaniu ESS znajdują się na [stronie internetowej badania](https://www.europeansocialsurvey.org/data/country.html?c=poland).
 
 W badaniu ESS zmienna _dweight_ zawiera tzw. wagę analityczną, która sumuje się do liczebności próby. Wyznaczenie wagi z próby jest możliwe poprzez zastosowanie następującego wzoru:
 
