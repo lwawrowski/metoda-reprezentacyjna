@@ -1,0 +1,82 @@
+---
+title: "Metoda reprezentacyjna - projekt"
+author: "Łukasz Wawrowski"
+date: ""
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    theme: lumen
+    css: style.css
+---
+
+# Zasady oceny
+
+Na podstawie studium przypadku przeprowadź obliczenia oraz przygotuj raport w formie dokumentu lub prezentacji. W ocenie pod uwagę brane są poniższe kryteria: 
+
+- Projekt zawiera wizualizacje danych: 0-4 pkt
+
+- Wykorzystanie innych źródeł danych (raporty, dane GUS, inne badania): 0-5 pkt
+
+- Adekwatność wykorzystanych metod: 0-5 pkt
+
+- Jakość prezentacji/raportu (tabele zamiast zrzutów ekranu, dobór kolorów, itp.): 0-4 pkt
+
+- Jakość kodu (komentarze, odpowiednie nazwy obiektów): 0-2 pkt 
+
+Na moodle proszę umieścić raport/prezentację oraz kod źródłowy programu R.
+
+# 1. PGSS
+
+Polski Generalny Sondaż Społeczny obejmuje badanie indywidualnych postaw, cenionych wartości, orientacji i zachowań społecznych, jak również pomiar zróżnicowania społeczno-demograficznego, zawodowego, edukacyjnego i ekonomicznego reprezentatywnych grup i warstw społecznych w Polsce.
+
+Dla trzech wybranych cech ze zbioru zbioru [PGSS 2010](data/pgss2010.RData) dokonaj estymacji dla kilku wybranych przekrojów społeczno-ekonomicznych (grupy wieku, wykształcenie, itp.) lub terytorialnych (województwa, klasa miejscowości zamieszkania, itp.). Wybierz cechy nie zawierające zbyt dużo braków danych.
+
+W PGSS zmienna _weight_ zawiera tzw. wagę analityczną, która sumuje się do liczebności próby. Wyznaczenie wagi z próby jest możliwe poprzez zastosowanie następującego wzoru:
+
+$$w=\frac{w_a}{n}\cdot N$$
+
+gdzie:
+
+- $w_a$ - waga analityczna
+- $n$ - liczebność próby
+- $N$ - liczebność populacji
+
+Liczebność populacji Polski w 2010 roku można znaleźć m.in. w Banku Danych Lokalnych. Będzie miało to znaczenie przy szacowaniu wartości globalnych. W zbiorze PGSS nie ma informacji o warstwach i jednostkach losowania pierwszego stopnia, dlatego w deklaracji schematu losowania podajemy tylko id respondenta oraz wagę. 
+
+Otrzymane wyniki porównaj z aktualnymi lub archiwalnymi badaniami społecznymi prowadzonymi przez GUS lub niezależne ośrodki (np. Diagnoza Społeczna).
+
+# 2. API
+
+Dla zbioru `apipop` zaproponuj schemat losowania, który uwzględni typ szkoły oraz populację hrabstwa (zmienna _cname_). Dane o populacji hrabstw są dostępne w internecie. Można dokonać grupowania hrabstw, tak aby nowoutworzone warstwy miały porównywalną liczebność populacji. Rozmiar próby dobierz tak, aby względne błędy oszacowań średniej wartości zmiennej _api99_ w ramach hrabstw nie przekraczały 5%. Z drugiej strony nie interesuje nas próba nieznacznie mniejsza od populacji - szukamy najmniejszej próby, która spełni to założenie. Następnie sprawdź czy na podstawie wylosowanej próby wyniki dla zmiennej _api00_ będą charakteryzowały się porównywalną efektywnością.
+
+# 3. PISA
+
+Na podstawie zbioru z badania [PISA](data/pisa_school.RData) dotyczącego szkół dokonaj oszacowania wybranych trzech cech dla Polski oraz conajmniej 4 innych krajów. Kwestionariusze znajdują się na oficjalnej [stronie badania](https://www.oecd.org/pisa/data/2018database/). W Polsce za badanie PISA odpowiedzialny jest [Instytut Badań Edukacyjnych](https://pisa.ibe.edu.pl/).
+
+Do zadeklarowania schematu losowania użyj zmiennych _STRATUM_ i _W_FSTUWT_SCH_SUM_.
+
+# 4. ESS
+
+Na podstawie zbioru danych z [European Social Survey ](data/ess.RData) przeprowadź estymację trzech wybranych cech w wybranych przekrojach (np. płeć, region, itp.). Wybierz cechy nie zawierające zbyt dużo braków danych. Informacje o badaniu ESS znajdują się na [stronie internetowej badania](https://www.europeansocialsurvey.org/data/country.html?c=poland).
+
+W badaniu ESS zmienna _dweight_ zawiera tzw. wagę analityczną, która sumuje się do liczebności próby. Wyznaczenie wagi z próby jest możliwe poprzez zastosowanie następującego wzoru:
+
+$$w=\frac{w_a}{n}\cdot N$$
+
+gdzie:
+
+- $w_a$ - waga analityczna
+- $n$ - liczebność próby
+- $N$ - liczebność populacji
+
+Liczebność populacji Polski w 2018 roku można znaleźć m.in. w Banku Danych Lokalnych. Będzie miało to znaczenie przy szacowaniu wartości globalnych.
+
+# 5. BDL
+
+Z [Banku Danych Lokalnych](https://bdl.stat.gov.pl/BDL/start) pobierz dowolne dane na poziomie gmin, a następnie wykorzystując metodę losowania warstwowego wylosuj próbę. W raporcie/prezentacji przedstaw wpływ różnych sposobów warstwowania oraz liczebności próby na otrzywane wyniki. Wykorzystaj przedziały ufności do prezentacji wyników z próby i porównania z danymi z populacji.
+
+**Przykład**
+
+Pobieram dane na temat zasięgu korzystania ze środowiskowej pomocy społecznej na poziomie gmin. Traktując informacje o typie gminy, województwie oraz liczbie ludności jako warstwy losuję 100/200/300 gmin i na tej podstawie szacuję średni zasięg korzystania ze środowiskowej pomocy społecznej dla województw.
