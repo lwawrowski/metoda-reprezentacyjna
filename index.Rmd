@@ -1,0 +1,27 @@
+--- 
+title: "Metoda reprezentacyjna"
+author: "Łukasz Wawrowski"
+date: ""
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+github-repo: lwawrowski/metoda-reprezentacyjna
+description: "Materiały dydaktyczne do kursu Metoda reprezentacyjna."
+bibliography: book.bib
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+---
+
+# Literatura {-}
+
+- Heeringa, S. G., West, B. T., & Berglund, P. A. (2017). Applied survey data analysis. CRC press.
+- Lumley, T. (2011). Complex surveys: a guide to analysis using R. John Wiley & Sons.
+- Falissard, B. (2011). Analysis of questionnaire data with R. CRC Press.
+- De Leeuw, E. D., Hox, J. J., & Dillman, D. A. (2008). International handbook of survey methodology. Taylor & Francis Group.
+
+```{r include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+```

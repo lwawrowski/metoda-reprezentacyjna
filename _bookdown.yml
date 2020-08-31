@@ -1,0 +1,6 @@
+book_filename: "Wawrowski_MR"
+repo: https://github.com/lwawrowski/metoda-reprezentacyjna
+language:
+  ui:
+    chapter_name: ""
+delete_merged_file: true
