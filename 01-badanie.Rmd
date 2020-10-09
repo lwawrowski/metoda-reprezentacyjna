@@ -1,9 +1,122 @@
-# Etapy badania statystycznego
+# Wprowadzenie do metody reprezentacyjnej
 
-## Wprowadzenie
+[Prezentacja](https://docs.google.com/presentation/d/1U-vMmSwtyOHihqkImD5gSmuTuksHvnUhGHXcMESNOS8/edit?usp=sharing)
 
-[Prezentacja]()
+## Metoda reprezentacyjna
+
+Badania statystyczne stanowią podstawę funkcjonowania państwa oraz społeczeństwa - dzięki nim znany jest poziom inflacji czy bezrobocia. W praktyce dominują badania oparte na próbie, ponieważ badanie wszystkich jednostek często jest utrudnione oraz nieopłacalne. Dzięki zastosowaniu odpowiednich metod statystycznych wyniki zebrane na podstawie próby można z powodzeniem uogólniać na całą populację. Oczywiście znając wielkość błędu jaki się wówczas popełnia.
+
+Metoda reprezentacyjna ma na celu określenie zasad dotyczących projektowania, zbierania, przetwarzania oraz analizy danych, które wpływają na koszt i jakość badania. Innymi słowy metoda reprezentacyjna zajmuje się metodologią badań statystycznych.
+
+W Polsce prym w prowadzeniu badań wiedzie Główny Urząd Statystyczny, który w [Programie Badań Statystycznych Statystyki Publicznej](https://bip.stat.gov.pl/dzialalnosc-statystyki-publicznej/program-badan-statystycznych/pbssp-2020/) publikuje listę prowadzonych badań. Oprócz tego na rynku działa wiele firm, które zajmują się badaniami statystycznymi. Wśród najpopularniejszych można wskazać [CBOS](https://www.cbos.pl/PL/home/home.php), Kantar Millward Brown i wiele innych. Najgłośniej o tych podmiotach mówi się przy okazji wyborów, kiedy na tapetę brane są [sondaże](https://sprawdzamysondaze.pl/). Z dobrodziejstw badań statystycznych korzystają także prywatne przedsiębiorstwa produkcyjne, które z wykorzystaniem tych metod prowadzą badania jakościowe.
+
+Projektując badanie statystyczne musimy zdefiniować następujące charakterystyki badania:
+
+1.  Cel badania
+2.  **Populacja generalna** którą badanie ma opisywać
+3.  Źródła z których może zostać wylosowana próba - **operat losowania**
+4.  Sposób w jaki próba zostanie wylosowana - **schemat losowania**
+5.  Sposób zbierania danych ([CATI, CAWI, CAPI I PAPI](https://beedifferent.pl/blog/techniki-organizacji-badan-komunikacji-wewnetrznej-cati-cawi-capi-i-papi))
+
+Badanie, które przeprowadzimy zgodnie z powyższą listą cechuje się tym, że jest oparte na **próbie losowej**. Oznacza to, że w sporym uproszczeniu, wyniki badania przeprowadzonego na próbie losowej można uogólniać na populację generalną.
+
+Wśród zalet tego podejścia można wskazać przede wszystkim znajomość wielkości błędu jaki popełniamy przy tym uogólnieniu. Ponadto można wskazać proste zależności pomiędzy liczebnością próby, błędem badania oraz kosztami. Większa liczebność próby implikuje mniejszy błąd badania, natomiast wiąże się ze zwiększeniem kosztów badania. Celem autora badania powinno być znalezienie kompromisu pomiędzy budżetem dostępnym na przeprowadzenie badania a błędem badania.
+
+Do przeprowadzania takiego badania wymagana jest jednak wiedza dziedzinowa oraz dostęp do operatu losowania (czasami jest to poważny problem).
+
+Wcielimy się na chwilę w rolę studentów koła naukowego, które chce przeprowadzić badanie studentów Uniwersytetu Ekonomicznego w Poznaniu na temat wrażeń z ostatniej sesji. Wiadomo, że było super, ale wartoby mieć jakieś liczby, które to potwierdzą.
+
+1. Cel badania: poznanie opinii studentów na wybrany temat.
+2. Populacja generalna: wszyscy studenci UEP (8415 osób w roku 2018/2019)
+
+Zakładając, że w kole naukowym mamy 10 osób to dotarcie do wszystkich studentów i skłonienie ich do wypełnienia ankiety byłoby problematyczne. Zatem decydujemy się na przeprowadzenia badania na próbie.
+
+3. Operat losowania: lista wszystkich studentów UEP wraz z danymi kontaktowymi
+
+W przypadku studentów pozyskanie listy z Biura Obsługi Studentów wraz z dodatkowymi informacji nie powinno być problemem.
+
+4. Schemat losowania: wylosowanie z operatu np. 5% próby z uwzględnieniem płci i kierunku studiów
+
+Najważniejszy moment czyli wybranie osób, które wypełnią naszą ankietę. 5% z 8415 to około 420 studentów, więc każdy członek koła przeprowadzi wywiad z około 40 studentami - jest to do zrobienia. Powinien być to dobór losowy, ale uwzględniający strukturę np. płci i kierunku studiów. Zależy nam na tym, żeby próba wylosowana do badania była miniaturą populacji.
+
+5. Zebranie danych: ankieta w Google Forms
+
+Wysłanie ankiety poprzez e-mail może spowodować, że wiele osób w ogóle nie kliknie w załączony link. Dużo efektywniejszą formą zbierania danych będzie CAPI - wywiad osobisty z wykorzystaniem formularza internetowego.
 
 ## Rys historyczny
 
-Booth, C., (1889-1903), [Life and Labour of the People of London](https://booth.lse.ac.uk/) 
+**Świat**
+
+1. Booth, C., (1889-1903), [Life and Labour of the People of London](https://booth.lse.ac.uk/) 
+
+Zebranie danych o ubóstwie dla każdego domu w Londynie.
+
+2. Thurstone, L. i Chave, E., (1929), The Measurement of Attitude, Chicago: University of Chicago.
+Likert, R., (1932), A technique for the measurement of attitudes, Archives of psychology, 140, pp. 5-53.
+
+Wielki kryzys i ograniczone przez to środki przyspieszają rozwój metody reprezentacyjnej. Opracowanie przez Rensisa Likerta pięciostopniowej skali.
+
+3. Hansen, M., (1939), Survey of Unemployment.
+
+Pierwsze poważne badanie dotyczące bezrobocia.
+
+4. Deming, W., (1950), Some Theory of Sampling, New York: Dover.
+Hansen, M., Hurwitz, W. i Madow, W., (1953), Sample survey methods and theory, Wiley.
+
+Pierwsze podręczniki dotyczące metody reprezentacyjnej.
+
+**Polska**
+
+Neyman, J., (1933), Zarys teorii i praktyki badania struktury ludności metodą reprezentacyjną
+
+Zasępa, R., (1972), Metoda reprezentacyjna
+
+Bracha, Cz. (1996), Teoretyczne podstawy metody reprezentacyjnej.
+
+## Błędy
+
+Na całkowity błąd badania składają się: 
+
+- błąd pomiaru i efekt respondenta
+- błąd przetwarzania
+- błąd pokrycia
+- błąd losowania
+- błąd braku odpowiedzi
+- błąd dopasowania
+
+### Błąd pomiaru (measurement error)
+
+Jest to różnica pomiędzy tym, co chcemy zmierzyć, a tym co otrzymujemy od respondenta. Np. w pytaniu: _Have you ever, even once, used any form of cocaine?_ (National Survey on Drug Use and Health) raczej nie spodziewajamy się szczerych odpowiedzi.
+
+Do tego dochodi response bias (efekt respondenta) czyli wpływ respondenta na otrzymywane wyniki. Przy powtarzalnych badaniach respondenci mogą nauczyć się kwestionariusza i odpowiadać tak, żeby skrócić wywiad.
+
+### Błąd przetwarzania (processing error)
+
+Jest to błąd wynikający z analizy odpowiedzi bez szerszego kontekstu oraz błąd kodowania pytań otwartych.
+
+Jeśli podczas analizy kwestionariusza zobaczymy, że ktoś na pytanie _Ile razy dziennie doświadczasz agresji ze strony innych ludzi?_ (National Crime Victimization Survey) odpowiedział, że 20 to będziemy mocno zaskoczeni. Nasze zaskoczenie zamieni się w zakłopotanie, kiedy zauważymy, że ta odpowiedź dotyczy respondenta płci męskiej. Na szczęście wykonywany zawód: ochroniarz w klubie nocnym pozwoli na zaakceptowanie takiego stanu rzeczy.
+
+Inną kwestią są pytania otwarte: _Czy w ciągu ostatnich miesięcy słyszałeś o jakichkolwiek zmianach w nastrojach rynkowych?_ (Surveys of Consumers). Z racji tego, że występuje trudność w analizie takich pytań często kategoryzuje się taką odpowiedź np. do trzech kategorii: pozytywna, neutralna, negatywna. Problem w tym, że tego przyporządkowania dokonuje pracownik firmy badawczej i często jest to jego subiektywny wybór.
+
+### Błąd pokrycia (coverage error)
+
+Polega na objęciu badaniem niekompletnej zbiorowości. Jeżeli za operat losowania przyjęlibyśmy [książkę telefoniczną](https://pl.wikipedia.org/wiki/Plik:Pierwsza_Polska_Ksi%C4%85%C5%BCka_Telefoniczna.jpg) to badaniem nie obejmiemy osób, które nie posiadają telefonu (populacja nie objęta badaniem). W książce telefonicznej znajdują się także numery do przedsiębiorstw, które będą niekwalifikującymi się jednostkami.
+
+![](img/operat.png)
+
+Coverage bias to różnica pomiędzy wynikami dla jednostek objętych i nieobjętych badaniem - w teorii do obliczenia.
+
+### Błąd losowania (sampling error)
+
+Sampling bias występuje jeżli jednostki w operacie losowania nie mają szans na dostanie się do próby np. ze względu na zbyt małe prawdopodobieństwo wylosowania.
+
+Sampling variance polega na tym, że każdorazowe losowanie próby będzie dawało odmienne wyniki.
+
+### Błąd braku odpowiedzi (nonresponse error)
+
+Uczniowie nieobecni podczas testu kompetencji z matematyki mogą celowo opuszczać ten dzień w szkole ze względu na świadomość mniejszych umiejętności. Uzyskany przez szkołę wynik będzie z tego względu wyższy niż w przypadku obecności wszystkich uczniów.
+
+### Błąd dopasowania (adjustement error)
+
+Wykorzystanie danych na temat populacji, wskaźnika kompletności w poprawie jakości próby może spowodować przeszacowanie lub niedoszacowanie wyników dla określonych grup.
+
