@@ -979,6 +979,10 @@ Skrót klawiszowy: ctrl + shift + m
 
 ---
 
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/3pasJF1K87E5wDsVRmdEk?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
+---
+
 # Wybrane funkcje
 
 - `select()` - wybór zmiennych

@@ -1,0 +1,62 @@
+# Wprowadzenie do R
+
+[Prezentacja](presentations/02_wprowadzenieR.html)
+
+## Wczytanie danych
+
+Wykorzystamy zbiór danych dotyczących wyników drugiej tury wyborów prezydenckich w Polsce na poziomie obwodów wyborczych. Dane pochodzą z serwisu [PKW](https://prezydent20200628.pkw.gov.pl/prezydent20200628/pl/dane_w_arkuszach), a plik Excel znajduje się [tutaj](data/wybory2020.xlsx).
+
+Dane wczytujemy z wykorzystaniem pakietu _readxl_, a następnie czyścimy nazwy kolumn oraz wybieramy te zawierające kluczowe informacje:
+
+```{r}
+library(tidyverse)
+
+wp <- readxl::read_xlsx("data/wybory2020.xlsx") %>% 
+  janitor::clean_names(.) %>%  
+  select(symbol_kontrolny:percent_glosow_niewaznych, percent_glosow_waznych:rafal_kazimierz_trzaskowski)
+
+summary(wp)
+```
+
+Spróbujmy odpowiedzieć na kilka pytań dotyczących analizowanych danych.
+
+1. Ile obwodów głosowania miało frekwencję powyżej 80%?
+
+```{r}
+wp %>% 
+  filter(frekwencja > 80) %>% 
+  count()
+```
+
+2. Ile obwodów głosowania znajduje się w Poznaniu?   
+
+```{r}
+wp %>% 
+  filter(powiat == "Poznań") %>% 
+  count()
+```
+
+
+3. Ile jest obwodów według typu obszaru?
+
+```{r}
+wp %>% 
+  count(typ_obszaru)
+```
+
+4. Jaka była średnia frekwencja w województwach?
+
+```{r}
+wp %>% 
+  group_by(wojewodztwo) %>% 
+  summarise(srednia_frekwencja=mean(frekwencja)) %>% 
+  arrange(srednia_frekwencja)
+```
+
+5. Gdzie była największa różnica pomiędzy kandydatami?
+
+```{r}
+diff <- wp %>% 
+  mutate(roznica = abs(andrzej_sebastian_duda-rafal_kazimierz_trzaskowski))
+```
+
