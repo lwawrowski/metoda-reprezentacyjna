@@ -1,0 +1,49 @@
+# Minimalna liczebność próby
+
+[Prezentacja](presentations/02_wprowadzenieR.html)
+
+## Joe Monster i YouTube
+
+[Dlaczego w dobie pandemii rządy na świecie nie chcą policzyć ilości chorych na podstawie losowej próby?](https://joemonster.org/art/50082/Dlaczego_w_dobie_pandemii_rzady_na_swiecie_nie_chca_skorzystac_z_dobrodziejstw_statystyki_)
+
+[Nie jestem lekarzem... ALE... - teorie spiskowe, koronawirus i ludzie, którzy wiedzą lepiej...](https://www.youtube.com/watch?v=4WhWewpBfUM)
+
+## Wybrane podejścia
+
+[Kalkulator wielkości próby](https://www.statystyka.az.pl/dobor/kalkulator-wielkosci-proby.php)
+
+[How to choose a sample size (for the statistically challenged)](http://www.tools4dev.org/resources/how-to-choose-a-sample-size/)
+
+[Designing Household Survey Samples: Practical Guidelines ](https://unstats.un.org/unsd/demographic/sources/surveys/Handbook23June05.pdf)
+
+Do wyznaczenia minimalnej liczebności niezbędne jest ustalenie:
+
+- poziomu prawdopodobieństwa (poziomu istotności) - $\alpha$
+- maksymalnego dopuszczalnego błędu pomiaru - $d$
+- odsetek/odchylenie standardowe z badania pilotażowego - $p_0$ lub $\sigma$
+
+### Szacowanie średniej przy znanym odchyleniu standardowym populacji
+
+$$n \geq z_{1-\alpha/2} \cdot (\frac{\sigma}{d})^2$$
+
+### Szacowanie średniej przy nieznanym odchyleniu standardowym populacji
+
+### Szacowanie odsetka przy znanym szacunkowym odsetku
+
+### Szacowanie odsetka przy nieznanym szacunkowym odsetku
+
+## Liczebność próby w badaniach gospodarstw domowych
+
+$n \geq z_{1-\alpha/2}^2 \cdot p_0(1-p_0) \cdot f \cdot k / p \cdot n \cdot d^2$
+
+gdzie:
+
+https://unstats.un.org/unsd/demographic/meetings/egm/Sampling_1203/docs/no_2.pdf
+
+Przykłady
+
+https://cyrkiel.info/statystyka/minimalna-liczebnosc-proby/
+
+
+
+

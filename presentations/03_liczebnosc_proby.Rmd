@@ -1,0 +1,184 @@
+---
+title: "Metoda reprezentacyjna"
+subtitle: "Minimalna liczebność próby"
+author: "&copy; Łukasz Wawrowski"
+date: ""
+output:
+  xaringan::moon_reader:
+    css: ["default.css", "default-fonts.css"]
+    lib_dir: libs
+    nature:
+      ratio: "4:3"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r include=FALSE}
+library(tidyverse)
+library(countdown)
+```
+
+# Minimalna liczebność próby
+
+Minimalna liczebność próby (MLP) informuje ile jednostek należy przebadać, aby maksymalny błąd oszacowania (na poziomie ufności $1–\alpha$) wyniósł co najwyżej $d$.
+
+Przy większej liczbie jednostek oszacowanie będzie bardziej trafne (przedział ufności będzie węższy). Z drugiej strony koszty badania rosną wraz ze wzrostem liczebności próby.
+
+Szukamy kompromisu pomiędzy dokładnością, a liczbą badanych jednostek.
+
+---
+
+# Podejście kosztowe
+
+Badane jest tyle jednostek na ile pozwala założony budżet.
+
+$$n = \frac{\text{budżet} - \text{koszty stałe}}{\text{koszt jednostkowy}}$$
+
+Przykład:
+
+$$n=\frac{25000-5000}{20}=1000$$
+
+W tym podejściu nie bierzemy pod uwagę błędu oszacowania.
+
+---
+
+## Podejścia oparte o przedział ufności
+
+Do wyznaczenia minimalnej liczebności niezbędne jest ustalenie:
+
+- poziomu prawdopodobieństwa (poziomu istotności) - $\alpha$
+- maksymalnego dopuszczalnego błędu pomiaru - $d$
+- odsetek/odchylenie standardowe z badania pilotażowego - $p_0$ lub $\sigma$
+
+---
+
+# Przedział ufności dla średniej
+
+$$P\left\{\bar{X}-z_{(1-\alpha/2)}\frac{\sigma}{\sqrt{n}}<m<\bar{X}+z_{(1-\alpha/2)}\frac{\sigma}{\sqrt{n}}\right\}=1-\alpha$$
+gdzie:
+
+- $m$ - prawdziwa wartość średniej w populacji,
+- $\bar{X}$ - estymator średniej z próby,
+- $z_{(1-\alpha/2)}$ - kwantyl rozkładu normalnego obliczony dla poziomu istotności $\alpha$,
+- $\sigma$ - znane odchylenie standardowe,
+- $n$ - liczebność próby.
+
+Błąd oszacowania to wynik odejmowania i dodawania od i do średniej z próby.
+
+--
+
+Przykładowo: przedział ufności czasu pracy w ciągu tygodnia wynosi $(35,45)$ godzin. Zatem średnia z próby wynosi 40 godzin, a błąd 5 godzin.
+
+---
+
+### MLP - wyprowadzenie
+
+$$P\left\{\bar{X}-z_{(1-\alpha/2)}\frac{\sigma}{\sqrt{n}}<m<\bar{X}+z_{(1-\alpha/2)}\frac{\sigma}{\sqrt{n}}\right\}=1-\alpha$$
+Za błąd odpowiada: 
+
+$$z_{(1-\alpha/2)}\frac{\sigma}{\sqrt{n}}$$
+
+Chcemy, żeby błąd był mniejszy od tego wyrażenia:
+
+$$d \geq z_{(1-\alpha/2)}\frac{\sigma}{\sqrt{n}}$$
+Zatem po przekształceniach:
+
+$$\sqrt{n} \geq z_{(1-\alpha/2)}\frac{\sigma}{d}$$
+Otrzymujemy wzór na minimalną liczebność próby:
+
+$$n \geq \left(z_{(1-\alpha/2)}\frac{\sigma}{d}\right)^2$$
+
+---
+
+# MLP - szacowanie średniej (I)
+
+Znane odchylenie standardowe w populacji.
+
+$$n \geq \left(z_{(1-\alpha/2)} \cdot \frac{\sigma}{d}\right)^2$$
+
+gdzie: 
+
+- $z_{1-\alpha/2}$ - kwantyl rozkładu normalnego obliczony dla poziomu istotności $\alpha$
+- $\sigma$ - odchylenie standardowe w populacji
+- $d$ - maksymalny dopuszczalny błąd pomiaru
+
+---
+
+# MLP - szacowanie średniej (II)
+
+Nieznane odchylenie standardowe w populacji.
+
+$$n \geq \left(t_{(1-\alpha/2,n_0-1)} \cdot \frac{s}{d}\right)^2$$
+
+gdzie: 
+
+- $t_{(1-\alpha/2,n_0-1)}$ - kwantyl rozkładu t-Studenta obliczony dla poziomu istotności $\alpha$ i dla stopni swobody $n_0-1$
+- $n_0$ - wielkość próby w badaniu pilotażowym
+- $s$ - odchylenie standardowe w badaniu pilotażowym
+- $d$ - maksymalny dopuszczalny błąd pomiaru
+
+---
+
+# MLP - szacowanie odsetka (I)
+
+Znany szacunkowy odsetek.
+
+$$n \geq z_{(1-\alpha/2)}^2 \cdot \frac{p_0(1-p_0)}{d^2}$$
+
+gdzie: 
+
+- $z_{1-\alpha/2}$ - kwantyl rozkładu normalnego obliczony dla poziomu istotności $\alpha$
+- $p_0$ - znany szacunkowy odsetek
+- $d$ - maksymalny dopuszczalny błąd pomiaru
+
+
+---
+
+# MLP - szacowanie odsetka (II)
+
+Nieznany szacunkowy odsetek.
+
+$$n \geq z_{(1-\alpha/2)}^2 \cdot \frac{1}{d^2}$$
+
+gdzie: 
+
+- $z_{1-\alpha/2}$ - kwantyl rozkładu normalnego obliczony dla poziomu istotności $\alpha$
+- $d$ - maksymalny dopuszczalny błąd pomiaru
+
+---
+
+# Wartości kwantyli N(0,1)
+
+| Prawdopodobieństwo | Poziom istotności | Kwantyl rozkł. norm.|
+|-------------------:|------------------:|--------------------:|
+| 99% (0,99) | 0,01 | 2,58 | 
+| 95% (0,95) | 0,05 | 1,96 |
+| 90% (0,90) | 0,10 | 1,64 |
+
+Wyznaczanie wartości kwantyli w R:
+
+- `qnorm(p = 1-alfa/2)`
+- `qt(p = 1-alfa/2, df = n0-1)`
+
+---
+
+# Zależności - średnia
+
+Prawdopodobieństwo = 95%, odchylenie standardowe = 100
+
+```{r echo=FALSE}
+options(scipen = 999)
+
+p <- expand.grid(d=seq(0.01,0.2, 0.01)) %>% 
+  mutate(n=ceiling((qnorm(1-0.05/2)*100/d)^2)) %>% 
+  ggplot(aes(x=d, y=n)) + geom_point() + theme_minimal()
+plotly::ggplotly(p, width = 8, height = 6)
+```
+
+
+---
+
+class: inverse, center, middle
+
+# Pytania?
