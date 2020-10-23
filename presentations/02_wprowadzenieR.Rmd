@@ -878,7 +878,7 @@ library("tidyverse")
 
 ---
 
-# Instalacja vs. ładowanie
+# Instalacja vs. wczytywanie
 
 ![](img/packages.jpg)
 
@@ -932,9 +932,13 @@ Zapisywanie do formatu R:
 
 - `saveRDS(dane, file = "zbior.RDS")`
 
-Zapisywanie do pliku tekstowego:
+Zapisywanie do pliku tekstowego (txt, csv):
 
 - `write.table(x = obiekt, file = "plik.csv", sep = ";", dec = ",", row.names = FALSE)`
+
+Zapisywanie do pliku Excela z pakietem _openxlsx_:
+
+- `write.xlsx(x = obiekt, file = "plik.xlsx")`
 
 ---
 
@@ -943,61 +947,6 @@ Zapisywanie do pliku tekstowego:
 - `load("zbior.RData")`
 
 - `dane <- readRDS("zbior.RDS")`
-
----
-
-<center><img src="img/magrittr.png" height="600"></center>
-
----
-
-# Przetwarzanie potokowe
-
-```
-obudź się %>%
-  wyjdź z łóżka %>%
-  skorzystaj z łazienki %>%
-  zjedź śniadanie %>%
-  ubierz się %>%
-  idź do pracy
-```
-
----
-
-# Przetwarzanie potokowe
-
-Użycie operatora **pipe**: `%>%` (łącznik) ułatwia zarządzanie kodem i pisanie czytelnej składni poprzez wykorzystanie istniejących struktur danych:
-
-- nie trzeba tworzyć wielu nowych obiektów
-
-- nie trzeba zagnieżdżać w sobie wielu funkcji
-
-Znak `%>%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zostanie wpisany wynik działania wcześniejszej funkcji
-
---
-
-Skrót klawiszowy: ctrl + shift + m
-
----
-
-<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/3pasJF1K87E5wDsVRmdEk?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
-
----
-
-# Wybrane funkcje
-
-- `select()` - wybór zmiennych
-
-- `filter()` - wybór obserwacji
-
-- `mutate()` - tworzenie/modyfikacja zmiennej
-
-- `rename()` - zmiana nazwy zmiennej
-
-- `count()` - zliczanie obserwacji
-
-- `summarise()` - podsumowania danych
-
-- `group_by()` - operowanie na grupach
 
 ---
 
@@ -1073,6 +1022,61 @@ diff <- wp %>%
   mutate(roznica = abs(andrzej_sebastian_duda-rafal_kazimierz_trzaskowski))
 
 ```
+
+---
+
+<center><img src="img/magrittr.png" height="600"></center>
+
+---
+
+# Przetwarzanie potokowe
+
+```
+obudź się %>%
+  wyjdź z łóżka %>%
+  skorzystaj z łazienki %>%
+  zjedź śniadanie %>%
+  ubierz się %>%
+  idź do pracy
+```
+
+---
+
+# Przetwarzanie potokowe
+
+Użycie operatora **pipe**: `%>%` (łącznik) ułatwia zarządzanie kodem i pisanie czytelnej składni poprzez wykorzystanie istniejących struktur danych:
+
+- nie trzeba tworzyć wielu nowych obiektów
+
+- nie trzeba zagnieżdżać w sobie wielu funkcji
+
+Znak `%>%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zostanie wpisany wynik działania wcześniejszej funkcji
+
+--
+
+Skrót klawiszowy: ctrl + shift + m
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/3pasJF1K87E5wDsVRmdEk?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
+---
+
+# Wybrane funkcje
+
+- `select()` - wybór zmiennych
+
+- `filter()` - wybór obserwacji
+
+- `mutate()` - tworzenie/modyfikacja zmiennej
+
+- `rename()` - zmiana nazwy zmiennej
+
+- `count()` - zliczanie obserwacji
+
+- `summarise()` - podsumowania danych
+
+- `group_by()` - operowanie na grupach
 
 ---
 

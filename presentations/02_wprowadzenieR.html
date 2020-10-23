@@ -883,7 +883,7 @@ library("tidyverse")
 
 ---
 
-# Instalacja vs. ładowanie
+# Instalacja vs. wczytywanie
 
 ![](img/packages.jpg)
 
@@ -937,9 +937,13 @@ Zapisywanie do formatu R:
 
 - `saveRDS(dane, file = "zbior.RDS")`
 
-Zapisywanie do pliku tekstowego:
+Zapisywanie do pliku tekstowego (txt, csv):
 
 - `write.table(x = obiekt, file = "plik.csv", sep = ";", dec = ",", row.names = FALSE)`
+
+Zapisywanie do pliku Excela z pakietem _openxlsx_:
+
+- `write.xlsx(x = obiekt, file = "plik.xlsx")`
 
 ---
 
@@ -948,61 +952,6 @@ Zapisywanie do pliku tekstowego:
 - `load("zbior.RData")`
 
 - `dane &lt;- readRDS("zbior.RDS")`
-
----
-
-&lt;center&gt;&lt;img src="img/magrittr.png" height="600"&gt;&lt;/center&gt;
-
----
-
-# Przetwarzanie potokowe
-
-```
-obudź się %&gt;%
-  wyjdź z łóżka %&gt;%
-  skorzystaj z łazienki %&gt;%
-  zjedź śniadanie %&gt;%
-  ubierz się %&gt;%
-  idź do pracy
-```
-
----
-
-# Przetwarzanie potokowe
-
-Użycie operatora **pipe**: `%&gt;%` (łącznik) ułatwia zarządzanie kodem i pisanie czytelnej składni poprzez wykorzystanie istniejących struktur danych:
-
-- nie trzeba tworzyć wielu nowych obiektów
-
-- nie trzeba zagnieżdżać w sobie wielu funkcji
-
-Znak `%&gt;%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zostanie wpisany wynik działania wcześniejszej funkcji
-
---
-
-Skrót klawiszowy: ctrl + shift + m
-
----
-
-&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/3pasJF1K87E5wDsVRmdEk?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
-
----
-
-# Wybrane funkcje
-
-- `select()` - wybór zmiennych
-
-- `filter()` - wybór obserwacji
-
-- `mutate()` - tworzenie/modyfikacja zmiennej
-
-- `rename()` - zmiana nazwy zmiennej
-
-- `count()` - zliczanie obserwacji
-
-- `summarise()` - podsumowania danych
-
-- `group_by()` - operowanie na grupach
 
 ---
 
@@ -1062,11 +1011,66 @@ class: inverse
 
 ---
 
+&lt;center&gt;&lt;img src="img/magrittr.png" height="600"&gt;&lt;/center&gt;
+
+---
+
+# Przetwarzanie potokowe
+
+```
+obudź się %&gt;%
+  wyjdź z łóżka %&gt;%
+  skorzystaj z łazienki %&gt;%
+  zjedź śniadanie %&gt;%
+  ubierz się %&gt;%
+  idź do pracy
+```
+
+---
+
+# Przetwarzanie potokowe
+
+Użycie operatora **pipe**: `%&gt;%` (łącznik) ułatwia zarządzanie kodem i pisanie czytelnej składni poprzez wykorzystanie istniejących struktur danych:
+
+- nie trzeba tworzyć wielu nowych obiektów
+
+- nie trzeba zagnieżdżać w sobie wielu funkcji
+
+Znak `%&gt;%` oznacza, że jako argument wejściowy `data` w kolejnej funkcji zostanie wpisany wynik działania wcześniejszej funkcji
+
+--
+
+Skrót klawiszowy: ctrl + shift + m
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/3pasJF1K87E5wDsVRmdEk?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+# Wybrane funkcje
+
+- `select()` - wybór zmiennych
+
+- `filter()` - wybór obserwacji
+
+- `mutate()` - tworzenie/modyfikacja zmiennej
+
+- `rename()` - zmiana nazwy zmiennej
+
+- `count()` - zliczanie obserwacji
+
+- `summarise()` - podsumowania danych
+
+- `group_by()` - operowanie na grupach
+
+---
+
 class: inverse
 
 # Zadanie
 
-<div class="countdown" id="timer_5f8a1c3a" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f9319ae" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
