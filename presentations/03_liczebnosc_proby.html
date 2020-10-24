@@ -5,14 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="© Łukasz Wawrowski" />
     <script src="libs/header-attrs-2.3/header-attrs.js"></script>
-    <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-    <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
-    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-    <script src="libs/jquery-1.11.3/jquery.min.js"></script>
-    <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-    <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-    <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-    <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="default.css" type="text/css" />
     <link rel="stylesheet" href="default-fonts.css" type="text/css" />
   </head>
@@ -60,6 +52,8 @@ Do wyznaczenia minimalnej liczebności niezbędne jest ustalenie:
 - poziomu prawdopodobieństwa (poziomu istotności) - `\(\alpha\)`
 - maksymalnego dopuszczalnego błędu pomiaru - `\(d\)`
 - odsetek/odchylenie standardowe z badania pilotażowego - `\(p_0\)` lub `\(\sigma\)`
+
+[Kalkulator minimalnej liczebności próby](https://www.statystyka.az.pl/dobor/kalkulator-wielkosci-proby.php)
 
 ---
 
@@ -142,7 +136,6 @@ gdzie:
 - `\(p_0\)` - znany szacunkowy odsetek
 - `\(d\)` - maksymalny dopuszczalny błąd pomiaru
 
-
 ---
 
 # MLP - szacowanie odsetka (II)
@@ -173,13 +166,105 @@ Wyznaczanie wartości kwantyli w R:
 
 ---
 
-# Zależności - średnia
+# Przykładowe wartości
 
-Prawdopodobieństwo = 95%, odchylenie standardowe = 100
+![](img/mlp.png)
 
-<div id="htmlwidget-e7bb64cfae0b3a43a2b3" style="width:8px;height:6px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e7bb64cfae0b3a43a2b3">{"x":{"data":[{"x":[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2],"y":[384145883,96036471,42682876,24009118,15365836,10670719,7839712,6002280,4742542,3841459,3174760,2667680,2273053,1959928,1707316,1500570,1329225,1185636,1064117,960365],"text":["d: 0.01<br />n: 384145883","d: 0.02<br />n:  96036471","d: 0.03<br />n:  42682876","d: 0.04<br />n:  24009118","d: 0.05<br />n:  15365836","d: 0.06<br />n:  10670719","d: 0.07<br />n:   7839712","d: 0.08<br />n:   6002280","d: 0.09<br />n:   4742542","d: 0.10<br />n:   3841459","d: 0.11<br />n:   3174760","d: 0.12<br />n:   2667680","d: 0.13<br />n:   2273053","d: 0.14<br />n:   1959928","d: 0.15<br />n:   1707316","d: 0.16<br />n:   1500570","d: 0.17<br />n:   1329225","d: 0.18<br />n:   1185636","d: 0.19<br />n:   1064117","d: 0.20<br />n:    960365"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":25.7412480974125,"r":7.30593607305936,"b":39.6955859969559,"l":78.1735159817352},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.000499999999999999,0.2095],"tickmode":"array","ticktext":["0.05","0.10","0.15","0.20"],"tickvals":[0.05,0.1,0.15,0.2],"categoryorder":"array","categoryarray":["0.05","0.10","0.15","0.20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"d","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18198910.9,403305158.9],"tickmode":"array","ticktext":["0","100000000","200000000","300000000","400000000"],"tickvals":[0,100000000,200000000,300000000,400000000],"categoryorder":"array","categoryarray":["0","100000000","200000000","300000000","400000000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"n","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":8,"height":6,"barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"31e068844935":{"x":{},"y":{},"type":"scatter"}},"cur_data":"31e068844935","visdat":{"31e068844935":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+[źródło](http://www.tools4dev.org/resources/how-to-choose-a-sample-size/)
 
+---
+
+# MLP - szacowanie odsetka (I)
+
+![](03_liczebnosc_proby_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+
+# MLP - maksymalne wartości
+
+
+|    d| alfa| maksimum_n|
+|----:|----:|----------:|
+| 0.01| 0.01|      16588|
+| 0.01| 0.05|       9604|
+| 0.01| 0.10|       6764|
+| 0.03| 0.01|       1844|
+| 0.03| 0.05|       1068|
+| 0.03| 0.10|        752|
+| 0.05| 0.01|        664|
+| 0.05| 0.05|        385|
+| 0.05| 0.10|        271|
+
+
+
+---
+
+# Przykład
+
+Chcemy oszacować odsetek mieszkańców Poznania, którzy są zadowoleni z życia zakładając błąd badania równy 3% i prawdopodobieństwo 95%. 
+
+--
+
+Według Badania Spójności Społecznej w 2018 roku zadowolonych z życia było 73% polaków [(GUS 2020) ](https://stat.gov.pl/obszary-tematyczne/warunki-zycia/dochody-wydatki-i-warunki-zycia-ludnosci/jakosc-zycia-i-kapital-spoleczny-w-polsce-wyniki-badania-spojnosci-spolecznej-2018,4,3.html)
+
+
+
+
+---
+
+# Losowanie próby
+
+
+```r
+set.seed(123)
+
+N &lt;- 535946
+m &lt;- round(0.73*N)
+
+populacja &lt;- c(rep(1, m), rep(0, N-m))
+
+n_min &lt;- 842
+
+proba &lt;- sample(populacja, n_min)
+
+sum(proba)/n_min
+```
+
+```
+## [1] 0.719715
+```
+
+---
+
+### Symulacja wielokrotnego losowania
+
+
+```r
+wynik_1k &lt;- numeric(1000)
+
+for(sym in 1:1000){
+  
+  proba &lt;- sample(populacja, n_min)
+
+  wynik_1k[sym] &lt;- sum(proba)/n_min
+
+}
+
+summary(wynik_1k)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.6805  0.7197  0.7304  0.7296  0.7387  0.7767
+```
+
+```r
+sum(wynik_1k &gt; 0.7 &amp; wynik_1k &lt; 0.76)/1000
+```
+
+```
+## [1] 0.954
+```
 
 ---
 

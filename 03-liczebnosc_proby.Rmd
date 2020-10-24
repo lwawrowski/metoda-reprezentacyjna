@@ -44,6 +44,6 @@ Przykłady
 
 https://cyrkiel.info/statystyka/minimalna-liczebnosc-proby/
 
-
+[Determining sample size based on confidence and margin of error](https://www.khanacademy.org/math/ap-statistics/estimating-confidence-ap/one-sample-z-interval-proportion/v/determining-sample-size-based-on-confidence-and-margin-of-error)
 
 

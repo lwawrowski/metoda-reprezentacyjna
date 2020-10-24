@@ -51,6 +51,8 @@ Do wyznaczenia minimalnej liczebności niezbędne jest ustalenie:
 - maksymalnego dopuszczalnego błędu pomiaru - $d$
 - odsetek/odchylenie standardowe z badania pilotażowego - $p_0$ lub $\sigma$
 
+[Kalkulator minimalnej liczebności próby](https://www.statystyka.az.pl/dobor/kalkulator-wielkosci-proby.php)
+
 ---
 
 # Przedział ufności dla średniej
@@ -132,7 +134,6 @@ gdzie:
 - $p_0$ - znany szacunkowy odsetek
 - $d$ - maksymalny dopuszczalny błąd pomiaru
 
-
 ---
 
 # MLP - szacowanie odsetka (II)
@@ -163,19 +164,101 @@ Wyznaczanie wartości kwantyli w R:
 
 ---
 
-# Zależności - średnia
+# Przykładowe wartości
 
-Prawdopodobieństwo = 95%, odchylenie standardowe = 100
+![](img/mlp.png)
 
-```{r echo=FALSE}
-options(scipen = 999)
+[źródło](http://www.tools4dev.org/resources/how-to-choose-a-sample-size/)
 
-p <- expand.grid(d=seq(0.01,0.2, 0.01)) %>% 
-  mutate(n=ceiling((qnorm(1-0.05/2)*100/d)^2)) %>% 
-  ggplot(aes(x=d, y=n)) + geom_point() + theme_minimal()
-plotly::ggplotly(p, width = 8, height = 6)
+---
+
+# MLP - szacowanie odsetka (I)
+
+```{r echo=FALSE, fig.width=10}
+expand.grid(alfa=c(0.1, 0.05, 0.01), 
+            p0=seq(0.01, 0.99, 0.01),
+            d=c(0.01,0.03,0.05)) %>% 
+  mutate(z=qnorm(1-alfa/2),
+         n=ceiling(z^2*p0*(1-p0)/d^2)) %>% 
+  ggplot(aes(x=p0, y=n, color=as.factor(d))) + 
+  geom_point() + 
+  scale_color_discrete(name = "d") +
+  facet_wrap(~ alfa) +
+  theme_light() +
+  theme(legend.position = "bottom") +
+  ggtitle("Minimalna liczebność próby w zależności od parametrów alfa, d i p0")
 ```
 
+---
+
+# MLP - maksymalne wartości
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+expand.grid(alfa=c(0.1, 0.05, 0.01), 
+            p0=seq(0.01, 0.99, 0.01),
+            d=c(0.01,0.03,0.05)) %>% 
+  mutate(z=qnorm(1-alfa/2),
+         n=ceiling(z^2*p0*(1-p0)/d^2)) %>%
+  group_by(d, alfa) %>% 
+  summarise(maksimum_n=max(n)) %>% 
+  knitr::kable()
+```
+
+
+
+---
+
+# Przykład
+
+Chcemy oszacować odsetek mieszkańców Poznania, którzy są zadowoleni z życia zakładając błąd badania równy 3% i prawdopodobieństwo 95%. 
+
+--
+
+Według Badania Spójności Społecznej w 2018 roku zadowolonych z życia było 73% polaków [(GUS 2020) ](https://stat.gov.pl/obszary-tematyczne/warunki-zycia/dochody-wydatki-i-warunki-zycia-ludnosci/jakosc-zycia-i-kapital-spoleczny-w-polsce-wyniki-badania-spojnosci-spolecznej-2018,4,3.html)
+
+
+```{r eval=FALSE, include=FALSE}
+ceiling(qnorm(1-0.05/2)^2*0.73*(1-0.73)/0.03^2)
+```
+
+---
+
+# Losowanie próby
+
+```{r}
+set.seed(123)
+
+N <- 535946
+m <- round(0.73*N)
+
+populacja <- c(rep(1, m), rep(0, N-m))
+
+n_min <- 842
+
+proba <- sample(populacja, n_min)
+
+sum(proba)/n_min
+```
+
+---
+
+### Symulacja wielokrotnego losowania
+
+```{r}
+wynik_1k <- numeric(1000)
+
+for(sym in 1:1000){
+  
+  proba <- sample(populacja, n_min)
+
+  wynik_1k[sym] <- sum(proba)/n_min
+
+}
+
+summary(wynik_1k)
+
+sum(wynik_1k > 0.7 & wynik_1k < 0.76)/1000
+```
 
 ---
 
