@@ -21,6 +21,24 @@ class: center, middle, inverse, title-slide
 
 
 
+# Wprowadzenie
+
+Link do ankiet: https://pollev.com/lukaszw470
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/GVSGtBfUUIf9jysFIwsid?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/P06ZqgKrezLqrGkIOCeyp?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/CWt0ETiDqhCpBHHjc2yDC?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
 # Minimalna liczebność próby
 
 Minimalna liczebność próby (MLP) informuje ile jednostek należy przebadać, aby maksymalny błąd oszacowania (na poziomie ufności `\(1–\alpha\)`) wyniósł co najwyżej `\(d\)`.
@@ -28,6 +46,8 @@ Minimalna liczebność próby (MLP) informuje ile jednostek należy przebadać, 
 Przy większej liczbie jednostek oszacowanie będzie bardziej trafne (przedział ufności będzie węższy). Z drugiej strony koszty badania rosną wraz ze wzrostem liczebności próby.
 
 Szukamy kompromisu pomiędzy dokładnością, a liczbą badanych jednostek.
+
+Wyznaczoną wartość zawsze zaokrąglamy w górę.
 
 ---
 
@@ -49,9 +69,11 @@ W tym podejściu nie bierzemy pod uwagę błędu oszacowania.
 
 Do wyznaczenia minimalnej liczebności niezbędne jest ustalenie:
 
-- poziomu prawdopodobieństwa (poziomu istotności) - `\(\alpha\)`
+- poziomu istotności (i związanego z nim poziomu prawdopodobieństwa) - `\(\alpha\)`
 - maksymalnego dopuszczalnego błędu pomiaru - `\(d\)`
 - odsetek/odchylenie standardowe z badania pilotażowego - `\(p_0\)` lub `\(\sigma\)`
+
+Zakładamy, że wielkość populacji jest nieskończona - nie wpływa to znacząco na wyniki, a upraszcza obliczenia.
 
 [Kalkulator minimalnej liczebności próby](https://www.statystyka.az.pl/dobor/kalkulator-wielkosci-proby.php)
 
@@ -172,6 +194,8 @@ Wyznaczanie wartości kwantyli w R:
 
 [źródło](http://www.tools4dev.org/resources/how-to-choose-a-sample-size/)
 
+Uzyskane wielkości dotyczą populacji ogółem. Jeżeli chcemy przedstawić wyniki np. w podziale miasto/wieś to należy MLP pomnożyć przez 2, a dla wykształcenia (podstawowe/średnie/wyższe) przez 3, itd.
+
 ---
 
 # MLP - szacowanie odsetka (I)
@@ -196,7 +220,6 @@ Wyznaczanie wartości kwantyli w R:
 | 0.05| 0.10|        271|
 
 
-
 ---
 
 # Przykład
@@ -207,8 +230,30 @@ Chcemy oszacować odsetek mieszkańców Poznania, którzy są zadowoleni z życi
 
 Według Badania Spójności Społecznej w 2018 roku zadowolonych z życia było 73% polaków [(GUS 2020) ](https://stat.gov.pl/obszary-tematyczne/warunki-zycia/dochody-wydatki-i-warunki-zycia-ludnosci/jakosc-zycia-i-kapital-spoleczny-w-polsce-wyniki-badania-spojnosci-spolecznej-2018,4,3.html)
 
+---
+
+# Dane
+
+- błąd badania `\(d\)`: 0.03
+
+- prawdopodobieństwo: 0.95
+
+- alfa: 1 - 0.95 = 0.05
+
+- szacunkowy odsetek `\(p_0\)`: 0.73
 
 
+
+
+---
+
+# Eksperyment z losowaniem
+
+1. Generujemy wektor zawierający odpowiedzi w populacji `\(N\)`
+
+2. Losujemy próbę o wielkości `\(n\)`
+
+3. Sprawdzamy czy w wylosowanej próbie odpowiedzi są takie jak w populacji
 
 ---
 
@@ -265,6 +310,34 @@ sum(wynik_1k &gt; 0.7 &amp; wynik_1k &lt; 0.76)/1000
 ```
 ## [1] 0.954
 ```
+
+---
+
+### MLP w badaniu gospodarstw domowych
+
+[Designing Household Survey Samples: Practical Guidelines](https://unstats.un.org/unsd/demographic/sources/surveys/Handbook23June05.pdf)
+
+`$$n_h\geq\frac{z_{1-\alpha/2}^2p_0(1-p_0)fk}{p\bar{n}d^2}$$`
+
+- `\(z_{1-\alpha/2}\)` - kwantyl rozkładu normalnego obliczony dla poziomu istotności `\(\alpha\)`
+- `\(p_0\)` - znany szacunkowy odsetek
+- `\(f\)` - efekt metody doboru próby (domyślnie 2)
+- `\(k\)` - mnożnik uwzględniający wskaźnik braków odpowiedzi
+- `\(p\)` - odsetek populacji, którego dotyczy `\(p_0\)`
+- `\(\bar{n}\)` - średnia wielkość gospodarstwa 
+- `\(d\)` - maksymalny dopuszczalny błąd pomiaru
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/drOAOZVZa6Sf4d17SoGPJ?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/nDbioxXmdUERQxQFBlGqE?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/pow78YAUkxJGP6mLJWLOn?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
 
 ---
 
