@@ -186,6 +186,16 @@ Wyznaczanie wartości kwantyli w R:
 - `qnorm(p = 1-alfa/2)`
 - `qt(p = 1-alfa/2, df = n0-1)`
 
+Wyznaczanie wartości kwantyli w Excelu:
+
+- `ROZKŁ.NORMALNY.S.ODWR(1-alfa/2)`
+- `ROZKŁ.T.ODWR(1-alfa/2;n0-1)` lub `ROZKŁ.T.ODWR.DS(alfa;n0-1)`
+
+Wyznaczanie wartości kwantyli w Google Sheets:
+
+- `NORMSINV(1-alfa/2)`
+- `TINV(alfa, n0-1)`
+
 ---
 
 # Przykładowe wartości
@@ -266,13 +276,25 @@ set.seed(123)
 N &lt;- 535946
 m &lt;- round(0.73*N)
 
-populacja &lt;- c(rep(1, m), rep(0, N-m))
+zadowoleni &lt;- rep(1, m)
+niezadowoleni &lt;- rep(0, N-m)
 
-n_min &lt;- 842
+populacja &lt;- c(zadowoleni, niezadowoleni)
 
-proba &lt;- sample(populacja, n_min)
+summary(populacja)
+```
 
-sum(proba)/n_min
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00    0.00    1.00    0.73    1.00    1.00
+```
+
+```r
+n &lt;- 842
+
+proba &lt;- sample(x = populacja, size = n)
+
+mean(proba)
 ```
 
 ```
@@ -285,17 +307,17 @@ sum(proba)/n_min
 
 
 ```r
-wynik_1k &lt;- numeric(1000)
+wyniki &lt;- numeric(1000)
 
-for(sym in 1:1000){
+for(losowanie in 1:1000){
   
-  proba &lt;- sample(populacja, n_min)
-
-  wynik_1k[sym] &lt;- sum(proba)/n_min
-
+  proba &lt;- sample(x = populacja, size = n)
+  
+  wyniki[losowanie] &lt;- mean(proba)
+  
 }
 
-summary(wynik_1k)
+summary(wyniki)
 ```
 
 ```
@@ -304,7 +326,7 @@ summary(wynik_1k)
 ```
 
 ```r
-sum(wynik_1k &gt; 0.7 &amp; wynik_1k &lt; 0.76)/1000
+mean(wyniki &gt; 0.7 &amp; wyniki &lt; 0.76)
 ```
 
 ```

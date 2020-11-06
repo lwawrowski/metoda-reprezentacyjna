@@ -184,6 +184,16 @@ Wyznaczanie wartości kwantyli w R:
 - `qnorm(p = 1-alfa/2)`
 - `qt(p = 1-alfa/2, df = n0-1)`
 
+Wyznaczanie wartości kwantyli w Excelu:
+
+- `ROZKŁ.NORMALNY.S.ODWR(1-alfa/2)`
+- `ROZKŁ.T.ODWR(1-alfa/2;n0-1)` lub `ROZKŁ.T.ODWR.DS(alfa;n0-1)`
+
+Wyznaczanie wartości kwantyli w Google Sheets:
+
+- `NORMSINV(1-alfa/2)`
+- `TINV(alfa, n0-1)`
+
 ---
 
 # Przykładowe wartości
@@ -276,13 +286,18 @@ set.seed(123)
 N <- 535946
 m <- round(0.73*N)
 
-populacja <- c(rep(1, m), rep(0, N-m))
+zadowoleni <- rep(1, m)
+niezadowoleni <- rep(0, N-m)
 
-n_min <- 842
+populacja <- c(zadowoleni, niezadowoleni)
 
-proba <- sample(populacja, n_min)
+summary(populacja)
 
-sum(proba)/n_min
+n <- 842
+
+proba <- sample(x = populacja, size = n)
+
+mean(proba)
 ```
 
 ---
@@ -290,19 +305,19 @@ sum(proba)/n_min
 ### Symulacja wielokrotnego losowania
 
 ```{r}
-wynik_1k <- numeric(1000)
+wyniki <- numeric(1000)
 
-for(sym in 1:1000){
+for(losowanie in 1:1000){
   
-  proba <- sample(populacja, n_min)
-
-  wynik_1k[sym] <- sum(proba)/n_min
-
+  proba <- sample(x = populacja, size = n)
+  
+  wyniki[losowanie] <- mean(proba)
+  
 }
 
-summary(wynik_1k)
+summary(wyniki)
 
-sum(wynik_1k > 0.7 & wynik_1k < 0.76)/1000
+mean(wyniki > 0.7 & wyniki < 0.76)
 ```
 
 ---
