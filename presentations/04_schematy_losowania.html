@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Metoda reprezentacyjna</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="© Łukasz Wawrowski" />
+    <script src="libs/header-attrs-2.3/header-attrs.js"></script>
+    <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+    <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <script src="libs/jquery-1.11.3/jquery.min.js"></script>
+    <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="default-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Metoda reprezentacyjna
+## Schematy losowania
+### © Łukasz Wawrowski
+
+---
+
+
+
+
+# Wprowadzenie
+
+Link do ankiet: https://pollev.com/lukaszw470
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/50nCDwz03vSmpuU9LCQS6?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/h61kQcUAi9ONnaIDJVzDA?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+# Problem
+
+Przeprowadzić badanie exit-poll mając do dyspozycji 100 ankieterów.
+
+---
+
+# Próba losowa
+
+Próba jest losowa jeśli spełnione są następujące warunki:
+
+--
+
+1. Każda jednostka w populacji generalnej posiada niezerowe prawdopodobieństwo znalezienia się w próbie - `\(\pi_i\)`.
+
+2. Prawdopodobieństwo `\(\pi_i\)` jest znane dla każdej jednostki w próbie.
+
+3. Każda para jednostek w populacji generalnej posiada niezerowe prawdopodobieństwo znalezienia się w próbie - `\(\pi_{ij}\)`.
+
+4. Prawdopodobieństwo `\(\pi_{ij}\)` jest znane dla każdej pary jednostek w próbie.
+
+---
+
+# Liczba możliwych prób
+
+Dwumian Newtona: `\({n\choose k}=\frac{n!}{k!\cdot(n-k)!}\)`
+
+- Losowanie próby o liczebności 4 z populacji o liczebności 10
+
+
+```r
+choose(10,4)
+```
+
+```
+[1] 210
+```
+
+- Losowanie próby o liczebności 10 z populacji o liczebności 200
+
+
+```r
+choose(200,10)
+```
+
+```
+[1] 22451004309013280
+```
+
+---
+
+# Schemat doboru próby
+
+Procedura określająca w jaki sposób mają być dobierani respondenci. Schemat doboru próby określa:
+
+- liczebność próby
+- sposób losowania
+- sposób warstwowania próby
+- alokację próby pomiędzy warstwy
+- liczbę poziomów losowania
+
+[Dodatkowo do poczytania](http://nastrazysondazy.uw.edu.pl/metodologia-badan/metodologia/korekty-danych-i-wazenie-danych/)
+
+---
+
+# Losowanie proste
+
+Prawdopodobieństwo dostania się do próby jest takie samo dla wszystkich jednostek.
+
+- funkcja `sample_n()` oraz `sample_frac()`
+
+--
+
+&gt; "Ene due rike fake" i inne wyliczanki nie są sprawiedliwą i losową metodą wyłaniania ochotnika, gdyż podzielenie liczby sylab w wyliczance przez liczbę uczestników pozwala przewidzieć rezultat wyliczania i otwiera pole do manipulacji.
+
+
+---
+
+### Prawdopodobieństwo i waga z próby
+
+Prawdopodobieństwo dostania się (inkluzji) do próby:
+
+`$$\pi_i=\frac{\text{liczebność próby}}{\text{liczebność populacji}}$$`
+Waga z próby:
+
+`$$w_i=1/\pi_i=\frac{\text{liczebność populacji}}{\text{liczebność próby}}$$`
+
+---
+
+### Prawdopodobieństwo i waga z próby
+
+Losujemy próbę o wielkości 38 000 osób z Polski (populacja 38 milionów). Prawdopodobieństwo wylosowania pojedyńczej jednostki wynosi:
+
+`$$\pi_i=38000/38000000=1/1000$$`
+
+Każda osoba w próbie reprezentuje 1000 mieszkańców Polski.
+
+W związku z tym waga z próby jest równa:
+
+`$$w_i=1/\pi_i=1000$$`
+
+Suma wag z próby powinna być równa liczebności populacji.
+
+---
+
+# Losowanie proste w R
+
+
+```r
+proba_prosta &lt;- dane_czyste %&gt;% 
+  sample_n(500) %&gt;% 
+  mutate(prob=n()/nrow(dane_czyste),
+         waga=1/prob)
+
+sum(proba_prosta$waga)
+```
+
+```
+[1] 27227
+```
+
+---
+
+# Struktura w próbie i populacji
+
+.pull-left[
+
+
+```r
+dane_czyste %&gt;% 
+  count(wojewodztwo) %&gt;% 
+  mutate(proc=n/nrow(dane_czyste)*100)
+```
+
+```
+# A tibble: 16 x 3
+   wojewodztwo             n  proc
+   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;
+ 1 dolnośląskie         1947  7.15
+ 2 kujawsko-pomorskie   1653  6.07
+ 3 lubelskie            1906  7.00
+ 4 lubuskie              720  2.64
+ 5 łódzkie              1733  6.37
+ 6 małopolskie          2419  8.88
+ 7 mazowieckie          3633 13.3 
+ 8 opolskie              871  3.20
+ 9 podkarpackie         1818  6.68
+10 podlaskie             964  3.54
+11 pomorskie            1397  5.13
+12 śląskie              2753 10.1 
+13 świętokrzyskie        989  3.63
+14 warmińsko-mazurskie  1115  4.10
+15 wielkopolskie        2186  8.03
+16 zachodniopomorskie   1123  4.12
+```
+]
+
+.pull-right[
+
+
+```r
+proba_prosta %&gt;% 
+  count(wojewodztwo) %&gt;% 
+  mutate(proc=n/nrow(proba_prosta)*100)
+```
+
+```
+# A tibble: 16 x 3
+   wojewodztwo             n  proc
+   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;
+ 1 dolnośląskie           28   5.6
+ 2 kujawsko-pomorskie     30   6  
+ 3 lubelskie              31   6.2
+ 4 lubuskie               16   3.2
+ 5 łódzkie                27   5.4
+ 6 małopolskie            42   8.4
+ 7 mazowieckie            67  13.4
+ 8 opolskie               18   3.6
+ 9 podkarpackie           34   6.8
+10 podlaskie              14   2.8
+11 pomorskie              29   5.8
+12 śląskie                54  10.8
+13 świętokrzyskie         15   3  
+14 warmińsko-mazurskie    21   4.2
+15 wielkopolskie          50  10  
+16 zachodniopomorskie     24   4.8
+```
+]
+
+---
+
+# Porównanie
+
+<div id="htmlwidget-888a2a729dbcc936bca1" style="width:864px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-888a2a729dbcc936bca1">{"x":{"data":[{"x":[7.15098982627539,6.0711793440335,7.00040401072465,2.64443383406178,6.36500532559592,8.88456311749366,13.3433723877034,3.19903037426084,6.67719543100599,3.54060307782716,5.13093620303375,10.1112865905168,3.63242369706541,4.09519961802622,8.02879494619312,4.12458221618247],"y":[5.6,6,6.2,3.2,5.4,8.4,13.4,3.6,6.8,2.8,5.8,10.8,3,4.2,10,4.8],"text":["populacja:  7.150990<br />proba:  5.6<br />woj: dolnośląskie","populacja:  6.071179<br />proba:  6.0<br />woj: kujawsko-pomorskie","populacja:  7.000404<br />proba:  6.2<br />woj: lubelskie","populacja:  2.644434<br />proba:  3.2<br />woj: lubuskie","populacja:  6.365005<br />proba:  5.4<br />woj: łódzkie","populacja:  8.884563<br />proba:  8.4<br />woj: małopolskie","populacja: 13.343372<br />proba: 13.4<br />woj: mazowieckie","populacja:  3.199030<br />proba:  3.6<br />woj: opolskie","populacja:  6.677195<br />proba:  6.8<br />woj: podkarpackie","populacja:  3.540603<br />proba:  2.8<br />woj: podlaskie","populacja:  5.130936<br />proba:  5.8<br />woj: pomorskie","populacja: 10.111287<br />proba: 10.8<br />woj: śląskie","populacja:  3.632424<br />proba:  3.0<br />woj: świętokrzyskie","populacja:  4.095200<br />proba:  4.2<br />woj: warmińsko-mazurskie","populacja:  8.028795<br />proba: 10.0<br />woj: wielkopolskie","populacja:  4.124582<br />proba:  4.8<br />woj: zachodniopomorskie"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-1,21],"y":[-1,21],"text":"intercept: 0<br />slope: 1","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.5244618395303,"r":7.30593607305936,"b":42.4787997390737,"l":37.2602739726027},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,21],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"populacja","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,21],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"proba","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"ae03f4c529b":{"x":{},"y":{},"label":{},"type":"scatter"},"ae071fa501b":{"intercept":{},"slope":{}}},"cur_data":"ae03f4c529b","visdat":{"ae03f4c529b":["function (y) ","x"],"ae071fa501b":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+
+# Pakiet _sampling_
+
+Pakiet [sampling](https://cran.r-project.org/web/packages/sampling/index.html) oferuje funkcje służące do losowania prób z wykorzystaniem różnych schematów losowania.
+
+---
+
+# Losowanie proporcjonalne
+
+Losowanie z prawdopodobieństwami proporcjonalnymi do wartości cechy.
+
+W funkcji `sample_n` lub `sample_frac` należy podać argument `weight`.
+
+Aby wyznaczyć te prawdopodobieństwa w populacji korzysta się z funkcji:
+
+```
+inclusionprobabilities(a = cecha, n = liczebnosc_proby)
+```
+
+---
+
+# Losowanie proporcjonalne
+
+
+```r
+library(sampling)
+
+proba_prop &lt;- dane_czyste %&gt;% 
+  sample_frac(size = 0.05, weight = frekwencja)
+```
+
+Wyznaczenie prawdopodobieństwa
+
+
+```r
+dane_czyste_prop &lt;- dane_czyste %&gt;% 
+  mutate(p_prop=inclusionprobabilities(frekwencja, 500))
+```
+
+---
+
+# Losowanie proporcjonalne
+
+
+```r
+proba_prop &lt;- dane_czyste_prop %&gt;% 
+  sample_n(500, weight = p_prop) %&gt;% 
+  mutate(waga=1/p_prop)
+
+sum(proba_prop$waga)
+```
+
+```
+[1] 27281.85
+```
+
+W losowaniu propocjonalnym suma wag nie jest równa liczebności populacji.
+
+---
+
+# Losowanie warstwowe
+
+Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
+
+Funkcja `strata`
+
+```r
+strata(data, stratanames, size)
+```
+
+- trzeba podać liczebność dla każdej warstwy
+
+---
+
+# Pakiet bdl
+
+- korzysta z [API BDL](https://api.stat.gov.pl/Home/BdlApi)
+
+- limity:
+
+![](img/bdlapi.png)
+
+- strona projektu na [github](https://github.com/statisticspoland/R_Package_to_API_BDL)
+
+---
+
+# Poziom zasilenia danych
+
+- 0 - Polska
+
+- 1 - makroregion
+
+- 2 - województwo
+
+- 3 - region
+
+- 4 - podregion
+
+- 5 - powiat
+
+- 6 - gmina
+
+---
+
+# Wyszukiwanie danych (I)
+
+Hierarchia: Kategorie -&gt; Grupy -&gt; Podgrupy -&gt; Tematy
+
+- `get_subjects()` - pobiera dane o kategoriach/grupach/podgrupach
+
+- `search_subjects()` - wyszukuje dane o tematach
+
+  - `name` - szukana fraza
+  - `subjectId` - kod narzędnego tematu
+  - `level` - poziom zasilenia danych
+  - `year` - lata obowiązywania
+  - `sort` - klucz sortowania
+  
+---
+
+# Wyszukiwanie danych (II)
+  
+- `get_variables()` - pobiera dane o zmiennej  
+  
+- `search_variables()` - wyszukuje dane o zmiennej
+
+---
+
+# Wyszukiwanie danych (III)
+
+- `get_units()` - pobiera dane o jednostce terytorialnej
+
+- `search_units()` - wyszukuje dane o jednostce terytorialnej
+  
+---
+
+# Jedna zmienna i wiele jednostek
+
+Pobieranie za pomocą funkcji `get_data_by_variable()`:
+
+- `varId` - kod zmiennej
+
+- `unitParentId` - kod jednostki nadrzędnej (opcjonalnie)
+
+- `unitLevel` - poziom zasilenia danych
+
+- `year` - lata obowiązywania
+
+---
+
+# Wiele zmiennych i jedna jednostka
+
+Pobieranie za pomocą funkcji `get_data_by_unit()`:
+
+- `unitId` - kod NUTS jednostki
+
+- `varId` - kod zmiennej lub kody zmiennych
+
+- `year` - lata obowiązywania
+
+- `type` - "code" (domyślnie) albo "label"
+
+---
+
+# Losowanie zespołowe
+
+Z operatu losowane są całe grupy (zespoły).
+
+Funkcja `cluster`
+
+```r
+cluster(data, clustername, size)
+```
+
+---
+
+# Losowanie systematyczne
+
+Losowanie co k-tej jednostki.
+
+Funkcja `UPsystematic`
+
+```r
+UPsystematic(pik)
+```
+
+- operuje na prawdopodobieństwach, zatem wielkość próby należy określić wcześniej
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
