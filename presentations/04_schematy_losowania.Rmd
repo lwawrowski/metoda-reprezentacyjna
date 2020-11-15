@@ -111,6 +111,9 @@ Prawdopodobieństwo dostania się do próby jest takie samo dla wszystkich jedno
 Prawdopodobieństwo dostania się (inkluzji) do próby:
 
 $$\pi_i=\frac{\text{liczebność próby}}{\text{liczebność populacji}}$$
+
+
+
 Waga z próby:
 
 $$w_i=1/\pi_i=\frac{\text{liczebność populacji}}{\text{liczebność próby}}$$
@@ -122,12 +125,13 @@ $$w_i=1/\pi_i=\frac{\text{liczebność populacji}}{\text{liczebność próby}}$$
 Losujemy próbę o wielkości 38 000 osób z Polski (populacja 38 milionów). Prawdopodobieństwo wylosowania pojedyńczej jednostki wynosi:
 
 $$\pi_i=38000/38000000=1/1000$$
-
-Każda osoba w próbie reprezentuje 1000 mieszkańców Polski.
+Suma prawdopodobieństw w populacji powinna być równa liczebności próby.
 
 W związku z tym waga z próby jest równa:
 
 $$w_i=1/\pi_i=1000$$
+
+Każda osoba w próbie reprezentuje 1000 mieszkańców Polski.
 
 Suma wag z próby powinna być równa liczebności populacji.
 
@@ -233,6 +237,17 @@ dane_czyste_prop <- dane_czyste %>%
 
 # Losowanie proporcjonalne
 
+```{r echo=FALSE, fig.width=10}
+ggplot(dane_czyste_prop, aes(x=p_prop, y = frekwencja)) + 
+  geom_point() +
+  theme_minimal()
+```
+
+
+---
+
+# Losowanie proporcjonalne
+
 ```{r}
 proba_prop <- dane_czyste_prop %>% 
   sample_n(500, weight = p_prop) %>% 
@@ -256,6 +271,22 @@ strata(data, stratanames, size)
 ```
 
 - trzeba podać liczebność dla każdej warstwy
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/2MBETnnxXd6BpB9etewXg?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
+---
+
+# Bank Danych Lokalnych
+
+https://bdl.stat.gov.pl/BDL/start
+
+- największa w Polsce baza danych o gospodarce, społeczeństwie i środowisku
+
+- BDL oferuje ponad 40 tys. cech statystycznych pogrupowanych tematycznie
+
+- pierwsze dane pochodzą z 1995 roku
 
 ---
 
@@ -372,6 +403,22 @@ UPsystematic(pik)
 ```
 
 - operuje na prawdopodobieństwach, zatem wielkość próby należy określić wcześniej
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/11tvuQcx88J5KBqQI1YeC?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ShBO4XcIA1i728mX5T8St?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/Uexdvb90zN4Xh8bKfqBgb?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/FoU5ldJhijIqoknIoVo4q?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
 ---
 
