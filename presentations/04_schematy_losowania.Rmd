@@ -382,6 +382,8 @@ gmina Poznań: `023016264011`
 
 - `01` - id gminy
 
+- `1` - kod gminy
+
 ---
 
 # Łączenie danych
