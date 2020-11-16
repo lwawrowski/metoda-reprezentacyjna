@@ -52,12 +52,15 @@ save(ludnosc, file = "data/ludnosc.rda")
 load("data/ludnosc.rda")
 
 ludnosc_teryt <- ludnosc %>% 
-  mutate(kod_teryt=str_c(str_sub(id,3,4),str_sub(id,8,11)),
-         typ_gminy=str_sub(id,12,12)) %>% 
-  filter(!typ_gminy %in% c("4","5")) %>% 
+  mutate(kod_teryt=str_c(str_sub(id,3,4),str_sub(id,8,11))) %>% 
+  mutate(typ_gminy=str_sub(id,12,12)) %>% 
+  filter(!typ_gminy %in% c("4", "5")) %>% 
   select(kod_teryt, ludnosc=val)
 
-wybory_ludnosc <- left_join(x = dane_czyste, y = ludnosc_teryt) 
+wybory_ludnosc <- left_join(x = dane_czyste, y = ludnosc_teryt)
+
+length(unique(dane_czyste$kod_teryt))
+length(unique(ludnosc_teryt$kod_teryt))
 
 summary(wybory_ludnosc$ludnosc)
 
@@ -67,12 +70,16 @@ braki_danych <- wybory_ludnosc %>%
 wybory_ludnosc_bb <- wybory_ludnosc %>% 
   filter(!is.na(ludnosc)) %>% 
   mutate(ludnosc_kat4=cut(x = ludnosc, 
-                          breaks = c(min(ludnosc), 8000, 18000, 60000, max(ludnosc)),
+                          breaks = c(min(ludnosc), 8000, 17000, 60000, max(ludnosc)),
                           include.lowest = TRUE))
+
+summary(wybory_ludnosc_bb$ludnosc)
+
+length(unique(wybory_ludnosc_bb$ludnosc))
 
 n_ludnosc <- wybory_ludnosc_bb %>% 
   count(ludnosc_kat4) %>% 
-  mutate(n_proba=round(0.05*n))
+  mutate(n_proba = round(0.01*n))
 
 proba_warstwa <- strata(data = wybory_ludnosc_bb, 
                         stratanames = "ludnosc_kat4", 
@@ -81,12 +88,5 @@ proba_warstwa <- strata(data = wybory_ludnosc_bb,
 proba_warstwa_obwody <- getdata(wybory_ludnosc_bb, proba_warstwa)
 
 sum(1/proba_warstwa_obwody$Prob)
-
-
-
-
-
-
-
 
 
