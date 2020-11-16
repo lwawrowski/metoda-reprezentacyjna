@@ -256,21 +256,7 @@ proba_prop <- dane_czyste_prop %>%
 sum(proba_prop$waga)
 ```
 
-W losowaniu propocjonalnym suma wag nie jest równa liczebności populacji.
-
----
-
-# Losowanie warstwowe
-
-Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
-
-Funkcja `strata`
-
-```r
-strata(data, stratanames, size)
-```
-
-- trzeba podać liczebność dla każdej warstwy
+W losowaniu proporcjonalnym suma wag nie jest równa liczebności populacji.
 
 ---
 
@@ -377,6 +363,59 @@ Pobieranie za pomocą funkcji `get_data_by_unit()`:
 - `year` - lata obowiązywania
 
 - `type` - "code" (domyślnie) albo "label"
+
+---
+
+# ID jednostki terytorialnej
+
+gmina Poznań: `023016264011`
+
+- `02` - id makroregionu
+
+- `30` - id województwa
+
+- `1` - id regionu (2 - region mazowiecki, 1 - reszta kraju)
+
+- `62` - id podregionu
+
+- `64` - id powiatu
+
+- `01` - id gminy
+
+---
+
+# Łączenie danych
+
+![](img/join.png)
+
+[źródło](https://rpubs.com/williamsurles/293454)
+
+---
+
+# Grupy
+
+Funkcja `cut()` pozwala na stworzenie zmiennej jakościowej z ilościowej:
+
+```{r eval=FALSE}
+cut(x = frekwencja, 
+    breaks = c(min(frekwencja),25,50,75,max(frekwencja)), 
+    labels = c("do 25", "25-50", "50-75", "powyżej 75"),
+    include.lowest = T))
+```
+
+---
+
+# Losowanie warstwowe
+
+Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
+
+Funkcja `strata`
+
+```r
+strata(data, stratanames, size)
+```
+
+- trzeba podać liczebność dla każdej warstwy
 
 ---
 

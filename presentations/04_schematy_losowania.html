@@ -125,6 +125,9 @@ Prawdopodobieństwo dostania się do próby jest takie samo dla wszystkich jedno
 Prawdopodobieństwo dostania się (inkluzji) do próby:
 
 `$$\pi_i=\frac{\text{liczebność próby}}{\text{liczebność populacji}}$$`
+
+
+
 Waga z próby:
 
 `$$w_i=1/\pi_i=\frac{\text{liczebność populacji}}{\text{liczebność próby}}$$`
@@ -136,6 +139,7 @@ Waga z próby:
 Losujemy próbę o wielkości 38 000 osób z Polski (populacja 38 milionów). Prawdopodobieństwo wylosowania pojedyńczej jednostki wynosi:
 
 `$$\pi_i=38000/38000000=1/1000$$`
+Suma prawdopodobieństw w populacji powinna być równa liczebności próby.
 
 W związku z tym waga z próby jest równa:
 
@@ -236,7 +240,7 @@ proba_prosta %&gt;%
 # Porównanie
 
 <div id="htmlwidget-888a2a729dbcc936bca1" style="width:864px;height:504px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-888a2a729dbcc936bca1">{"x":{"data":[{"x":[7.15098982627539,6.0711793440335,7.00040401072465,2.64443383406178,6.36500532559592,8.88456311749366,13.3433723877034,3.19903037426084,6.67719543100599,3.54060307782716,5.13093620303375,10.1112865905168,3.63242369706541,4.09519961802622,8.02879494619312,4.12458221618247],"y":[5.6,6,6.2,3.2,5.4,8.4,13.4,3.6,6.8,2.8,5.8,10.8,3,4.2,10,4.8],"text":["populacja:  7.150990<br />proba:  5.6<br />woj: dolnośląskie","populacja:  6.071179<br />proba:  6.0<br />woj: kujawsko-pomorskie","populacja:  7.000404<br />proba:  6.2<br />woj: lubelskie","populacja:  2.644434<br />proba:  3.2<br />woj: lubuskie","populacja:  6.365005<br />proba:  5.4<br />woj: łódzkie","populacja:  8.884563<br />proba:  8.4<br />woj: małopolskie","populacja: 13.343372<br />proba: 13.4<br />woj: mazowieckie","populacja:  3.199030<br />proba:  3.6<br />woj: opolskie","populacja:  6.677195<br />proba:  6.8<br />woj: podkarpackie","populacja:  3.540603<br />proba:  2.8<br />woj: podlaskie","populacja:  5.130936<br />proba:  5.8<br />woj: pomorskie","populacja: 10.111287<br />proba: 10.8<br />woj: śląskie","populacja:  3.632424<br />proba:  3.0<br />woj: świętokrzyskie","populacja:  4.095200<br />proba:  4.2<br />woj: warmińsko-mazurskie","populacja:  8.028795<br />proba: 10.0<br />woj: wielkopolskie","populacja:  4.124582<br />proba:  4.8<br />woj: zachodniopomorskie"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-1,21],"y":[-1,21],"text":"intercept: 0<br />slope: 1","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.5244618395303,"r":7.30593607305936,"b":42.4787997390737,"l":37.2602739726027},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,21],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"populacja","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,21],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"proba","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"25385f524d4f":{"x":{},"y":{},"label":{},"type":"scatter"},"253875ca714a":{"intercept":{},"slope":{}}},"cur_data":"25385f524d4f","visdat":{"25385f524d4f":["function (y) ","x"],"253875ca714a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-888a2a729dbcc936bca1">{"x":{"data":[{"x":[7.15098982627539,6.0711793440335,7.00040401072465,2.64443383406178,6.36500532559592,8.88456311749366,13.3433723877034,3.19903037426084,6.67719543100599,3.54060307782716,5.13093620303375,10.1112865905168,3.63242369706541,4.09519961802622,8.02879494619312,4.12458221618247],"y":[5.6,6,6.2,3.2,5.4,8.4,13.4,3.6,6.8,2.8,5.8,10.8,3,4.2,10,4.8],"text":["populacja:  7.150990<br />proba:  5.6<br />woj: dolnośląskie","populacja:  6.071179<br />proba:  6.0<br />woj: kujawsko-pomorskie","populacja:  7.000404<br />proba:  6.2<br />woj: lubelskie","populacja:  2.644434<br />proba:  3.2<br />woj: lubuskie","populacja:  6.365005<br />proba:  5.4<br />woj: łódzkie","populacja:  8.884563<br />proba:  8.4<br />woj: małopolskie","populacja: 13.343372<br />proba: 13.4<br />woj: mazowieckie","populacja:  3.199030<br />proba:  3.6<br />woj: opolskie","populacja:  6.677195<br />proba:  6.8<br />woj: podkarpackie","populacja:  3.540603<br />proba:  2.8<br />woj: podlaskie","populacja:  5.130936<br />proba:  5.8<br />woj: pomorskie","populacja: 10.111287<br />proba: 10.8<br />woj: śląskie","populacja:  3.632424<br />proba:  3.0<br />woj: świętokrzyskie","populacja:  4.095200<br />proba:  4.2<br />woj: warmińsko-mazurskie","populacja:  8.028795<br />proba: 10.0<br />woj: wielkopolskie","populacja:  4.124582<br />proba:  4.8<br />woj: zachodniopomorskie"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[-1,21],"y":[-1,21],"text":"intercept: 0<br />slope: 1","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.5244618395303,"r":7.30593607305936,"b":42.4787997390737,"l":37.2602739726027},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,21],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"populacja","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1,21],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,15,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"proba","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"29f4c0d4815":{"x":{},"y":{},"label":{},"type":"scatter"},"29f427073c67":{"intercept":{},"slope":{}}},"cur_data":"29f4c0d4815","visdat":{"29f4c0d4815":["function (y) ","x"],"29f427073c67":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -303,21 +307,7 @@ sum(proba_prop$waga)
 [1] 27281.85
 ```
 
-W losowaniu propocjonalnym suma wag nie jest równa liczebności populacji.
-
----
-
-# Losowanie warstwowe
-
-Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
-
-Funkcja `strata`
-
-```r
-strata(data, stratanames, size)
-```
-
-- trzeba podać liczebność dla każdej warstwy
+W losowaniu proporcjonalnym suma wag nie jest równa liczebności populacji.
 
 ---
 
@@ -427,6 +417,60 @@ Pobieranie za pomocą funkcji `get_data_by_unit()`:
 
 ---
 
+# ID jednostki terytorialnej
+
+gmina Poznań: `023016264011`
+
+- `02` - id makroregionu
+
+- `30` - id województwa
+
+- `1` - id regionu (2 - region mazowiecki, 1 - reszta kraju)
+
+- `62` - id podregionu
+
+- `64` - id powiatu
+
+- `01` - id gminy
+
+---
+
+# Łączenie danych
+
+![](img/join.png)
+
+[źródło](https://rpubs.com/williamsurles/293454)
+
+---
+
+# Grupy
+
+Funkcja `cut()` pozwala na stworzenie zmiennej jakościowej z ilościowej:
+
+
+```r
+cut(x = frekwencja, 
+    breaks = c(min(frekwencja),25,50,75,max(frekwencja)), 
+    labels = c("do 25", "25-50", "50-75", "powyżej 75"),
+    include.lowest = T))
+```
+
+---
+
+# Losowanie warstwowe
+
+Operat jest dzielony na warstwy, w którym stosuje się losowanie proste.
+
+Funkcja `strata`
+
+```r
+strata(data, stratanames, size)
+```
+
+- trzeba podać liczebność dla każdej warstwy
+
+---
+
 # Losowanie zespołowe
 
 Z operatu losowane są całe grupy (zespoły).
@@ -450,6 +494,22 @@ UPsystematic(pik)
 ```
 
 - operuje na prawdopodobieństwach, zatem wielkość próby należy określić wcześniej
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/11tvuQcx88J5KBqQI1YeC?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ShBO4XcIA1i728mX5T8St?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/Uexdvb90zN4Xh8bKfqBgb?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/FoU5ldJhijIqoknIoVo4q?controls=none&amp;short_poll=true" width="100%" height="100%" frameBorder="0"&gt;&lt;/iframe&gt;
 
 ---
 
