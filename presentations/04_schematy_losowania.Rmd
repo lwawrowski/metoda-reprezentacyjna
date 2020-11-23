@@ -451,7 +451,9 @@ UPsystematic(pik)
 
 - badania statystyczne na ludziach, w produkcji przemysłowej
 
-- uczenie maszynowe: podział zbioru danych na uczący i testowy np. w klasyfikacji
+- [podział zbioru danych na uczący i testowy np. w klasyfikacji](https://bradleyboehmke.github.io/HOML/process.html#splitting)
+
+- [losowanie hiperparametrów zamiast przeszukiwania wszystkich kombinacji](https://miroslawmamczur.pl/czym-sa-hiperparametry-i-jak-je-dobrac/)
 
 ---
 
