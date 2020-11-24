@@ -79,7 +79,7 @@ length(unique(wybory_ludnosc_bb$ludnosc))
 
 n_ludnosc <- wybory_ludnosc_bb %>% 
   count(ludnosc_kat4) %>% 
-  mutate(n_proba = round(0.01*n))
+  mutate(n_proba=round(0.01*n))
 
 proba_warstwa <- strata(data = wybory_ludnosc_bb, 
                         stratanames = "ludnosc_kat4", 
@@ -87,6 +87,28 @@ proba_warstwa <- strata(data = wybory_ludnosc_bb,
 
 proba_warstwa_obwody <- getdata(wybory_ludnosc_bb, proba_warstwa)
 
+# suma wag z próby jest równa liczebności populacji
 sum(1/proba_warstwa_obwody$Prob)
 
+# losowanie zespołowe
 
+proba_zespol <- cluster(data = dane_czyste, clustername = "siedziba", size = 30)
+
+proba_zespol_obwody <- getdata(dane_czyste, proba_zespol)
+
+proba_zespol_obwody$waga <- 1/proba_zespol_obwody$Prob
+
+# suma wag nie jest równa liczebności populacji
+sum(proba_zespol_obwody$waga)
+
+# losowanie systematyczne
+
+proba_systematyczna <- dane_czyste %>% 
+  mutate(prob=200/nrow(.),
+         w_probie=UPsystematic(prob)) %>% 
+  filter(w_probie == 1)
+
+proba_systematyczna$w_probie
+
+# suma wag jest równa liczebności populacji
+sum(1/proba_systematyczna$prob)
