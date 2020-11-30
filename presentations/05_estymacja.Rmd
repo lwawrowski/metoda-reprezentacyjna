@@ -52,11 +52,13 @@ Losowanie około 900 obwodów stałych - zbiór danych `wybory_proba.rda`.
 
 **Próba nr 1**
 
-Warstwowanie przez województwo, liczbę wyborców i frekwencję.
+Warstwowanie przez województwo (16), liczbę wyborców (3) i frekwencję (4). W sumie uzyskano 192 warstwy.
 
 **Próba nr 2**
 
-Warstwowanie przez województwo, liczbę wyborców, frekwencję i różnicę wyników.
+Warstwowanie przez województwo (16), liczbę wyborców (3), frekwencję (4) i różnicę wyników (2). Mało liczne warstwy zostały połączone. W sumie uzyskano 325 warstw.
+
+[Kod źródłowy](https://github.com/lwawrowski/metoda-reprezentacyjna/blob/master/codes/2020_2021/losowanie_proby_obwodow.R)
 
 ---
 
@@ -216,13 +218,13 @@ gdzie:
 
 Dla prostego schematu losowania obowiązują następujące wzory:
 
-- Estymator wartości globalnej 
-
-$$V(\hat{y}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s^2_y}{n}$$
-
 - Estymator wartości średniej
 
-$$V(\hat{\bar{y}}^{HT})=\frac{N-n}{N} \cdot \frac{s^2_y}{n}$$
+$$V(\hat{\bar{\theta}}^{HT})=\frac{N-n}{N} \cdot \frac{s^2_y}{n}$$
+
+- Estymator wartości globalnej 
+
+$$V(\hat{\theta}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s^2_y}{n}$$
 
 gdzie: 
 
@@ -246,13 +248,13 @@ $$\text{FPC}=\frac{N-n}{N}$$
 
 Interpretowalną miarą błędu jest błąd standardowy:
 
-$$\text{SE}=\sqrt{V(\hat{y}^{HT})}$$
+$$\text{SE}=\sqrt{V(\hat{\theta}^{HT})}$$
 
 --
 
 Względny błąd oszacowania:
 
-$$\text{CV}=\frac{\text{SE}}{\hat{y}^{HT}}$$
+$$\text{CV}=\frac{\text{SE}}{\hat{\theta}^{HT}}$$
 
 Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
@@ -294,11 +296,11 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 Określenie schematu losowania, żeby R mógł dobrać odpowiednie wzory do estymacji.
 
 ```{r eval=FALSE}
-svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi, 
-          nest = TRUE, data = zbior_danych)
+svydesign(ids = ~psu, strata = ~warstwa, weights = ~wagi, 
+          nest = FALSE, data = zbior_danych)
 ```
 
-- `id` - jednostki losowania pierwszego stopnia
+- `ids` - jednostki losowania pierwszego stopnia
 
 - `strata` - zmienna zawierająca identyfikator warstwy
 
@@ -330,7 +332,7 @@ class: inverse
 
 Oszacuj średni wynik Rafała Trzaskowskiego na podstawie próby nr 2.
 
-`r countdown(minutes = 10, seconds = 0, top = 0)`
+`r countdown(minutes = 5, seconds = 0, top = 0)`
 
 ---
 

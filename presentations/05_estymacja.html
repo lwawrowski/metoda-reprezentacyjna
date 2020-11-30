@@ -55,11 +55,13 @@ Losowanie około 900 obwodów stałych - zbiór danych `wybory_proba.rda`.
 
 **Próba nr 1**
 
-Warstwowanie przez województwo, liczbę wyborców i frekwencję.
+Warstwowanie przez województwo (16), liczbę wyborców (3) i frekwencję (4). W sumie uzyskano 192 warstwy.
 
 **Próba nr 2**
 
-Warstwowanie przez województwo, liczbę wyborców, frekwencję i różnicę wyników.
+Warstwowanie przez województwo (16), liczbę wyborców (3), frekwencję (4) i różnicę wyników (2). Mało liczne warstwy zostały połączone. W sumie uzyskano 325 warstw.
+
+[Kod źródłowy](https://github.com/lwawrowski/metoda-reprezentacyjna/blob/master/codes/2020_2021/losowanie_proby_obwodow.R)
 
 ---
 
@@ -69,7 +71,7 @@ class: inverse
 
 Jaki jest średni wynik urzędującego prezydenta w próbie nr 1?
 
-<div class="countdown" id="timer_5fc4e64d" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5fc512b5" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -157,13 +159,13 @@ gdzie:
 
 Dla prostego schematu losowania obowiązują następujące wzory:
 
-- Estymator wartości globalnej 
-
-`$$V(\hat{y}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s^2_y}{n}$$`
-
 - Estymator wartości średniej
 
-`$$V(\hat{\bar{y}}^{HT})=\frac{N-n}{N} \cdot \frac{s^2_y}{n}$$`
+`$$V(\hat{\bar{\theta}}^{HT})=\frac{N-n}{N} \cdot \frac{s^2_y}{n}$$`
+
+- Estymator wartości globalnej 
+
+`$$V(\hat{\theta}^{HT})=\frac{N-n}{N}\cdot N^2 \cdot \frac{s^2_y}{n}$$`
 
 gdzie: 
 
@@ -187,13 +189,13 @@ Różnica pomiędzy losowaniem ze zwracaniem, a losowaniem bez zwracania
 
 Interpretowalną miarą błędu jest błąd standardowy:
 
-`$$\text{SE}=\sqrt{V(\hat{y}^{HT})}$$`
+`$$\text{SE}=\sqrt{V(\hat{\theta}^{HT})}$$`
 
 --
 
 Względny błąd oszacowania:
 
-`$$\text{CV}=\frac{\text{SE}}{\hat{y}^{HT}}$$`
+`$$\text{CV}=\frac{\text{SE}}{\hat{\theta}^{HT}}$$`
 
 Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
@@ -236,11 +238,11 @@ Określenie schematu losowania, żeby R mógł dobrać odpowiednie wzory do esty
 
 
 ```r
-svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi, 
-          nest = TRUE, data = zbior_danych)
+svydesign(ids = ~psu, strata = ~warstwa, weights = ~wagi, 
+          nest = FALSE, data = zbior_danych)
 ```
 
-- `id` - jednostki losowania pierwszego stopnia
+- `ids` - jednostki losowania pierwszego stopnia
 
 - `strata` - zmienna zawierająca identyfikator warstwy
 
@@ -273,8 +275,8 @@ class: inverse
 
 Oszacuj średni wynik Rafała Trzaskowskiego na podstawie próby nr 2.
 
-<div class="countdown" id="timer_5fc4e6e4" style="top:0;right:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<div class="countdown" id="timer_5fc51355" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
@@ -309,7 +311,7 @@ class: inverse
 
 Oszacuj średni wynik Rafała Trzaskowskiego w przekroju województw na podstawie próby nr 2.
 
-<div class="countdown" id="timer_5fc4e7d2" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5fc511c2" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -340,7 +342,7 @@ class: inverse
 
 Oszacuj liczbę osób głosujących na Rafała Trzaskowskiego na podstawie próby nr 2.
 
-<div class="countdown" id="timer_5fc4e670" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5fc5124b" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -399,7 +401,7 @@ class: inverse
 
 Skonstruuj 90% przedziały ufności dla oszcowań średniego wyniku testu kompetencji (`api00`) w przekroju typu szkoły (`stype`). Czy wartości rzeczywiste znajdują się w tych przedziałach?
 
-<div class="countdown" id="timer_5fc4e677" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5fc512b4" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -433,7 +435,7 @@ class: inverse
 
 Oszacuj odsetek uczniów, którzy wzięli udział w teście kompetencji w przekroju typu szkoły (`stype`).
 
-<div class="countdown" id="timer_5fc4e776" style="top:0;right:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5fc513ce" style="top:0;right:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
