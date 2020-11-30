@@ -42,31 +42,21 @@ Bruce Frey, _75 sposobów na statystykę. Jak zmierzyć świat i wygrać z prawd
 
 # Problem
 
-Oszacować wyniki wyborów prezydenckich na podstawie próby 100 obwodów wyborczych.
+Oszacować wyniki wyborów prezydenckich na podstawie próby około 900 obwodów wyborczych.
 
 ---
 
 # Dane
 
-Wylosowano 100 obwodów.
+Losowanie około 900 obwodów stałych - zbiór danych `wybory_proba.rda`.
 
-Dane o obwodach warstwowane liczbą wyborców i frekwencją.
+**Próba nr 1**
 
-2-stopniowy schemat losowania
+Warstwowanie przez województwo, liczbę wyborców i frekwencję.
 
-- 1 stopień: losowanie województw w ramach warstw
-- 2 stopień: losowanie obwodów w ramach województw
+**Próba nr 2**
 
-
-
-
-- Ocena zdrowia dzieci i dorosłych w USA
-- operat jest warstwowany cechami geograficznymi i ludnością
-- 4-stopniowy schemat losowania:
-  - 1 stopień: losowanie hrabstw w ramach warstw
-  - 2 stopień: losowanie miast w ramach hrabstw
-  - 3 stopień: losowanie gospodarstw w ramach miast
-  - 4 stopień: losowanie osób w ramach gospodarstw
+Warstwowanie przez województwo, liczbę wyborców, frekwencję i różnicę wyników.
 
 ---
 
@@ -74,13 +64,13 @@ class: inverse
 
 # Zadanie
 
-Jaki jest średni wynik urzędującego prezydenta w próbie?
+Jaki jest średni wynik urzędującego prezydenta w próbie nr 1?
 
 `r countdown(minutes = 5, seconds = 0, top = 0)`
 
 ---
 
-ankieta
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/QY9y4Cwr5BqmtOQ4pmxJs?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
 ---
 
@@ -197,6 +187,7 @@ ggplot(df, aes(x = mediana)) +
   scale_x_continuous("Mediana z próby") +
   theme_light()
 ```
+
 ---
 
 <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/YQ8HuDidyDQoctzpU8rFV?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
@@ -267,14 +258,6 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
 ---
 
-# Zależności
-
-- większa próba = mniejszy błąd oszacowania
-
-- większa próba = większe koszty
-
----
-
 ## Wyniki nieprzeważone i przeważone
 
 .pull-left[
@@ -327,10 +310,10 @@ svydesign(id = ~psu, strata = ~warstwa, weights = ~wagi,
 
 ---
 
-# Estymacja wartości globalnej
+# Estymacja wartości średniej
 
 ```{r eval=FALSE}
-svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
+svymean(x = ~cecha, design = schemat, na.rm = FALSE)
 ```
 
 - `x` - estymowana cecha 
@@ -338,6 +321,20 @@ svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
 - `design` - schemat losowania określony za pomocą funkcji `svydesign()`
 
 - `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oszacuj średni wynik Rafała Trzaskowskiego na podstawie próby nr 2.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/9R60lbCdNYsU1nj9So9A8?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
 ---
 
@@ -364,26 +361,20 @@ class: inverse
 
 # Zadanie
 
-Oszacuj liczbę osób głosujących na Rafała Trzaskowskiego.
+Oszacuj średni wynik Rafała Trzaskowskiego w przekroju województw na podstawie próby nr 2.
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
-class: inverse
-
-# Zadanie
-
-w przekroju ... 
-
-`r countdown(minutes = 10, seconds = 0, top = 0)`
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/j7BR5FbBfTsZmFPPjV0tY?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
 ---
 
-# Estymacja wartości średniej
+# Estymacja wartości globalnej
 
 ```{r eval=FALSE}
-svymean(x = ~cecha, design = schemat, na.rm = FALSE)
+svytotal(x = ~cecha, design = schemat, na.rm = FALSE)
 ```
 
 - `x` - estymowana cecha 
@@ -391,6 +382,16 @@ svymean(x = ~cecha, design = schemat, na.rm = FALSE)
 - `design` - schemat losowania określony za pomocą funkcji `svydesign()`
 
 - `na.rm` - wartość TRUE albo FALSE wskazująca czy braki danych powinny być usunięte
+
+---
+
+class: inverse
+
+# Zadanie
+
+Oszacuj liczbę osób głosujących na Rafała Trzaskowskiego na podstawie próby nr 2.
+
+`r countdown(minutes = 10, seconds = 0, top = 0)`
 
 ---
 
