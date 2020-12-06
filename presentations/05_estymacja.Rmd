@@ -17,7 +17,10 @@ output:
 ```{r include=FALSE}
 library(tidyverse)
 library(countdown)
+library(survey)
 options(scipen=100)
+
+load("../data/wybory_proba.rda")
 ```
 
 <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/rYdWmXtOiJ2THuATIOIsr?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
@@ -204,10 +207,11 @@ $$\hat{\theta}^{HT}=\sum\limits_{i=1}^{n}{y_iw_i}$$
 
 Estymator wartości średniej
 
-$$\hat{\bar{\theta}}^{HT}=\frac{1}{n}\sum\limits_{i=1}^{n}{y_iw_i}$$
+$$\hat{\bar{\theta}}^{HT}=\frac{1}{\hat{N}}\sum\limits_{i=1}^{n}{y_iw_i}$$
 
 gdzie:
 
+- $\hat{N}$ - liczebność populacji (suma wag),
 - $n$ - liczebność próby,
 - $y_i$ - wartość cechy dla $i$-tej jednostki,
 - $w_i$ - wartość wagi dla $i$-tej jednostki.
@@ -260,20 +264,19 @@ Podawany w procentach i wg standardów GUS nie powinien przekraczać 10%.
 
 ---
 
-## Wyniki nieprzeważone i przeważone
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ibwAbxjjBh4TlTeOKyMt2?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
-.pull-left[
+---
 
-<img src="img/nonweighted.png" width=400px>
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/cynVNOPZQvAMLi5yHylKs?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
-]
+---
 
---
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ASydPi5RUr0j2YYI4guy8?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
-.pull-right[
+---
 
-<img src="img/weighted.png" width=400px>
-]
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/NGpST6O8Lb7SqWl5venqG?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
 ---
 
@@ -395,13 +398,50 @@ Oszacuj liczbę osób głosujących na Rafała Trzaskowskiego na podstawie prób
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
+???
+
+```{r}
+populacja <- populacja %>% 
+  mutate(glosujacy=round(wyborcy*frekwencja/100),
+         glosRT=round(glosujacy*rafal_kazimierz_trzaskowski/100),
+         glosAD=glosujacy-glosRT)
+
+sum(populacja$glosRT)
+
+proba1 <- proba1 %>% 
+  mutate(glosujacy=round(wyborcy*frekwencja/100),
+         glosRT=round(glosujacy*rafal_kazimierz_trzaskowski/100),
+         glosAD=glosujacy-glosRT)
+
+schemat1 <- svydesign(ids = ~symbol_kontrolny, strata = ~warstwa,
+                      weights = ~waga, data = proba1)
+
+svytotal(~ glosRT, schemat1)
+svytotal(~ glosAD, schemat1)
+
+proba2 <- proba2 %>% 
+  mutate(glosujacy=round(wyborcy*frekwencja/100),
+         glosRT=round(glosujacy*rafal_kazimierz_trzaskowski/100),
+         glosAD=glosujacy-glosRT)
+
+schemat2 <- svydesign(ids = ~symbol_kontrolny, strata = ~warstwa,
+                      weights = ~waga, data = proba2)
+
+svytotal(~ glosRT, schemat2)
+svytotal(~ glosAD, schemat2)
+```
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/N9fCeGFMI1QwYJAAflfCt?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
+
 ---
 
 # Przedział ufności
 
 W jakim przedziale i z jakim prawdopodobieństwem znajduje się wartość prawdziwa:
 
-$$\left(\hat{y}^{HT}- z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})} \leq \hat{y}^{HT} \leq \hat{y}^{HT}+ z_{1-\alpha/2}\cdot\sqrt{V(\hat{y}^{HT})}\right)$$
+$$\left(\hat{\theta}^{HT}- z_{1-\alpha/2}\cdot\sqrt{V(\hat{\theta}^{HT})} \leq \hat{\theta}^{HT} \leq \hat{\theta}^{HT}+ z_{1-\alpha/2}\cdot\sqrt{V(\hat{\theta}^{HT})}\right)$$
 
 - 90% przedział ufności - $z_\alpha = 1,64$, dla $\alpha=0,10$
 - 95% przedział ufności - $z_\alpha = 1,96$, dla $\alpha=0,05$
@@ -441,9 +481,22 @@ class: inverse
 
 # Zadanie
 
-Skonstruuj 90% przedziały ufności dla oszcowań średniego wyniku testu kompetencji (`api00`) w przekroju typu szkoły (`stype`). Czy wartości rzeczywiste znajdują się w tych przedziałach?
+Oblicz względny błąd oszacowania liczby osób głosujących na RT w przekroju województw. W ilu województwach jest przekroczony dopuszczalny próg 10%?
 
-`r countdown(minutes = 10, seconds = 0, top = 0)`
+`r countdown(minutes = 5, seconds = 0, top = 0)`
+
+???
+
+```{r}
+rt_woj <- svyby(~glosRT, ~wojewodztwo, schemat2, FUN = svytotal)
+# rt_woj <- svyby(~rafal_kazimierz_trzaskowski, ~wojewodztwo, schemat2, FUN = svymean)
+cv(rt_woj) 
+sum(cv(rt_woj) > 0.1)
+```
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/P3kVijIQ0jNgPloRzoXL8?controls=none&short_poll=true" width="100%" height="100%" frameBorder="0"></iframe>
 
 ---
 
@@ -472,10 +525,15 @@ class: inverse
 
 # Zadanie
 
-Oszacuj odsetek uczniów, którzy wzięli udział w teście kompetencji w przekroju typu szkoły (`stype`).
+Oszacuj poparcie AD na podstawie liczby głosujących oraz liczby oddanych na niego głosów - próba nr 2.
 
 `r countdown(minutes = 10, seconds = 0, top = 0)`
 
+???
+
+```{r}
+svyratio(numerator = ~glosAD, denominator = ~glosujacy, design = schemat2)
+```
 ---
 
 class: center, middle, inverse
