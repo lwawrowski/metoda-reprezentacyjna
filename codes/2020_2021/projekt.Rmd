@@ -1,0 +1,267 @@
+---
+title: "Projekt - przykład"
+author: "Łukasz Wawrowski"
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+
+options(scipen = 999)
+
+library(tidyverse)
+library(bdl)
+library(survey)
+library(sampling)
+
+ft <- function(liczba){
+  return(as.character(gsub("\\.", "\\,", liczba)))
+}
+```
+
+## Cel projektu
+
+Celem projektu jest oszacowanie liczby dzieci, na które rodziny otrzymywały świadczenie 500 plus w roku 2018 w przekroju województw na podstawie próby.
+
+## Dane o populacji
+
+Informacje o liczba dzieci, na które rodziny otrzymują świadczenie dla wszystkich gmin zostały pobrane z BDL. Dane nie zawierają informacji o miastach i obszarach wiejskich w gminach miejsko-wiejskich, zatem nie ma potrzeby deduplikacji danych. 
+
+```{r}
+d500plus <- get_data_by_variable(varId = 634991, year = 2018, unitLevel = 6) %>% 
+  mutate(kod_gmi=str_c(str_sub(id,3,4),str_sub(id,8,11)),
+         kod_pow=str_c(str_sub(id,3,4),str_sub(id,8,9)),
+         kod_woj=str_sub(id,3,4))
+
+dwoj <- get_data_by_variable(varId = 634991, year = 2018, unitLevel = 2) %>% 
+  mutate(kod_woj=str_sub(id,3,4)) %>% 
+  select(kod_woj, woj_name=name)
+
+d500plus_woj <- left_join(d500plus, dwoj)
+```
+
+Rozkład badanej cechy jest następujący:
+
+```{r}
+d500plus %>% 
+  summarise(srednia = round(mean(val)),
+            odch_std = round(sd(val)),
+            min = min(val),
+            q1 = quantile(val, 0.25),
+            mediana = quantile(val, 0.5),
+            q3 = round(quantile(val, 0.75)),
+            max = max(val)) %>% 
+  knitr::kable()
+  
+```
+
+Średnio na gminę przypada 1447 dzieci otrzymujących świadczenie. Natomiast jest to zjawisko bardzo zróżnicowane - odchylenie standardowe wynosi 3618 osób, co stanowi 250% wartości średniej. Najmniejsza wartość w zbiorze wynosi 86 (gm. Nowe Warpno), natomiast najwięcej świadczeń wypłacanych jest w Warszawie - 126360.
+
+Ogółem liczba dzieci otrzymujących świadczenie 500 plus wynosiła: `r sum(d500plus$val)`.
+
+W przekroju województw te liczby wyglądały następująco:
+
+```{r}
+d500plus_woj %>% 
+  group_by(woj_name) %>% 
+  summarise(suma=sum(val)/1000) %>% 
+  ggplot(aes(x=suma, y=woj_name)) + 
+  geom_col() +
+  ylab("Województwo") +
+  xlab("Liczba świadczeń (x 1000)") +
+  theme_bw()
+  
+```
+
+## Próba prosta
+
+W pierwszej kolejności wylosowano dwie próby proste o liczebności 248 gmin (10% wszystkich gmin) i 496 gmin (20% wszystkich gmin). Udział liczebności gmin w próbie i populacji jest przedstawiony na poniższym wykresie.
+
+```{r}
+set.seed(123)
+
+proba_prosta1 <- d500plus_woj %>% 
+  sample_n(248) %>% 
+  mutate(prob=248/nrow(d500plus_woj),
+         waga=1/prob)
+
+proba_prosta2 <- d500plus_woj %>% 
+  sample_n(496) %>% 
+  mutate(prob=496/nrow(d500plus_woj),
+         waga=1/prob)
+
+woj_count1 <- proba_prosta1 %>% 
+  count(woj_name) %>% 
+  mutate(proc=n/248*100,
+         d = "Próba 1 (248)")
+
+woj_count2 <- proba_prosta2 %>% 
+  count(woj_name) %>% 
+  mutate(proc=n/496*100,
+         d = "Próba 2 (496)")
+
+woj_count_pop <- d500plus_woj %>% 
+  count(woj_name) %>% 
+  mutate(proc=n/2478*100,
+         d = "Populacja")
+
+woj_count_all <- union_all(woj_count_pop, union_all(woj_count1, woj_count2))
+
+ggplot(woj_count_all, aes(x=proc, y=woj_name)) + 
+  geom_col() +
+  facet_wrap(~ d) +
+  xlab("Odsetek gmin") +
+  ylab("Województwo") +
+  theme_bw()
+```
+
+Można zauważyć, że w próbie nr 1 gminy w województwie Mazowieckim są nadreprezentowane, a w województwie lubuskim niedoreprezentowane. W próbie nr 2 niedoreprezentowane są gminy m.in. z województwa lubelskiego.
+
+W wylosowanych próbach wagi sumują się do liczebności populacji.
+
+Następnie oszacowano wartość globalną liczby dzieci otrzymujących świadczenie 500 plus.
+
+```{r}
+schemat1 <- svydesign(ids = ~1, weights = ~waga, data = proba_prosta1)
+
+total_schemat1 <- svytotal(~val, schemat1)
+
+cv_total_schemat1 <- round(as.numeric(cv(total_schemat1))*100,2)
+
+ci_total_schemat1 <- confint(total_schemat1, level = 0.9)
+
+schemat2 <- svydesign(ids = ~1, weights = ~waga, data = proba_prosta2)
+
+total_schemat2 <- svytotal(~val, schemat2)
+
+cv_total_schemat2 <- round(as.numeric(cv(total_schemat2))*100,2)
+
+ci_total_schemat2 <- confint(total_schemat2, level = 0.9)
+```
+
+Na podstawie próby nr 1 uzyskano wynik `r round(as.numeric(total_schemat1))` ze względnym błędem oszacowania równym `r ft(cv_total_schemat1)`%. 90% przedział ufności jest tworzony przez zakres wartości od `r round(ci_total_schemat1[1])` do `r round(ci_total_schemat1[2])`. Z kolei w próbie drugiej oszacowanie wynosiło `r round(as.numeric(total_schemat2))`, a względny błąd `r ft(cv_total_schemat2)`%. W tym przypadku można stwierdzić, że wartość prawdziwa liczby dzieci otrzymujących 500 plus z 90% prawdopodobieństwm zawiera się w przedziale od `r round(ci_total_schemat2[1])` od `r round(ci_total_schemat2[2])`.
+
+Wyniki na poziomie województw przedstawione są na kolejnym wykresie z wykorzystaniem 90% przedziałów ufności. Z kolei czerwony punkt oznacza wartość w populacji.
+
+```{r}
+pop_woj <- d500plus_woj %>% 
+  group_by(woj_name) %>% 
+  summarise(pop=sum(val))
+
+total_schemat1_woj <- svyby(formula = ~val, by = ~woj_name, design = schemat1, FUN = svytotal)
+
+total_schemat1_woj_ci <- as.data.frame(confint(total_schemat1_woj, level = 0.90))
+names(total_schemat1_woj_ci) <- c("lower", "upper")
+
+total_schemat1_woj_ci <- inner_join(cbind(total_schemat1_woj, total_schemat1_woj_ci),pop_woj) %>% 
+  mutate(d = "Próba 1 (248)")
+
+total_schemat2_woj <- svyby(formula = ~val, by = ~woj_name, design = schemat2, FUN = svytotal)
+
+total_schemat2_woj_ci <- as.data.frame(confint(total_schemat2_woj, level = 0.90))
+names(total_schemat2_woj_ci) <- c("lower", "upper")
+
+total_schemat2_woj_ci <- inner_join(cbind(total_schemat2_woj, total_schemat2_woj_ci),pop_woj) %>% 
+  mutate(d = "Próba 2 (496)")
+
+total_woj <- union_all(total_schemat1_woj_ci, total_schemat2_woj_ci)
+
+ggplot(total_woj, aes(y=woj_name, x=val)) + 
+  geom_point() +
+  geom_point(aes(x=pop), color = "red", size = 2, alpha = 0.8) +
+  geom_errorbar(aes(xmin = lower, xmax = upper)) +
+  xlab("Województwo") +
+  ylab("Liczba świadczeń") +
+  facet_wrap(~ d) +
+  theme_bw()
+
+```
+
+W próbie nr 1, tylko w przypadku województwa małopolskiego wartość prawdziwa znajduje się poza przedziałem ufności. Najszersze przedziały ufności występowały w województwach: śląskim, podlaskim oraz kujawsko-pomorskim. W 2 przypadkach wartości granic przedziałów ufności były mniejsze od 0. W drugiej próbie przedziały ufności są dużo węższe, ale aż w trzech przypadkach wartość z populacji się w nich nie znalazła - dla województw: opolskiego, mazowieckiego i lubelskiego.
+
+## Próba warstwowa
+
+W celu uzyskania bardziej adekwatnych oszacowań uwzględniających strukturę populacji przeprowadzono warstwowanie próby z wykorzystaniem województwa oraz 3 przedziałów przeciętnego wynagrodzenia. 
+
+```{r}
+wyn <- get_data_by_variable(varId = 64428, year = 2018, unitLevel = 5) %>% 
+  mutate(kod_pow=str_c(str_sub(id,3,4),str_sub(id,8,9)))
+
+wyn_class <- classInt::classIntervals(var = wyn$val, n = 3, style = "quantile")
+
+wyn$wyn_cat <- cut(wyn$val, breaks = wyn_class$brks, labels = c("1","2","3"), include.lowest = T)
+
+d500plus_woj_wyn <- left_join(d500plus_woj, select(wyn, kod_pow, wyn_cat)) %>% 
+  mutate(warstwa=str_c(kod_woj,wyn_cat))
+
+set.seed(123)
+
+proba_warstwa_size <- d500plus_woj_wyn %>% 
+  count(warstwa) %>% 
+  mutate(n_proba=round(0.2*n),
+         n_proba=ifelse(n_proba == 0, 2, n_proba))
+
+d500plus_woj_wyn <- d500plus_woj_wyn %>% 
+  arrange(warstwa)
+
+proba_warstwa <- strata(d500plus_woj_wyn, stratanames = "warstwa", size = proba_warstwa_size$n_proba)
+
+proba_warstwa_d500 <- getdata(d500plus_woj_wyn, proba_warstwa) %>% 
+  mutate(waga=1/Prob)
+
+woj_count3 <- proba_warstwa_d500 %>% 
+  count(woj_name) %>% 
+  mutate(proc=n/nrow(proba_warstwa_d500)*100,
+         d = "Próba 3 (496)")
+
+woj_count_all_3 <- union_all(woj_count_pop, woj_count3)
+
+ggplot(woj_count_all_3, aes(x=proc, y=woj_name)) + 
+  geom_col() +
+  facet_wrap(~ d) +
+  xlab("Odsetek gmin") +
+  ylab("Województwo") +
+  theme_bw()
+```
+
+Dzięki zastosowaniu losowania warstwowego struktura w podziale na województwa jest zachowana. 
+
+```{r}
+schemat3 <- svydesign(ids = ~1, weights = ~waga, strata = ~warstwa, data = proba_warstwa_d500)
+
+total_schemat3 <- svytotal(~val, schemat3)
+
+cv_total_schemat3 <- round(as.numeric(cv(total_schemat3))*100,2)
+
+ci_total_schemat3 <- confint(total_schemat3, level = 0.9)
+```
+
+Oszacowanie liczby świadczeń na podstawie próby nr 3 wynosi `r round(as.numeric(total_schemat3))` z błędem standardowym `r ft(cv_total_schemat3)`%. 90% przedział ufności pokrywa wartości od `r round(ci_total_schemat3[1])` do `r round(ci_total_schemat3[2])` dzieci.
+
+Wyniki w podziale na województwa przedstawiony jest poniżej:
+
+```{r}
+total_schemat3_woj <- svyby(formula = ~val, by = ~woj_name, design = schemat3, FUN = svytotal)
+
+total_schemat3_woj_ci <- as.data.frame(confint(total_schemat3_woj, level = 0.90))
+names(total_schemat3_woj_ci) <- c("lower", "upper")
+
+total_schemat3_woj_ci <- inner_join(cbind(total_schemat3_woj, total_schemat3_woj_ci),pop_woj) %>% 
+  mutate(d = "Próba 3 (496)")
+
+ggplot(total_schemat3_woj_ci, aes(y=woj_name, x=val)) + 
+  geom_point() +
+  geom_point(aes(x=pop), color = "red", size = 2, alpha = 0.8) +
+  geom_errorbar(aes(xmin = lower, xmax = upper)) +
+  ylab("Województwo") +
+  xlab("Liczba świadczeń") +
+  facet_wrap(~ d) +
+  theme_bw()
+```
+
+W przypadku tej próby obserwuje się bardzo szerokie przedziały ufności dla 5 województw. W trzech przypadkach wartość prawdziwa znajdowała się poza stworzonym przedziałem. Co istotne, w żadnym przypadku dolne granice przedziałów ufności nie były mniejsze od zera.
+
+## Podsumowanie
+
+Projekt przedstawia 3 podejścia do losowania próby w celu oszacowania liczby dzieci, na które rodziny otrzymują świadczenie 500 plus. W przypadku zastosowania próby prostej nie zachowana została struktura liczebności gmin wg województw. Jako alternatywę użyto losowania warstwowego uwzględniając województwo oraz wynagrodzenie. Pomimo tej operacji i wylosowania aż 20% gmin, otrzymane wyniki nie cechują się adekwatną precyzją dla wszystkich jednostek terytorialnych. Należy rozważyć inne sposoby warstwowania uwzględniające specyfikę poszczególnych województw.
