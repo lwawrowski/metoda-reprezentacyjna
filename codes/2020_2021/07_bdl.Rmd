@@ -1,0 +1,87 @@
+---
+title: "Raport BDL"
+author: "Łukasz Wawrowski"
+date: "14 12 2020"
+output: html_document
+---
+
+# Wczytanie danych
+
+Wczytanie danych o świadczeniach 500 plus z BDL.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+
+dane <- read_xlsx(path = "data/dane_500plus.xlsx", sheet = 2) %>% 
+  janitor::clean_names()
+
+dane %>% 
+  summarise(minimum = min(wartosc),
+            mediana = median(wartosc),
+            maksimum = max(wartosc)) %>% 
+  knitr::kable()
+
+```
+
+Minimalna wartość w zbiorze danych wynosi `r min(dane$wartosc)`.
+
+```{r}
+wsp_zm <- round(sd(dane$wartosc)/mean(dane$wartosc)*100,2)
+```
+
+Współczynnik zmienności wynosi `r wsp_zm`%. 
+
+# Losowanie próby
+
+Wylosowanie próby według typu gminy.
+
+```{r}
+dane <- dane %>% 
+  mutate(typ_gminy=str_sub(kod, 7, 7)) %>% 
+  arrange(typ_gminy)
+
+dane %>% 
+  count(typ_gminy) %>% 
+  knitr::kable()
+```
+
+Losowanie warstwowe - 10%.
+
+```{r}
+proba <- dane %>% 
+  group_by(typ_gminy) %>% 
+  sample_frac(0.1)
+
+proba %>% 
+  count(typ_gminy)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(sampling)
+
+set.seed(123)
+
+proba_typ <- sampling::strata(data = dane, stratanames = "typ_gminy", size = c(30, 155, 63))
+
+proba_typ_dane <- getdata(dane, proba_typ)
+```
+
+## Estymacja
+
+```{r message=FALSE, warning=FALSE}
+library(survey)
+
+schemat <- svydesign(ids = ~1, probs = ~Prob, strata = ~typ_gminy, data = proba_typ_dane)
+
+svyby(formula = ~wartosc, by = ~typ_gminy, design = schemat, FUN = svymean) %>% 
+  knitr::kable()
+```
+
+
+
+
+
+
+
+
