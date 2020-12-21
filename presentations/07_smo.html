@@ -61,7 +61,7 @@ Poziom analizowanej cechy w danym obszarze objaśniany jest zmiennymi mierzonymi
 
 **Podejście jednostkowe (unit-level)**
 
-Bazuje na modelowaniu zmiennych ciągłym lub binarnych z wykorzystaniem danych jednostkowych pochodzących z badania reprezentacyjnego, a następnie przeprowadzeniu symalacji Monte Carlo z zastosowaniem danych ze spisu powszechnyego lub rejestru administracyjnego.
+Bazuje na modelowaniu zmiennych ciągłych lub binarnych z wykorzystaniem danych jednostkowych pochodzących z badania reprezentacyjnego, a następnie przeprowadzeniu symulacji Monte Carlo z zastosowaniem danych ze spisu powszechnego lub rejestru administracyjnego.
 
 ---
 
@@ -153,7 +153,7 @@ gdzie `\(x_d\)` - wektor zmiennych objaśniających dla obszaru `\(d\)` o wymiar
 
 W związku z tym model Faya-Herriota jest wariantem modelu liniowego z jednostkową strukturą kowariancji:
 
-`$$\theta_d=x_d'\beta+u_d+e_d$$`
+`$$\hat{\theta}^{HT}_d=x_d'\beta+u_d+e_d$$`
 
 ---
 
@@ -178,7 +178,7 @@ W przypadku stosowania metod bazujących na modelu ważne jest zadbanie o spełn
 [A Framework for Producing Small Area Estimates Based on Area-Level Models in R](https://cran.r-project.org/web/packages/emdi/vignettes/vignette_fh.pdf)
 
 ```r
-fh(fixed, vardir, combined_data, domains)
+fh(fixed, vardir, combined_data, domains, MSE)
 ```
 
 - `fixed` - model w zapisie `y ~ x1 + x2 + x3`
