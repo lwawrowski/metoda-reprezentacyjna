@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Metoda reprezentacyjna</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="© Łukasz Wawrowski" />
+    <script src="libs/header-attrs-2.5/header-attrs.js"></script>
+    <link href="libs/countdown-0.3.5/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown-0.3.5/countdown.js"></script>
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="default-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Metoda reprezentacyjna
+## Braki danych
+### © Łukasz Wawrowski
+
+---
+
+
+
+
+# Braki danych
+
+![](img/nonresponse.png)
+
+
+---
+
+# Możliwe rozwiązania
+
+- Item missing data -&gt; imputacja
+
+- Nonrespondents -&gt; kalibracja
+
+---
+
+# Projektowanie badania
+
+1. Losowanie próby na podstawie operatu (populacji)
+
+2. Wyznaczenie wag z próby dla wylosowanych jednostek
+
+3. Zebranie danych od respondentów - występowanie braków odpowiedzi
+
+4. **Korekta post-hoc**
+
+5. Szacowanie parametrów
+
+---
+
+### Mechanizmy powstawania braków danych
+
+**Całkowicie losowy - Missing Completely at Random (MCAR)**
+
+- Proces powstawania braków jest całkowicie losowy.
+
+**Losowy - Missing at Random (MAR)**
+
+- Braki danych zależą od zmiennych obserwowanych np. mężczyźni odmawiają odpowiedzi w pytaniach o depresję, a kobiety o wagę. 
+- Można sprawdzić np. testem `\(\chi^2\)`.
+- Lepszym określeniem byłoby Missing Conditionally at Random
+
+**Nielosowy - Missing not at Random (MNAR)**
+
+- Braki danych zależą od zmiennych obserwowalnych i nieobserwowalnych np. inteligencji, statusu społecznego.
+
+[Rubin, D. (1976). Inference and Missing Data. Biometrika, 63(3), 581-592](https://www.jstor.org/stable/2335739)
+
+---
+
+# Możliwe rozwiązania
+
+- usunięcie obserwacji z brakami danych
+
+- imputacja statystyczna:
+
+   - metody deterministyczne - zawsze te same wartości imputacyjne:
+      
+      - zastępowanie wartością przeciętną, imputacja regresyjna,
+      - nie wprowadzają dodatkowego źródła błędu losowego,
+      - zniekształcają rozkłady zmiennych
+   
+   - metody stochastyczne - można uzyskać różne wartości imputacyjne:
+   
+      - metoda hot-deck, stochastyczna imputacja regresyjna,
+      - generują dodatkowy błąd,
+      - lepiej zachowują rozkłady zmiennych
+
+[Tomasz Piasecki - Imputacja dochodów w badaniach statystyki publicznej dotyczących gospodarstw domowych](https://stat.gov.pl/cps/rde/xbcr/lodz/ASSETS_Konferencja_MRS_2013_plakat_Piasecki_T_Imputacja_dochodow_w_badaniach_statystyki_publicznej.pdf)
+
+---
+
+# Usuwanie braków danych
+
+W przypadku cech logicznych i numerycznych brak danych jest oznaczany jako `NA`. Jest to wartość nieliczbowa i **nie powinna** być filtrowana w następujący sposób:
+
+- `zmienna == NA`
+
+- `zmienna != NA`
+
+- `zmienna == "NA"`
+
+- `zmienna != "NA"`
+
+Prawidłowo odbywa się to z wykorzystaniem funkcji `is.na()`:
+
+- `is.na(zmienna)`
+
+- `!is.na(zmienna)`
+
+Funkcja `complete.cases()` służy do identyfikacji obserwacji, które nie zawierają braków danych.
+
+---
+
+class: inverse
+
+# Zadanie
+
+Ile obserwacji liczyłby zbiór danych `proba1_braki` gdyby usunąć wszystkie obserwacje zawierające braki danych?
+
+<div class="countdown" id="timer_5ffc3ca4" style="top:0;right:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/pj4TaLLmRJbmdJslyzDao?controls=none&amp;short_poll=true" width="100%" height="100%"&gt;&lt;/iframe&gt;
+
+---
+
+# Zastępowanie braków danych
+
+Zmienna ilościowa
+
+
+```r
+dane &lt;- dane_braki %&gt;%
+  mutate(zmienna=if_else(condition = is.na(zmienna), 
+                         true = mean(zmienna, na.rm = T), 
+                         false = zmienna))
+```
+
+
+Zmienna jakościowa
+
+
+```r
+dominanta &lt;- names(sort(table(dane_braki$zmienna), decreasing = T))[1]
+
+dane &lt;- dane_braki %&gt;%
+  mutate(zmienna=if_else(condition = is.na(zmienna), 
+                         true = dominanta, 
+                         false = zmienna))
+```
+
+---
+
+# Pakiet VIM
+
+[Visualization and Imputation of Missing Values](https://cran.r-project.org/web/packages/VIM/index.html)
+
+[Alexander Kowarik, Matthias Templ (2016). Imputation with the R Package VIM. Journal of Statistical Software, 74(7), 1-16.](https://www.jstatsoft.org/article/view/v074i07/v74i07.pdf)
+
+- implementuje najpopularniejsze metody do zastępowania braków danych,
+
+- funkcje z pakietu zwracają zbiór danych z uzupełnionymi wartościami i flagą dla imputowanych obserwacji
+
+---
+
+# Metoda hot-deck
+
+Dla każdego braku danych poszukiwany jest _dawca_ - obserwacja podobna pod kątem cech skorelowanych ze zmienną (pomocniczych), która zawiera brak danych. 
+
+Warianty:
+
+- losowa - stworzenie grup imputacyjnych na podstawie cech pomocniczcych. Dawca wybierany jest losowo z odpowiedniej grupy.
+
+- sekwencyjna - uporządkowanie danych na podstawie cech pomocniczcych. Dawca wybierany jest jako pierwsza obserwacja o takich samych cechach pomocniczych.
+
+---
+
+# Metoda hot-deck
+
+Funkcja `hotdeck`
+
+
+```r
+hotdeck(data = zbior, variable = "cecha", 
+        ord_var = c("zmienna1", "zmienna2"), domain_var = "domena")
+```
+
+- `data` - zbiór danych wejściowych
+
+- `variable` - cecha/cechy do imputacji
+
+- `ord_var` - zmienne pomocnicze
+
+- `domain_var` - zmienne domenowe - w ramach, których ma być przeprowadzona imputacja
+
+---
+
+# Metoda najbliższych sąsiadów
+
+Poszukiwanie obserwacji dawcy na podstawie wybranych zmiennych oraz kryterium minimalnej odległości dla wybranej liczby `\(k\)` sąsiadów.
+
+Obliczanie odległości opiera się na metryce Gowera (1971), która umożliwia obliczanie odległości dla cech jakościowych i ilościowych.
+
+Imputowana wartość dla cech ilościowych to mediana z wartości `\(k\)` sąsiadów, a dla cech jakościowych najczęściej występujący wariant.
+
+---
+
+# Metoda najbliższych sąsiadów
+
+Funkcja `kNN`
+
+
+```r
+kNN(data = zbior, variable = c("cecha1", "cecha2"), 
+    dist_var = c("zmienna1", "zmienna2", "zmienna3"), k = 5)
+```
+
+- `data` - zbiór danych wejściowych
+
+- `variable` - cecha/cechy do imputacji
+
+- `dist_var` - zmienne wykorzystywane do obliczenia odległości
+
+- `k` - liczba sąsiadów
+
+---
+
+# Imputacja regresyjna
+
+Zastąpienie braków danych wartościami teoretycznymi z modelu liniowego.
+
+Funkcja `kNN`
+
+
+```r
+regressionImp(formula = model, data = zbior)
+```
+
+- `formula` - model dla zmiennej imputowanej
+
+- `data` - zbiór danych wejściowych
+
+Podobnie działa funkcja `rangerImpute()` wykorzystująca lasy losowe, natomiast przy domyślnych parametrach nie będzie metodą deterministyczną.
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/rnvJFCF0qaHR1fqNSLBBT?controls=none&amp;short_poll=true" width="100%" height="100%"&gt;&lt;/iframe&gt;
+
+---
+
+&lt;iframe src="https://embed.polleverywhere.com/multiple_choice_polls/67avxOc9bMHKcACga7149?controls=none&amp;short_poll=true" width="100%" height="100%"&gt;&lt;/iframe&gt;
+
+---
+
+# Kalibracja
+
+Metoda wykorzystywana w estymacji różnych parametrów w badaniach statystycznych z brakami odpowiedzi
+
+- twórcy metody: [Deville, J., &amp; Sarndal, C. (1992). Calibration Estimators in Survey Sampling. Journal of the American Statistical Association, 87(418), 376-382. doi:10.2307/2290268](https://www.jstor.org/stable/2290268)
+
+- z polskiego podwórka: [Szymkowiak, M. (2019). Podejście kalibracyjne w badaniach społeczno-ekonomicznych. Wydawnictwo Uniwersytetu Ekonomicznego w Poznaniu](http://poznan.ksiegarnienaukowe.pl/ksiazka/Szymkowiak-Marcin/Podejscie-kalibracyjne-w-badaniach-spoleczno-ekonomicznych,pwnpoJXI54V5F)
+
+---
+
+# Kalibracja
+
+- Zakładamy, że populacja `\(U=\left\{1,2,\ldots,N\right\}\)`  składa się z `\(N\)` elementów.
+- Z populacji tej losujemy zgodnie z określonym schematem losowania próbę `\(s\subseteq U\)`, składającą się z `\(n\)` elementów.
+- Niech `\(\pi_{i}\)` oznacza prawdopodobieństwo inkluzji pierwszego rzędu tj. `\(\pi_{i}=P\left(i\in s\right)\)` a `\(w_{i}=1/\pi_{i}\)` wagę przypisaną `\(i\)`-tej jednostce w procesie losowania.
+- Zakładamy, że głównym celem jest oszacowanie wartości globalnej zmiennej `\(y\)`: 
+`$$Y=\sum_{i=1}^{N}y_{i},$$`
+gdzie `\(y_{i}\)` oznacza wartość zmiennej `\(y\)` dla `\(i\)`-tej jednostki, `\(i=1,\ldots,N\)`.
+
+---
+
+# Kalibracja
+
+- Niech ponadto `\(x_{1},\ldots,x_{k}\)` oznaczają zmienne pomocnicze, a `\(\mathbf{X}_{j}\)` oznacza wartość globalną zmiennej `\(x_{j}\)`, `\(j=1,\ldots,k\)`, tj.
+`$$\mathbf{X}_{j}=\sum_{i=1}^{N}x_{ij},$$`
+gdzie `\(x_{ij}\)` oznacza wartość `\(j\)` - tej zmiennej pomocniczej dla `\(i\)` - tej jednostki badania.
+- Do oszacowania wartości globalnej zmiennej `\(y\)` wykorzystujemy estymator Horvitza-Thompsona:
+
+`$$\hat{Y}_{HT}=\sum_{i=1}^{n}w_{i}y_{i}$$`
+
+---
+
+# Kalibracja
+
+- W praktyce bardzo często zdarza się, że:
+
+`$$\sum_{s}w_{i}x_{ij} \neq \mathbf{X}_{j}$$`
+co oznacza konieczność rozważenia zastosowania kalibracji.
+
+---
+
+# Kalibracja
+
+- Zatem niech `\(\mathbf{w}=\left(w_{1},\ldots,w_{n}\right)^{T}\)` będzie wektorem wag wynikających ze schematu losowania próby, a `\(\mathbf{d}=\left(d_{1},\ldots,d_{n}\right)^{T}\)` poszukiwanym wektorem wag kalibracyjnych, gdzie `\(n\)` oznacza liczebność próby.
+- Niech `\(G\)` będzie dowolną funkcją spełniającą następujące warunki:
+  - `\(G\left(\cdot\right)\)` jest dwukrotnie różniczkowalna,
+  - `\(G\left(\cdot\right)\geq 0\)`,
+  - `\(G\left(1\right)=0\)`,
+  - `\(G'\left(1\right)=0\)`,
+  - `\(G''\left(1\right)=1\)`.
+- Nowo wyznaczone wagi powinny nieznacznie się różnić od wag `\(d_{i}\)` oraz powinny spełniać warunek:
+`$$\sum_{s}d_{i}x_{ij} = \mathbf{X}_{j}$$`
+
+---
+
+### Wyznaczanie wag kalibracyjnych
+
+- Minimalizacja funkcji odległości: 
+`$$D\left(\mathbf{d},\mathbf{w}\right)=\sum_{i=1}^{n}w_{i}G\left(\frac{d_{i}}{w_{i}}\right)\longrightarrow \textrm{min}$$`
+- Równania kalibracyjne: 
+`$$\sum_{i=1}^{n}d_{i}x_{ij}=\mathbf{X}_{j},\quad j=1,\ldots,k,$$`
+- Warunki ograniczające:
+`$$L\leq \frac{d_{i}}{w_{i}}\leq U, \quad \text{gdzie: } L&lt;1\  \text{i}\  U&gt;1,\  i=1,\ldots,n.$$`
+
+---
+
+# Funkcja G
+
+W praktycznych zastosowaniach najczęściej wykorzystuje się funkcję `\(G\)` wpostaci `\(G_{1}\left(x\right)=\frac{1}{2}\left(x-1\right)^{2}\)`. w tym przypadku mamy bowiem:
+
+`$$D\left(\mathbf{w},\mathbf{d}\right)=\sum_{i=1}^{n}d_{i}G\left(\frac{w_{i}}{d_{i}}\right)=\sum_{i=1}^{n}d_{i}\frac{1}{2}\left(\frac{w_{i}}{d_{i}}-1\right)^{2}=\frac{1}{2}\sum_{i=1}^{n}\frac{\left(w_{i}-d_{i}\right)^{2}}{d_{i}}.$$`
+
+W literaturze wskazuje się wiele różnych postaci tej funkcji.
+
+---
+
+# Wagi kalibracyjne
+
+Wektor wag kalibracyjnych `\(\mathbf{d}=\left(d_{1},d_{2},\ldots,d_{n}\right)^{T}\)` jest rozwiązaniem zadania minimalizacji:
+`$$\mathbf{d}=\textrm{argmin}_{v}D\left(\textbf{v},\textbf{w}\right),$$`
+`$$\mathbf{X}=\tilde{\textbf{X}},$$`
+przy czym
+`$$D\left(\mathbf{v},\textbf{w}\right)=\frac{1}{2}\sum_{i=1}^n\frac{\left(v_{i}-w_{i}\right)^{2}}{w_{i}}$$`
+`$$\tilde{\mathbf{X}}=\left(\sum_{i=1}^n{d_{i}x_{i1}},\sum_{i=1}^n{d_{i}x_{i2}},\ldots,\sum_{i=1}^n{d_{i}x_{ik}}\right)^{T},\quad \mathbf{X}=\left(\sum_{i=1}^N{x_{i1}},\sum_{i=1}^N{x_{i2}},\ldots,\sum_{i=1}^N{x_{ik}}\right)^{T}.$$`
+
+---
+
+# Wagi kalibracyjne
+
+Rozwiązaniem zadania minimalizacji jest wektor wag kalibracyjnych `\(\mathbf{d}=\left(d_{1},d_{2},\ldots,d_{n}\right)^{T}\)`, którego składowe spełniają równanie
+`$$d_{i}=w_{i}+w_{i}\left(\textbf{X}-\hat{\textbf{X}}\right)^{T}\left(\sum_{i=1}^n{w_{i}\underline{\textbf{x}}_{i}\underline{\textbf{x}}_{i}^{T}}\right)^{-1}\underline{\textbf{x}}_{i}$$`
+przy czym:
+`$$\hat{\textbf{X}}=\left(\sum_{i=1}^n{w_{i}x_{i1}},\sum_{i=1}^n{w_{i}x_{i2}},\ldots,\sum_{i=1}^n{w_{i}x_{ik}}\right)^{T},$$`
+`$$\underline{\textbf{x}}_{i}=\left(x_{i1},x_{i2},\ldots,x_{ik}\right)^{T}.$$`
+
+---
+
+# Algorytm kalibracji
+
+1. Sprawdź czy wagi w próbie sumują się liczebności populacji w przekrojach, w których jest przeprowadzana estymacja
+
+2. Jeśli nie to na podstawie populacji wyznacz wartości globalne w tych przekrojach - zmienne pomocnicze w kalibracji
+
+3. Dokonaj korekty wag, w taki sposób, aby suma wag w przekrojach odpowiadała liczebności populacji - zadanie optymalizacyjne
+
+---
+
+# Kalibracja w pakiecie survey
+
+Wyznaczenie wartości globalnych dla jednej zmiennej.
+
+Krok po kroku:
+
+
+```r
+mf &lt;- model.frame(~zmienna, populacja)
+mm &lt;- model.matrix(~zmienna, mf)
+pop_zmienna &lt;- colSums(mm)
+```
+
+Zagnieżdżone funkcje:
+
+
+```r
+pop_zmienna &lt;- colSums(model.matrix(~zmienna,
+                       model.frame(~zmienna,populacja)))
+```
+
+---
+
+# Kalibracja w pakiecie survey
+
+Funkcja `calibrate` dla jednej zmiennej
+
+
+```r
+kal_zmienna &lt;- calibrate(design = schemat, formula = ~zmienna, 
+                         population = pop_zmienna)
+```
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `formula` - zmienna, w której ma być zapewniona zgodność w próbie i populacji
+
+- `population` - wartości globalne w populacji
+
+---
+
+# Kalibracja w pakiecie survey
+
+Wyznaczenie wartości globalnych dla dwóch zmiennych.
+
+Krok po kroku:
+
+
+```r
+mf &lt;- model.frame(~zm1*zm2, populacja)
+mm &lt;- model.matrix(~zm1*zm2, mf)
+pop_zm1zm2 &lt;- colSums(mm)
+```
+
+Zagnieżdżone funkcje:
+
+
+```r
+pop_zm1zm2 &lt;- colSums(model.matrix(~zm1*zm2,
+                       model.frame(~zm1*zm2,populacja)))
+```
+
+---
+
+# Kalibracja w pakiecie survey
+
+Funkcja `calibrate` dla jednej zmiennej
+
+
+```r
+kal_zmienna &lt;- calibrate(design = schemat, formula = ~zm1*zm2, 
+                         population = pop_zm1zm2)
+```
+
+- `design` - schemat losowania określony za pomocą funkcji `svydesign()`
+
+- `formula` - zmienne, w których ma być zapewniona zgodność w próbie i populacji
+
+- `population` - wartości globalne w populacji
+
+---
+
+class: center, middle, inverse
+
+# Pytania?
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
