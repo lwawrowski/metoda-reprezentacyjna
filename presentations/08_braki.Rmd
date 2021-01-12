@@ -228,7 +228,7 @@ kNN(data = zbior, variable = c("cecha1", "cecha2"),
 
 Zastąpienie braków danych wartościami teoretycznymi z modelu liniowego.
 
-Funkcja `kNN`
+Funkcja `regressionImp`
 
 ```{r eval=FALSE}
 regressionImp(formula = model, data = zbior)
