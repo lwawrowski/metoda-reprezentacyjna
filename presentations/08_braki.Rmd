@@ -250,6 +250,12 @@ Podobnie działa funkcja `rangerImpute()` wykorzystująca lasy losowe, natomiast
 
 ---
 
+# Problem
+
+W trakcie transportu zaginęły wyniki z kilkudziesięciu obwodów głosowania, a trzeba jak najszybciej opublikować wyniki. Zbiór danych `wybory_nonr.rda` na moodlu.
+
+---
+
 # Kalibracja
 
 Metoda wykorzystywana w estymacji różnych parametrów w badaniach statystycznych z brakami odpowiedzi
@@ -393,6 +399,10 @@ kal_zmienna <- calibrate(design = schemat, formula = ~zmienna,
 
 - `population` - wartości globalne w populacji
 
+Wynikiem działania funkcji `calibrate` jest schemat losowania. 
+
+Wektor wag kalibracyjnych można wyznaczyć funkcją `weights`.
+
 ---
 
 # Kalibracja w pakiecie survey
@@ -430,6 +440,18 @@ kal_zmienna <- calibrate(design = schemat, formula = ~zm1*zm2,
 - `formula` - zmienne, w których ma być zapewniona zgodność w próbie i populacji
 
 - `population` - wartości globalne w populacji
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/nGObU7WGb1stPVkBa5JjH?controls=none&short_poll=true" width="100%" height="100%"></iframe>
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/ICMZtKjmP0IXqPl2XsP0S?controls=none&short_poll=true" width="100%" height="100%"></iframe>
+
+---
+
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/XC9B3aRqUaZlcR0CVxcB7?controls=none&short_poll=true" width="100%" height="100%"></iframe>
 
 ---
 
