@@ -35,3 +35,15 @@ proba2_braki$rafal_kazimierz_trzaskowski[braki] <- NA
 summary(proba2_braki)
 
 save(proba1, proba1_braki, proba2, proba2_braki, file = "data/wybory_braki.rda")
+
+set.seed(123)
+proba1_nonr <- proba1 %>% 
+  group_by(typ_obszaru, wojewodztwo) %>% 
+  sample_frac(0.95)
+
+set.seed(125)
+proba2_nonr <- proba2 %>% 
+  group_by(wojewodztwo) %>% 
+  sample_frac(0.95)
+
+save(populacja, proba1, proba1_nonr, proba2, proba2_nonr, file = "data/wybory_nonr.rda")

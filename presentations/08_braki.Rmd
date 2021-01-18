@@ -256,6 +256,10 @@ W trakcie transportu zaginęły wyniki z kilkudziesięciu obwodów głosowania, 
 
 ---
 
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/jz0LeEJO31tGB9NjR5DNW?controls=none&short_poll=true" width="100%" height="100%"></iframe>
+
+---
+
 # Kalibracja
 
 Metoda wykorzystywana w estymacji różnych parametrów w badaniach statystycznych z brakami odpowiedzi
@@ -405,6 +409,10 @@ Wektor wag kalibracyjnych można wyznaczyć funkcją `weights`.
 
 ---
 
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/XoKkUs12uJu84ZPpJZ0fM?controls=none&short_poll=true" width="100%" height="100%"></iframe>
+
+---
+
 # Kalibracja w pakiecie survey
 
 Wyznaczenie wartości globalnych dla dwóch zmiennych.
@@ -412,16 +420,16 @@ Wyznaczenie wartości globalnych dla dwóch zmiennych.
 Krok po kroku:
 
 ```{r eval=FALSE}
-mf <- model.frame(~zm1*zm2, populacja)
-mm <- model.matrix(~zm1*zm2, mf)
+mf <- model.frame(~zm1+zm2, populacja)
+mm <- model.matrix(~zm1+zm2, mf)
 pop_zm1zm2 <- colSums(mm)
 ```
 
 Zagnieżdżone funkcje:
 
 ```{r eval=FALSE}
-pop_zm1zm2 <- colSums(model.matrix(~zm1*zm2,
-                       model.frame(~zm1*zm2,populacja)))
+pop_zm1zm2 <- colSums(model.matrix(~zm1+zm2,
+                       model.frame(~zm1+zm2,populacja)))
 ```
 
 ---
@@ -431,7 +439,7 @@ pop_zm1zm2 <- colSums(model.matrix(~zm1*zm2,
 Funkcja `calibrate` dla jednej zmiennej
 
 ```{r eval=FALSE}
-kal_zmienna <- calibrate(design = schemat, formula = ~zm1*zm2, 
+kal_zmienna <- calibrate(design = schemat, formula = ~zm1+zm2, 
                          population = pop_zm1zm2)
 ```
 
