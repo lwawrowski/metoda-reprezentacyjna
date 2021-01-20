@@ -49,3 +49,12 @@ save(ess, file = "data/ess.RData")
 sum(ess$dweight)
 
 load("data/PISA2012.RData")
+
+# PGSS
+
+load("data/pgss2010.RData")
+
+pgss_2010$weight_pop <- pgss_2010$weight/nrow(pgss_2010)*32674100
+summary(pgss_2010$weight_pop)
+
+save(pgss_2010, file = "data/pgss2010.rda")
