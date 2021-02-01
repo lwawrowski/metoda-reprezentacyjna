@@ -1,6 +1,6 @@
 # Minimalna liczebność próby
 
-[Prezentacja](presentations/02_wprowadzenieR.html)
+[Prezentacja](presentations/03_liczebnosc_proby.html)
 
 ## Joe Monster i YouTube
 
@@ -46,4 +46,8 @@ https://cyrkiel.info/statystyka/minimalna-liczebnosc-proby/
 
 [Determining sample size based on confidence and margin of error](https://www.khanacademy.org/math/ap-statistics/estimating-confidence-ap/one-sample-z-interval-proportion/v/determining-sample-size-based-on-confidence-and-margin-of-error)
 
+## Pytania
 
+1. Na podstawie wybranego wzoru na minimalną liczebność próby dla szacowania średniej stwórz wykres przedstawiający zależność minimalnej liczebności próby od odchylenia standardowego lub n0 (podobnie jak na slajdzie nr 17). Wystarczy przykład dla wybranego zestawu parametrów s, d, n0, alfa. Zadanie można wykonać w dowolnym programie - Excel, R, Google Sheets, itp.
+
+2. Jakie są czynniki określające niezbędną wielkość próby w badaniach reprezentacyjnych?

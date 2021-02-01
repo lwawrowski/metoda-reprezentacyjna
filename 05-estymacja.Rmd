@@ -1,0 +1,17 @@
+# Estymacja
+
+[Prezentacja](presentations/05_estymacja.html)
+
+## Estymacja bezpośrednia
+
+## Estymacja pośrednia
+
+## Zadania
+
+1. Efektywność i obciążenie: problem wyboru estymatorów.
+
+2. Z Banku Danych Lokalnych pobierz dowolne dane na poziomie gmin, a następnie wykorzystując metodę losowania prostego i warstwowego wylosuj próbę. W raporcie przedstaw wpływ warstwowania oraz liczebności próby na otrzymywane wyniki. Wykorzystaj przedziały ufności do prezentacji wyników z próby i porównania z danymi z populacji.
+
+3. Estymacja pośrednia: idea, techniki i obszary zastosowań.
+
+4. Znajdź dwa dowolne artykuły dotyczące praktycznego zastosowania estymacji pośredniej (statystyki małych obszarów). W odpowiedzi do zadania zamieść link do artykułu oraz opisz problem, którego rozwiązanie zostało opisane w artykule - dla jakiego wskaźnika (zmiennej) i na jakim poziomie udało się uzyskać oszacowania.

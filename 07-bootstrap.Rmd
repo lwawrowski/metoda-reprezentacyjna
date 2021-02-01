@@ -1,0 +1,11 @@
+# Bootstrap
+
+[Prezentacja](presentations/09_bootstrap.html)
+
+## Pytania
+
+1. Znajdź dwa artykuły naukowe, raporty lub publikacje wyników badań urzędów statystycznych zawierające informację o wykorzystywaniu w procesie estymacji metody bootstrap. W odpowiedzi zamieść link do źródła oraz cytat potwierdzający wykorzystanie tej metody.
+
+2. Oprócz metody bootstrap w badaniach wykorzystuję się także inne metody takie jak jackknife, linearyzacja Taylora i BRR. Wybierz jedną z nich i scharakteryzuj w kilku zdaniach jej główną ideę.
+
+3. Stwórz wykres zależności pomiędzy oszacowaniem błędu estymacji a liczbą replikacji bootstrap dla innej cechy niż podczas zajęć np. poparcia lub liczby wyborców głosujących na danego kandydata.

@@ -1,0 +1,12 @@
+# Schematy losowania
+
+[Prezentacja](presentations/04_schematy_losowania.html)
+
+## Pytania
+
+1. Jakie są podstawowe rodzaje schematów losowania próby w metodzie reprezentacyjnej?
+
+2. Dokonaj recenzji/syntezy artykułu "Znaczenie informacji spoza próby w badaniach reprezentacyjnych". Jaki problem przedstawia artykuł? Jakie schematy losowania omawiają autorzy i na jakich przykładach? Jakie wnioski wynikają z tego opracowania?
+
+3. Na podstawie danych wyborczych wylosuj próbę wykorzystując dane z BDL oraz losowanie wielostopniowe (wykorzystanie co najmniej dwóch metod losowania). Opisz przeprowadzony eksperyment oraz otrzymane wyniki.
+

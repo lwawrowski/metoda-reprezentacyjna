@@ -1,0 +1,20 @@
+# Braki danych
+
+[Prezentacja](presentations/08_braki.html)
+
+## Imputacja
+
+## Kalibracja
+
+## Pytania
+
+1. Polski Generalny Sondaż Społeczny obejmuje badanie indywidualnych postaw, cenionych wartości, orientacji i zachowań społecznych, jak również pomiar zróżnicowania społeczno-demograficznego, zawodowego, edukacyjnego i ekonomicznego reprezentatywnych grup i warstw społecznych w Polsce.
+
+Korzystając z dokumentacji badania (P0091DOC.pdf) wybierz dwie zmienne z tego badania (zbiór danych pgss2010.rda), które zawierają braki danych i przeprowadź imputację wybraną metodą. Następnie dokonaj estymacji dla wybranego przekroju społeczno-ekonomicznego (grupy wieku, wykształcenie, itp.) lub terytorialnego (województwa, klasa miejscowości zamieszkania, itp.).
+
+W zbiorze PGSS nie ma informacji o warstwach i jednostkach losowania pierwszego stopnia, dlatego w deklaracji schematu losowania podajemy tylko id respondenta oraz wagę. Kolumna weight to waga analityczna, która sumuje się do liczebności próby, a weight_pop to waga sumująca się do liczebności populacji.
+
+2. Oprócz metod omówionych na zajęciach istnieje wiele innych technik imputacji. Zrób przegląd internetu i literatury i na tej podstawie opisz główną ideę znalezionej metody. Pamiętaj o podaniu źródła. 
+
+3. W jakich przekrojach przeprowadzono kalibrację w Narodowym Spisie Powszechnym Ludności i Mieszkań 2011?
+
